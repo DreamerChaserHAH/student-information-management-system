@@ -1,0 +1,39 @@
+# CLion #
+.idea/
+
+# CMake build directory #
+cmake-build-debug/
+cmake-build-release/
+
+# Compiled object files #
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers #
+*.gch
+*.pch
+
+# Compiled Dynamic libraries #
+*.so
+*.dylib
+
+# Compiled Static libraries #
+*.a
+*.lib
+
+# Executables #
+*.exe
+*.out
+*.app
+
+# Dependency directories #
+.clangd/
+compile_commands.json
+
+# CMake files #
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+CMakeLists.txt.user

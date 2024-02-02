@@ -1,0 +1,168 @@
+\chapter{Table of Contents}
+\hypertarget{index}{}\label{index}\index{Table of Contents@{Table of Contents}}
+\label{index_md__read_m_e}%
+\Hypertarget{index_md__read_m_e}%
+
+\begin{DoxyItemize}
+\item Includes
+\begin{DoxyItemize}
+\item stdio.h
+\item stdbool.h
+\item math.h
+\begin{DoxyItemize}
+\item Functions
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Strings and Variables
+\begin{DoxyItemize}
+\item Strings
+\item Variables
+\item Integers
+\end{DoxyItemize}
+\item Functions
+\begin{DoxyItemize}
+\item Basic Functions
+\begin{DoxyItemize}
+\item printf
+\item scanf
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Includes}{Includes}}\label{index_autotoc_md1}
+\hypertarget{index_autotoc_md2}{}\doxysubsection{\texorpdfstring{stdio.\+h}{stdio.\+h}}\label{index_autotoc_md2}
+This is needed for the printf and scanf functions 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdio.h>}}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md3}{}\doxysubsection{\texorpdfstring{stdbool.\+h}{stdbool.\+h}}\label{index_autotoc_md3}
+This is needed for the bool type 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <stdbool.h>}}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{math.\+h}{math.\+h}}\label{index_autotoc_md4}
+This is needed for the math functions (sqrt, pow, etc.) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <math.h>}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Functions}{Functions}}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item sqrt(x) -\/ Returns the square root of x
+\item pow(x, y) -\/ Returns x to the power of y
+\item abs(x) -\/ Returns the absolute value of x
+\item ceil(x) -\/ Returns the smallest integer greater than or equal to x
+\item floor(x) -\/ Returns the largest integer less than or equal to x
+\item round(x) -\/ Returns the value of x rounded to the nearest integer
+\item sin(x) -\/ Returns the sine of x (x is in radians)
+\item cos(x) -\/ Returns the cosine of x (x is in radians)
+\item tan(x) -\/ Returns the tangent of x (x is in radians)
+\item asin(x) -\/ Returns the arc sine of x (x is in radians)
+\item acos(x) -\/ Returns the arc cosine of x (x is in radians)
+\item atan(x) -\/ Returns the arc tangent of x (x is in radians)
+\item atan2(y, x) -\/ Returns the arc tangent of y/x (y and x are in radians)
+\item exp(x) -\/ Returns the value of Ex
+\item log(x) -\/ Returns the natural logarithm (base E) of x
+\item log10(x) -\/ Returns the common logarithm (base 10) of x
+\item fmod(x, y) -\/ Returns the remainder of x/y
+\item min(x, y) -\/ Returns the smallest of x and y
+\item max(x, y) -\/ Returns the largest of x and y
+\item rand() -\/ Returns a pseudo-\/random number between 0 and RAND\+\_\+\+MAX
+\item srand(x) -\/ Seeds the random number generator used by rand() with the value x
+\item M\+\_\+\+PI -\/ Pi (3.\+14159265358979323846)
+\item M\+\_\+E -\/ Euler\textquotesingle{}s number (2.\+71828182845904523536)
+\item M\+\_\+\+LOG2E -\/ Logarithm of e to base 2 (1.\+44269504088896340736)
+\item M\+\_\+\+LOG10E -\/ Logarithm of e to base 10 (0.\+434294481903251827651)
+\item M\+\_\+\+LN2 -\/ Natural logarithm of 2 (0.\+693147180559945309417)
+\end{DoxyItemize}
+
+Thats a lot and theres more omfg imma stop this here\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Strings and Variables}{Strings and Variables}}\label{index_autotoc_md6}
+\hypertarget{index_autotoc_md7}{}\doxysubsection{\texorpdfstring{Strings}{Strings}}\label{index_autotoc_md7}
+In Python we would do this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{string\ =\ \textcolor{stringliteral}{"{}Hello"{}}}
+
+\end{DoxyCode}
+ That would create a string with a value of "{}\+Hello"{}. In C we have to do it a bit differently. Strings are a sequence of characters. ~\newline
+ They are declared like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ \textcolor{keywordtype}{string}[10];}
+
+\end{DoxyCode}
+ this creates a string with a length of 10 characters. Which we can later use to assign a value to.~\newline
+ You can also initialize it with a value like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ \textcolor{keywordtype}{string}[10]\ =\ \textcolor{stringliteral}{"{}Hello"{}};}
+
+\end{DoxyCode}
+ This creates a string with a length of 10 characters and a value of "{}\+Hello"{}. ~\newline
+ You can also do this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ \textcolor{keywordtype}{string}[]\ =\ \textcolor{stringliteral}{"{}Hello"{}};}
+
+\end{DoxyCode}
+ This creates a string with a length of 6 characters and a value of "{}\+Hello"{}. ~\newline
+ The length is 6 because the compiler automatically adds a null character at the end of the string.\hypertarget{index_autotoc_md8}{}\doxysubsection{\texorpdfstring{Variables}{Variables}}\label{index_autotoc_md8}
+Variables are used to store values. ~\newline
+ They are declared like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x;}
+
+\end{DoxyCode}
+ This creates an integer variable called x. ~\newline
+ You can also initialize it with a value like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x\ =\ 5;}
+
+\end{DoxyCode}
+ This creates an integer variable called x with a value of 5. ~\newline
+ You can also do this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{x\ =\ 5;}
+
+\end{DoxyCode}
+ This creates an integer variable called x and thn later set the value to 5.\hypertarget{index_autotoc_md9}{}\doxysubsection{\texorpdfstring{Integers}{Integers}}\label{index_autotoc_md9}
+Integers are whole numbers. ~\newline
+ They are declared like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x;}
+
+\end{DoxyCode}
+ This creates an integer variable called x. ~\newline
+ You can also initialize it with a value like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x\ =\ 5;}
+
+\end{DoxyCode}
+ This creates an integer variable called x with a value of 5. ~\newline
+ You can also do this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{x\ =\ 5;}
+
+\end{DoxyCode}
+ This creates an integer variable called x and thn later set the value to 5.\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Functions}{Functions}}\label{index_autotoc_md10}
+\hypertarget{index_autotoc_md11}{}\doxysubsection{\texorpdfstring{Basic Functions}{Basic Functions}}\label{index_autotoc_md11}
+\hypertarget{index_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{printf}{printf}}\label{index_autotoc_md12}
+This function is used to print text to the console. It is declared like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"{}Hello\ World!"{}});\ \textcolor{comment}{//\ This\ prints\ "{}Hello\ World!"{}\ to\ the\ console}}
+
+\end{DoxyCode}
+ \hypertarget{index_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{scanf}{scanf}}\label{index_autotoc_md13}
+This one is to get input from the user, just like input() from python. It is declared like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ x;\ \textcolor{comment}{//We\ define\ the\ variable\ x\ first\ because\ scanf\ needs\ a\ variable\ to\ store\ the\ input}}
+\DoxyCodeLine{scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&x);\ \textcolor{comment}{//\ This\ gets\ input\ from\ the\ user\ and\ stores\ it\ in\ x}}
+
+\end{DoxyCode}
+
+
+In Python we would do this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{x\ =\ input()}
+
+\end{DoxyCode}
+ But in C we have to define the variable first and then use scanf to get the input and store it in the variable. 

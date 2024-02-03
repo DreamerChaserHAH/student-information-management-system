@@ -3,7 +3,6 @@
     - [stdio.h](#stdioh)
     - [stdbool.h](#stdboolh)
     - [math.h](#mathh)
-        - [Functions](#functions)
 - [Strings and Variables](#strings-and-variables)
     - [Strings](#strings)
     - [Variables](#variables)
@@ -12,7 +11,9 @@
     - [Basic Functions](#basic-functions)
         - [printf](#printf)
         - [scanf](#scanf)
-
+- [Useage of the Funtions](#useage-of-the-funtions)
+  - [Basic useage](#basic-useage)
+    - [printf()](#printf-1)
 ## Includes
 ### stdio.h
 This is needed for the printf and scanf functions
@@ -29,36 +30,6 @@ This is needed for the math functions (sqrt, pow, etc.)
 ```c
 #include <math.h>
 ```
-
-#### Functions
-- sqrt(x) - Returns the square root of x
-- pow(x, y) - Returns x to the power of y
-- abs(x) - Returns the absolute value of x
-- ceil(x) - Returns the smallest integer greater than or equal to x
-- floor(x) - Returns the largest integer less than or equal to x
-- round(x) - Returns the value of x rounded to the nearest integer
-- sin(x) - Returns the sine of x (x is in radians)
-- cos(x) - Returns the cosine of x (x is in radians)
-- tan(x) - Returns the tangent of x (x is in radians)
-- asin(x) - Returns the arc sine of x (x is in radians)
-- acos(x) - Returns the arc cosine of x (x is in radians)
-- atan(x) - Returns the arc tangent of x (x is in radians)
-- atan2(y, x) - Returns the arc tangent of y/x (y and x are in radians)
-- exp(x) - Returns the value of Ex
-- log(x) - Returns the natural logarithm (base E) of x
-- log10(x) - Returns the common logarithm (base 10) of x
-- fmod(x, y) - Returns the remainder of x/y
-- min(x, y) - Returns the smallest of x and y
-- max(x, y) - Returns the largest of x and y
-- rand() - Returns a pseudo-random number between 0 and RAND_MAX
-- srand(x) - Seeds the random number generator used by rand() with the value x
-- M_PI - Pi (3.14159265358979323846)
-- M_E - Euler's number (2.71828182845904523536)
-- M_LOG2E - Logarithm of e to base 2 (1.44269504088896340736)
-- M_LOG10E - Logarithm of e to base 10 (0.434294481903251827651)
-- M_LN2 - Natural logarithm of 2 (0.693147180559945309417)
-
-Thats a lot and theres more omfg imma stop this here
 
 ## Strings and Variables
 ### Strings
@@ -138,10 +109,52 @@ This one is to get input from the user, just like input() from python. It is dec
 int x; //We define the variable x first because scanf needs a variable to store the input
 scanf("%d", &x); // This gets input from the user and stores it in x
 ```
+#### Formats for scanf
+To get thn set the data taken from scanf we need to do something like this: 
+```c
+scanf("%format", data);
+```
+here the type is the format for example "d" is for int, so if the data we get the from the user is to be handle as an integar we use `scanf("%d", data)` this will make so the data is stored as an int. <br>
+Like so for each datatype the format is different and needs to be defined. The formats are as follows: <br>
 
-In Python we would do this:
+| Data Type | Size (bytes) | Format Specifier |
+|:---------:|:------------:|:----------------:|
+|    int    |      4       |        %d        |
+|   char    |      1       |        %c        |
+|   float   |      4       |        %f        |
+|  double   |      8       |       %lf        |
+
+
+In Python we wouldn't use format nor define the variable and its datatype rather do this:
 ```python
 x = input()
 ```
-But in C we have to define the variable first and then use scanf to get the input and store it in the variable.
+The compiler would do it by itself.<br>
+But in C we have to define the variable first and then use scanf to get the input and store it in the variable.<br>
 
+# Useage of the Funtions
+## Basic useage
+
+### printf()
+As we know this is to show the user something, like greetings and such.
+But to show data like strings or variables we need to use the same format thing like `scanf()`. <br>
+Lets say we have a integar stored in the variable named `age`, and we want to print that. For python we would just do `print(age)`, this would tell the compiler that its a value of somesort. But for C we need cant do that, rather we would have to do this:
+```c
+printf("%d", age);
+```
+This will tell the compiler that age is a `int`, and that will print the value. And we use the format defined in the [scanf](#scanf) for the datatypes accordingly. <br>
+We can user multiple data like this, as well multiple datatypes:
+```c
+// The ";" is important after each line
+char name[] = "name";
+int age = 20;
+
+printf("%c %d", name, age);
+```
+The output would be: **name 20**
+```c
+printf("Name: %c \nAge: %d", name, age); // The \n is to go to a new line
+```
+The output would be:<br> 
+**Name: name <br>
+Age: 20**

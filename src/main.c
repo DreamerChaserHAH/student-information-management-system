@@ -1,19 +1,24 @@
 #include <common.h>
 #include <database.h>
 #include <login.h>
-#include <create_user.h>
+
 
  /// @brief The entry point to the application that contains surface level logic
  int main() {
     setup_database_environment();
-    create_user(); // Placeholder cause I wanted to create test user
-    struct UserInfo *user = login();
 
-    if (user) {
-        printf("Welcome back, %s! Role: %d\n", user->username, user->role);
-    } else {
+    struct User *user = login();
+    // * If the user is not found or wrong password
+    if(!user) {
         printf("Invalid username or password.\n");
+        return 0;
     }
+    // * If the user is found and logged in successfully
+    printf("Welcome back, %s!\n", user->displayname);
 
-     return 0;
+    // * Rest of the system goes here
+    // They will have access to User and role and any other details needed.
+    // This is where we add the system where the display menu works according to roles.
+
+    return 0;
 }

@@ -2,13 +2,8 @@
 #define LOGIN_H
 
 #include <stdio.h>
+#include <datamanager.h>
 
-struct UserInfo {
-    char username[50];
-    char password[50];
-    int role;
-};
-
-struct UserInfo *login();
+struct User *login();
 // bool login()
 #endif

@@ -24,7 +24,8 @@ bool delete_database(char* database_name);
 /// @brief create another dedicated folder for a collection of specific data structure
 /// @param database_name the name of the database in which we are going to create the table in
 /// @param table_name the name of the table in which the data structure is going to be stored
-bool create_table(char* database_name, char* table_name);
+/// @param base_struct the struct that defines the structure on how the data will be stored
+bool create_table(char* database_name, char* table_name, void *base_struct);
 
 /// @brief delete the dedicated folder that is acting a place for a specific data structure
 /// @param database_name the name of the database in which we are going to create the table in
@@ -57,6 +58,12 @@ void update(char* database_name, char* table_name, int record_id, void* new_data
 /// @param record_id the id of the specific data we are going to delete
 void delete(char* database_name, char* table_name, int record_id);
 
-
+/// @brief find a specific record with a specific value at the specific column
+/// @param database_name the name of the database in which the table resides
+/// @param table_name the name of the table from which we will query the column on
+/// @param column the name of the column of interest
+/// @param value the value of the column that we are trying to find
+/// @return the unique identifier of the record
+char* find(char* database_name, char* table_name, char* column, char* value);
 
 #endif //SIMS_DATABASE_H

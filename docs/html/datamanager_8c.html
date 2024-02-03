@@ -77,36 +77,162 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">datamanager.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="common_8h_source.html">common.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="datamanager_8h_source.html">datamanager.h</a>&gt;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a2c794c5c13ab4dd7e65bad031dbe41c3" id="r_a2c794c5c13ab4dd7e65bad031dbe41c3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a> { <a class="el" href="#a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b">USER</a>
+, <a class="el" href="#a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d">COURSE</a>
+, <a class="el" href="#a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816">ATTENDANCE</a>
+ }</td></tr>
+<tr class="separator:a2c794c5c13ab4dd7e65bad031dbe41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af6b728728a1c86a867cfcbedc78beb35" id="r_af6b728728a1c86a867cfcbedc78beb35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6b728728a1c86a867cfcbedc78beb35">test_function</a> ()</td></tr>
-<tr class="memdesc:af6b728728a1c86a867cfcbedc78beb35"><td class="mdescLeft">&#160;</td><td class="mdescRight">just a simple test function to test whether if data manager is working or not  <br /></td></tr>
-<tr class="separator:af6b728728a1c86a867cfcbedc78beb35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31713e3ca9c5fc3349d5b1f5973ddca4" id="r_a31713e3ca9c5fc3349d5b1f5973ddca4"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31713e3ca9c5fc3349d5b1f5973ddca4">read_file</a> (char *filename)</td></tr>
+<tr class="memdesc:a31713e3ca9c5fc3349d5b1f5973ddca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the base function that reads data from the specific file  <br /></td></tr>
+<tr class="separator:a31713e3ca9c5fc3349d5b1f5973ddca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c1362405209ea02d4bd7718f2a72bc" id="r_a80c1362405209ea02d4bd7718f2a72bc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80c1362405209ea02d4bd7718f2a72bc">write_file</a> (char *filename, char *content)</td></tr>
+<tr class="memdesc:a80c1362405209ea02d4bd7718f2a72bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the base function that writes data into the specific file.  <br /></td></tr>
+<tr class="separator:a80c1362405209ea02d4bd7718f2a72bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54a8d3eb2e5afb1661ea766b1acacdf" id="r_ac54a8d3eb2e5afb1661ea766b1acacdf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac54a8d3eb2e5afb1661ea766b1acacdf">append_file</a> (char *filename, char *content)</td></tr>
+<tr class="memdesc:ac54a8d3eb2e5afb1661ea766b1acacdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">the base function that appends data into the specific file on top of existing data  <br /></td></tr>
+<tr class="separator:ac54a8d3eb2e5afb1661ea766b1acacdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="af6b728728a1c86a867cfcbedc78beb35" name="af6b728728a1c86a867cfcbedc78beb35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6b728728a1c86a867cfcbedc78beb35">&#9670;&#160;</a></span>test_function()</h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2c794c5c13ab4dd7e65bad031dbe41c3" name="a2c794c5c13ab4dd7e65bad031dbe41c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c794c5c13ab4dd7e65bad031dbe41c3">&#9670;&#160;</a></span>FileType</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void test_function </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
+          <td class="memname">enum <a class="el" href="#a2c794c5c13ab4dd7e65bad031dbe41c3">FileType</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b" name="a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b"></a>USER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d" name="a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d"></a>COURSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816" name="a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816"></a>ATTENDANCE&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
-<p>just a simple test function to test whether if data manager is working or not </p>
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ac54a8d3eb2e5afb1661ea766b1acacdf" name="ac54a8d3eb2e5afb1661ea766b1acacdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac54a8d3eb2e5afb1661ea766b1acacdf">&#9670;&#160;</a></span>append_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void append_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the base function that appends data into the specific file on top of existing data </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the filename of the file we are trying to write into </td></tr>
+    <tr><td class="paramname">content</td><td>the actual content we are trying to append into the file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a31713e3ca9c5fc3349d5b1f5973ddca4" name="a31713e3ca9c5fc3349d5b1f5973ddca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31713e3ca9c5fc3349d5b1f5973ddca4">&#9670;&#160;</a></span>read_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * read_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the base function that reads data from the specific file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the filename of the file we are trying to read </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>(char*) content inside the file </dd></dl>
+
+</div>
+</div>
+<a id="a80c1362405209ea02d4bd7718f2a72bc" name="a80c1362405209ea02d4bd7718f2a72bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80c1362405209ea02d4bd7718f2a72bc">&#9670;&#160;</a></span>write_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void write_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the base function that writes data into the specific file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the filename of the file we are trying to write into </td></tr>
+    <tr><td class="paramname">content</td><td>the actual content we are trying to write into the file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

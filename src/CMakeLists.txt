@@ -5,8 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(SIMS main.c)
 
-include_directories(../include)
+include_directories(../include ../subproject/database-miniature/include)
 
-add_library(datamanager components/datamanager.c)
+add_library(database-miniature ../subproject/database-miniature/src/database.c)
 
-target_link_libraries(SIMS datamanager)
+target_link_libraries(SIMS database-miniature)

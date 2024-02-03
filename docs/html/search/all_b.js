@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['scanf_0',['scanf',['../index.html#autotoc_md13',1,'']]],
-  ['stdbool_20h_1',['stdbool.h',['../index.html#autotoc_md3',1,'']]],
-  ['stdio_20h_2',['stdio.h',['../index.html#autotoc_md2',1,'']]],
-  ['strings_3',['Strings',['../index.html#autotoc_md7',1,'']]],
-  ['strings_20and_20variables_4',['Strings and Variables',['../index.html#autotoc_md6',1,'']]]
+  ['read_5ffile_0',['read_file',['../datamanager_8c.html#a31713e3ca9c5fc3349d5b1f5973ddca4',1,'datamanager.c']]],
+  ['readme_2emd_1',['ReadME.md',['../_read_m_e_8md.html',1,'']]],
+  ['role_2',['role',['../struct_user.html#a5f507f5f5e68052179f1af8ced5741c1',1,'User']]],
+  ['role_3',['Role',['../datamanager_8h.html#acdd79a1a4f81dd6ee5cddcb21149b951',1,'datamanager.h']]]
 ];

@@ -45,7 +45,7 @@ struct UserInfo *login() {
 
     // ? Looping till password input password
     while (strlen(password) == 0) {
-        printf("Enter password:");
+        printf("Enter password: ");
 
         fgets(password, sizeof(password), stdin); // ! fgets
         password[strcspn(password, "\n")] = '\0';  // Remove newline

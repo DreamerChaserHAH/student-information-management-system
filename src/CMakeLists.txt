@@ -8,5 +8,7 @@ add_executable(SIMS main.c)
 include_directories(../include ../subproject/database-miniature/include)
 
 add_library(database-miniature ../subproject/database-miniature/src/database.c)
+add_library(user-management components/login.c)
+add_library(user-creation components/create_user.c)
 
-target_link_libraries(SIMS database-miniature)
+target_link_libraries(SIMS database-miniature user-management user-creation)

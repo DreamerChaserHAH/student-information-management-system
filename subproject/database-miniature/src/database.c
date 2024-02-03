@@ -31,7 +31,7 @@ bool is_database_environment_setup(){
 void setup_database_environment(){
     if(!is_database_environment_setup()) {
         manage_status(
-                mkdir("databases", 0777),
+                mkdir("databases"), // ? Removing the 0777 fixed it for me
                 "Database environment set up successfully",
                 "Cannot set up database environment!",
                 true);
@@ -42,7 +42,7 @@ bool create_database(char* database_name){
     char database_path[50];
     snprintf(database_path, sizeof(database_path), "databases/%s", database_name);
     manage_status(
-            mkdir(database_path, 0777),
+            mkdir(database_path), // ? Removing the 0777 fixed it for me
             "Database has been created successfully",
             "Cannot create database!",
             true

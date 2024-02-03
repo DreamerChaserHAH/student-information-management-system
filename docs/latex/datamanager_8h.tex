@@ -1,20 +1,53 @@
 \doxysection{include/datamanager.h File Reference}
 \hypertarget{datamanager_8h}{}\label{datamanager_8h}\index{include/datamanager.h@{include/datamanager.h}}
-\doxysubsubsection*{Functions}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{datamanager_8h_af6b728728a1c86a867cfcbedc78beb35}{test\+\_\+function}} ()
-\begin{DoxyCompactList}\small\item\em just a simple test function to test whether if data manager is working or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+struct \mbox{\hyperlink{struct_user}{User}}
+\begin{DoxyCompactList}\small\item\em the data structure of the user \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_student_record}{Student\+Record}}
+\item 
+struct \mbox{\hyperlink{struct_course}{Course}}
+\item 
+struct \mbox{\hyperlink{struct_programme}{Programme}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951}{Role}} \{ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a65e90109a047c6f58260395f659cd41b}{STUDENT}} = 0
+, \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ab09296d59ff96a161a23d71392397b12}{LECTURER}} = 1
+, \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a4eb57953c3b40e4d084f286a62410264}{PROGRAMME\+\_\+\+LEADER}} = 2
+, \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ac38b5f4346a5b5bda1d74adc91884ae7}{SYSTEM\+\_\+\+ADMIN}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em a list of roles available inside the system \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Function Documentation}
-\Hypertarget{datamanager_8h_af6b728728a1c86a867cfcbedc78beb35}\label{datamanager_8h_af6b728728a1c86a867cfcbedc78beb35} 
-\index{datamanager.h@{datamanager.h}!test\_function@{test\_function}}
-\index{test\_function@{test\_function}!datamanager.h@{datamanager.h}}
-\doxysubsubsection{\texorpdfstring{test\_function()}{test\_function()}}
-{\footnotesize\ttfamily void test\+\_\+function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951}\label{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951} 
+\index{datamanager.h@{datamanager.h}!Role@{Role}}
+\index{Role@{Role}!datamanager.h@{datamanager.h}}
+\doxysubsubsection{\texorpdfstring{Role}{Role}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951}{Role}}}
 
 
 
-just a simple test function to test whether if data manager is working or not 
+a list of roles available inside the system 
 
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STUDENT@{STUDENT}!datamanager.h@{datamanager.h}}\index{datamanager.h@{datamanager.h}!STUDENT@{STUDENT}}}\Hypertarget{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a65e90109a047c6f58260395f659cd41b}\label{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a65e90109a047c6f58260395f659cd41b} 
+STUDENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LECTURER@{LECTURER}!datamanager.h@{datamanager.h}}\index{datamanager.h@{datamanager.h}!LECTURER@{LECTURER}}}\Hypertarget{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ab09296d59ff96a161a23d71392397b12}\label{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ab09296d59ff96a161a23d71392397b12} 
+LECTURER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PROGRAMME\_LEADER@{PROGRAMME\_LEADER}!datamanager.h@{datamanager.h}}\index{datamanager.h@{datamanager.h}!PROGRAMME\_LEADER@{PROGRAMME\_LEADER}}}\Hypertarget{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a4eb57953c3b40e4d084f286a62410264}\label{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a4eb57953c3b40e4d084f286a62410264} 
+PROGRAMME\+\_\+\+LEADER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SYSTEM\_ADMIN@{SYSTEM\_ADMIN}!datamanager.h@{datamanager.h}}\index{datamanager.h@{datamanager.h}!SYSTEM\_ADMIN@{SYSTEM\_ADMIN}}}\Hypertarget{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ac38b5f4346a5b5bda1d74adc91884ae7}\label{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ac38b5f4346a5b5bda1d74adc91884ae7} 
+SYSTEM\+\_\+\+ADMIN&\\
+\hline
+
+\end{DoxyEnumFields}

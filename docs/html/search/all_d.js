@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['variables_0',['Variables',['../index.html#autotoc_md6',1,'Strings and Variables'],['../index.html#autotoc_md8',1,'Variables']]]
+  ['table_20of_20contents_0',['Table of Contents',['../index.html',1,'']]]
 ];

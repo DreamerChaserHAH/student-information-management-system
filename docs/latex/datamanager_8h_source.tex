@@ -9,8 +9,41 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ SIMS\_DATAMANAGER\_H}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ SIMS\_DATAMANAGER\_H}}
 \DoxyCodeLine{00007\ }
-\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{datamanager_8h_af6b728728a1c86a867cfcbedc78beb35}{test\_function}}();}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SIMS\_DATAMANAGER\_H}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951}{Role}}\{}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a65e90109a047c6f58260395f659cd41b}{STUDENT}}\ =\ 0,}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ab09296d59ff96a161a23d71392397b12}{LECTURER}}\ =\ 1,}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951a4eb57953c3b40e4d084f286a62410264}{PROGRAMME\_LEADER}}\ =\ 2,}
+\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951ac38b5f4346a5b5bda1d74adc91884ae7}{SYSTEM\_ADMIN}}\ =\ 3}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_user}{User}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_user_a7a79b415d7fdd56d11626ad10c2ac7e7}{user\_id}};\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_aa5a1a545c2690cf801b6624596ce6cf4}{username}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_aea3f8236e46ab967bbf4aa056d6e9dc3}{displayname}};\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_user_aae9d564fe8553342510c0b7b79edb360}{password}};\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{datamanager_8h_acdd79a1a4f81dd6ee5cddcb21149b951}{Role}}\ \mbox{\hyperlink{struct_user_a5f507f5f5e68052179f1af8ced5741c1}{role}};\ }
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_student_record}{StudentRecord}}\{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_student_record_aad6ecbccff025d6f3a53a785c5112521}{user\_id}};\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_student_record_ab4054ab4ac5d32b249df69ff4633273a}{course\_id}};\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_student_record_a709e44f29734598994ffdbae63107e6a}{attendance}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_student_record_a0ed0237ff8f973179179ed7d1d0b7a5f}{score}};\ }
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_course}{Course}}\{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_course_ae3db45d4b28409eb32a879406eb05b39}{course\_id}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_course_ac51c2ff3eaa3e419b4b1425993ec4669}{programme\_id}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_course_ae824192d27ad72349b34dbd5fff59834}{course\_name}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_course_a64f8e722269912f83ac261b706a627e5}{lecturer\_id}};\ }
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_programme}{Programme}}\{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_programme_ad2212b146528b88c52185533f02d25fb}{programme\_id}};\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{struct_programme_a99e2543aa24e391441b348f4063262d6}{programme\_name}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_programme_a1282aae327ea3749d9ce083154c4dada}{leader\_id}};\ }
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SIMS\_DATAMANAGER\_H}}
 
 \end{DoxyCode}

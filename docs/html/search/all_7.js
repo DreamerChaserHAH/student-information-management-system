@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
-  ['main_2ec_1',['main.c',['../main_8c.html',1,'']]],
-  ['math_20h_2',['math.h',['../index.html#autotoc_md4',1,'']]]
+  ['leader_5fid_0',['leader_id',['../struct_programme.html#a1282aae327ea3749d9ce083154c4dada',1,'Programme']]],
+  ['lecturer_1',['LECTURER',['../datamanager_8h.html#acdd79a1a4f81dd6ee5cddcb21149b951ab09296d59ff96a161a23d71392397b12',1,'datamanager.h']]],
+  ['lecturer_5fid_2',['lecturer_id',['../struct_course.html#a64f8e722269912f83ac261b706a627e5',1,'Course']]]
 ];

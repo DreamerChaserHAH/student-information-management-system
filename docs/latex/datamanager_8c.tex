@@ -1,22 +1,99 @@
 \doxysection{src/components/datamanager.c File Reference}
 \hypertarget{datamanager_8c}{}\label{datamanager_8c}\index{src/components/datamanager.c@{src/components/datamanager.c}}
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$common.\+h$>$}\newline
 {\ttfamily \#include $<$datamanager.\+h$>$}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3}{File\+Type}} \{ \mbox{\hyperlink{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b}{USER}}
+, \mbox{\hyperlink{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d}{COURSE}}
+, \mbox{\hyperlink{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816}{ATTENDANCE}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{datamanager_8c_af6b728728a1c86a867cfcbedc78beb35}{test\+\_\+function}} ()
-\begin{DoxyCompactList}\small\item\em just a simple test function to test whether if data manager is working or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{datamanager_8c_a31713e3ca9c5fc3349d5b1f5973ddca4}{read\+\_\+file}} (char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em the base function that reads data from the specific file \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{datamanager_8c_a80c1362405209ea02d4bd7718f2a72bc}{write\+\_\+file}} (char \texorpdfstring{$\ast$}{*}filename, char \texorpdfstring{$\ast$}{*}content)
+\begin{DoxyCompactList}\small\item\em the base function that writes data into the specific file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{datamanager_8c_ac54a8d3eb2e5afb1661ea766b1acacdf}{append\+\_\+file}} (char \texorpdfstring{$\ast$}{*}filename, char \texorpdfstring{$\ast$}{*}content)
+\begin{DoxyCompactList}\small\item\em the base function that appends data into the specific file on top of existing data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3}\label{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3} 
+\index{datamanager.c@{datamanager.c}!FileType@{FileType}}
+\index{FileType@{FileType}!datamanager.c@{datamanager.c}}
+\doxysubsubsection{\texorpdfstring{FileType}{FileType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3}{File\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USER@{USER}!datamanager.c@{datamanager.c}}\index{datamanager.c@{datamanager.c}!USER@{USER}}}\Hypertarget{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b}\label{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3ae2d30a195cee6b2961cc2c23ea4b520b} 
+USER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COURSE@{COURSE}!datamanager.c@{datamanager.c}}\index{datamanager.c@{datamanager.c}!COURSE@{COURSE}}}\Hypertarget{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d}\label{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3a8ce79a15a05c961a8c202f9f85f72a0d} 
+COURSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTENDANCE@{ATTENDANCE}!datamanager.c@{datamanager.c}}\index{datamanager.c@{datamanager.c}!ATTENDANCE@{ATTENDANCE}}}\Hypertarget{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816}\label{datamanager_8c_a2c794c5c13ab4dd7e65bad031dbe41c3afa25b362a0bc2550d1bdb54e38565816} 
+ATTENDANCE&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{datamanager_8c_af6b728728a1c86a867cfcbedc78beb35}\label{datamanager_8c_af6b728728a1c86a867cfcbedc78beb35} 
-\index{datamanager.c@{datamanager.c}!test\_function@{test\_function}}
-\index{test\_function@{test\_function}!datamanager.c@{datamanager.c}}
-\doxysubsubsection{\texorpdfstring{test\_function()}{test\_function()}}
-{\footnotesize\ttfamily void test\+\_\+function (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\Hypertarget{datamanager_8c_ac54a8d3eb2e5afb1661ea766b1acacdf}\label{datamanager_8c_ac54a8d3eb2e5afb1661ea766b1acacdf} 
+\index{datamanager.c@{datamanager.c}!append\_file@{append\_file}}
+\index{append\_file@{append\_file}!datamanager.c@{datamanager.c}}
+\doxysubsubsection{\texorpdfstring{append\_file()}{append\_file()}}
+{\footnotesize\ttfamily static void append\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{char \texorpdfstring{$\ast$}{*}}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-just a simple test function to test whether if data manager is working or not 
+the base function that appends data into the specific file on top of existing data 
 
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename of the file we are trying to write into \\
+\hline
+{\em content} & the actual content we are trying to append into the file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{datamanager_8c_a31713e3ca9c5fc3349d5b1f5973ddca4}\label{datamanager_8c_a31713e3ca9c5fc3349d5b1f5973ddca4} 
+\index{datamanager.c@{datamanager.c}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!datamanager.c@{datamanager.c}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} read\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+the base function that reads data from the specific file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename of the file we are trying to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(char\texorpdfstring{$\ast$}{*}) content inside the file 
+\end{DoxyReturn}
+\Hypertarget{datamanager_8c_a80c1362405209ea02d4bd7718f2a72bc}\label{datamanager_8c_a80c1362405209ea02d4bd7718f2a72bc} 
+\index{datamanager.c@{datamanager.c}!write\_file@{write\_file}}
+\index{write\_file@{write\_file}!datamanager.c@{datamanager.c}}
+\doxysubsubsection{\texorpdfstring{write\_file()}{write\_file()}}
+{\footnotesize\ttfamily static void write\+\_\+file (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{filename,  }\item[{char \texorpdfstring{$\ast$}{*}}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+the base function that writes data into the specific file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename of the file we are trying to write into \\
+\hline
+{\em content} & the actual content we are trying to write into the file \\
+\hline
+\end{DoxyParams}

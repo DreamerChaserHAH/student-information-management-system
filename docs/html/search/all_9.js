@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printf_0',['printf',['../index.html#autotoc_md12',1,'']]]
+  ['of_20contents_0',['Table of Contents',['../index.html',1,'']]]
 ];

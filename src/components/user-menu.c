@@ -4,7 +4,7 @@
 /// </summary>
 
 #include <stdio.h>
-#include <student-system.h>
+#include <user-interface.h>
 #include <color-printf.h>
 
 void user_menu(const int role) {
@@ -17,7 +17,7 @@ void user_menu(const int role) {
             // * This should replace the menu
             printf_color("[y]Student:[/y] [b]%d[/b]\n", role);
 
-            view_student(); // Debug
+             // Debug
             break;
         case 1:
             // * This should replace the menu

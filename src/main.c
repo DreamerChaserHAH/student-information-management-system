@@ -3,11 +3,12 @@
 #include <login.h>
 #include <user-menu.h>
 #include <color-printf.h>
+#include <user-interface.h>
 
  /// @brief The entry point to the application that contains surface level logic
  int main() {
     setup_database_environment();
-
+    welcome_menu();
 
     char username[50] = "user";
     char password[50] = "pass";

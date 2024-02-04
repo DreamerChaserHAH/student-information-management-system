@@ -19,7 +19,7 @@
 // ! Needs to be changed with database code
 struct User users[100] = {  // Array to store user data
         {1, "user", "User", "pass", 0}, // Since its login the whole userinfo will be sent back
-        {2, "mahmood", "Mahmood", "pass", 0},
+        {2, "mahmood", "Mahmood", "pass", 1},
 };
 
 // Number of users currently stored

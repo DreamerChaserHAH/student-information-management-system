@@ -1,3 +1,8 @@
+// ? Author : Mahmood
+/// <summary>
+/// Just a template file to view user info
+/// </summary>
+
 #include <stdio.h>
 #include <string.h>
 #include <datamanager.h>

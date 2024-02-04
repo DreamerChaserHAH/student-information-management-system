@@ -66,4 +66,7 @@ void delete(char* database_name, char* table_name, int record_id);
 /// @return the unique identifier of the record
 char* find(char* database_name, char* table_name, char* column, char* value);
 
+/// @brief get specific value from a specific record at the specific column
+void* get_value(char* database_name, char* table_name, char* column);
+
 #endif //SIMS_DATABASE_H

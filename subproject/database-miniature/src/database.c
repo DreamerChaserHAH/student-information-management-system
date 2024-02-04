@@ -2,6 +2,32 @@
 
 #include <database.h>
 
+#if defined(__MINGW32__) || defined(__MINGW64__)
+#define COMPILER_MINGW
+#elif defined(__GNUC__)
+#define COMPILER_GCC
+#endif
+
+/// @brief abstraction layer function so that making directory becomes platform-agnostic
+/// @param directory_name the name of the directory we are going to create
+/// @param permission the permission settings for the directory
+/// @return status code
+static int make_directory(char* directory_name, int permission) {
+    #ifdef COMPILER_MINGW
+        // Mingw Compiler
+        return mkdir(directory_name);
+    #elif defined(COMPILER_GCC)
+        // GCC Compiler
+        return mkdir(directory_name, permission);
+    #else
+        return mkdir(directory_name);
+        printf("Compiler is neither MinGW nor GCC.\n");
+    #endif
+
+    return 0;
+}
+
+
 /// @brief check whether if the dedicated folder for databases exists
 static bool is_database_environment_setup();
 
@@ -31,7 +57,7 @@ bool is_database_environment_setup(){
 void setup_database_environment(){
     if(!is_database_environment_setup()) {
         manage_status(
-                mkdir("databases", 0777),
+                make_directory("databases", 0777),
                 "Database environment set up successfully",
                 "Cannot set up database environment!",
                 true);
@@ -42,7 +68,7 @@ bool create_database(char* database_name){
     char database_path[50];
     snprintf(database_path, sizeof(database_path), "databases/%s", database_name);
     manage_status(
-            mkdir(database_path, 0777),
+            make_directory(database_path, 0777),
             "Database has been created successfully",
             "Cannot create database!",
             true

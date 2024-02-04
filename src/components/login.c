@@ -1,6 +1,7 @@
 // ? Author : Mahmood
 /// <summary>
 /// The main login function. Returns UserInfo as per the login succession. This whole thing assumes that we are allowed to use fgets!
+/// Over commented because somethings need to be clarified
 /// </summary>
 
 
@@ -15,12 +16,14 @@
 // * This should be how all the user data is shown when asked for:
 // ? {id, username, displayname, password, role}
 
+// ! Needs to be changed with database code
 struct User users[100] = {  // Array to store user data
         {1, "user", "User", "pass", 0}, // Since its login the whole userinfo will be sent back
         {2, "mahmood", "Mahmood", "pass", 0},
 };
 
 // Number of users currently stored
+// ! Needs to be changed with database code
 int numUsers = 2; // * This should be a builtin function in the database, for convince so we can call it like total_users() # OUTPUT: 1
 
 struct User *login() {

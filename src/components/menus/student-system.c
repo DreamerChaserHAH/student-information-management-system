@@ -5,5 +5,4 @@
 
 void view_student() {
     printf_color("[y]View Student[/y]\n");
-
 }

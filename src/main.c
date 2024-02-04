@@ -2,7 +2,6 @@
 #include <database.h>
 #include <login.h>
 #include <user-menu.h>
-#include <view-user-template.h>
 #include <color-printf.h>
 
  /// @brief The entry point to the application that contains surface level logic

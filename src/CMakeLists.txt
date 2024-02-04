@@ -12,6 +12,6 @@ add_library(user-management components/login.c)
 add_library(template components/view-user-template.c)
 add_library(user-menu components/user-menu.c)
 add_library(student-management components/menus/student-system.c)
-add_library(color-printf components/color-printf.c)
+add_library(color-printf components/utils/color-printf.c)
 
 target_link_libraries(SIMS database-miniature user-management template user-menu student-management color-printf)

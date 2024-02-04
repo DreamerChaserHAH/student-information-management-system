@@ -43,7 +43,8 @@ void create(char* database_name, char* table_name, void* new_data);
 /// @param table_name the name of the table from which we will remove the record
 /// @param record_id the id of the specific data of interest
 /// @param data the uncasted data variable in which data is going be put into
-void read(char* database_name, char* table_name, int record_id, void* data);
+// ! This needs to be changed to read_data or something because read is a inbuilt function i think?
+void read_data(char* database_name, char* table_name, int record_id, void* data);
 
 /// @brief update a record with a specific key from the table (rewrite the file with a specific name)
 /// @param database_name the name of the database in which the table resides

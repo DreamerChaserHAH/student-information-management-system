@@ -9,5 +9,6 @@ include_directories(../include ../subproject/database-miniature/include)
 
 add_library(database-miniature ../subproject/database-miniature/src/database.c)
 add_library(user-management components/login.c)
+add_library(template components/view_user_template.c)
 
-target_link_libraries(SIMS database-miniature user-management)
+target_link_libraries(SIMS database-miniature user-management template)

@@ -2,6 +2,8 @@
 #include <database.h>
 #include <login.h>
 
+#include <view_user_template.h>
+
 
  /// @brief The entry point to the application that contains surface level logic
  int main() {
@@ -15,6 +17,9 @@
     }
     // * If the user is found and logged in successfully
     printf("Welcome back, %s!\n", user->displayname);
+    ;
+
+    user_info(user->username);
 
     // * Rest of the system goes here
     // They will have access to User and role and any other details needed.

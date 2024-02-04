@@ -6,11 +6,10 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "datamanager.h"
+#include <datamanager.h>
 
 // ? Idk if this will work with txt files
 
-struct User;
 
 // ! This really assumes we can structure the txt files
 // * This should be how all the user data is shown when asked for:
@@ -18,16 +17,17 @@ struct User;
 
 struct User users[100] = {  // Array to store user data
         {1, "user", "User", "pass", 0}, // Since its login the whole userinfo will be sent back
+        {2, "mahmood", "Mahmood", "pass", 0},
 };
 
 // Number of users currently stored
-int numUsers = 1; // * This should be a builtin function in the database, for convince so we can call it like total_users() # OUTPUT: 1
+int numUsers = 2; // * This should be a builtin function in the database, for convince so we can call it like total_users() # OUTPUT: 1
 
 struct User *login() {
     char username[50], password[50];
     printf("Enter username:");
     fgets(username, sizeof(username), stdin); // ! Had to painfully learn how bad scanf is so will use fgets for now unless teacher says we cant
-    username[strcspn(username, "\n")] = '\0';  // Remove checking newline, for when pressing enter. This depends on fgets, I think
+    username[strcspn(username, "\n")] = '\0';  // Remove checking newline, for when pressing enter. This depends on fgets, I think, haven't touched scanf;
 
     // ? Looping till user input username
     while (strlen(username) == 0) {

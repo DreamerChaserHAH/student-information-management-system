@@ -9,4 +9,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+void input();
+
 #endif //SIMS_COMMON_H

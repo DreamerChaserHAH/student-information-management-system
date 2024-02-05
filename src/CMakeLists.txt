@@ -13,5 +13,7 @@ add_library(user-menu components/user-menu.c)
 add_library(student-management components/menus/user-interface.c)
 add_library(color-printf components/utils/color-printf.c)
 add_library(user-interface components/menus/user-interface.c)
+add_library(test-functions components/utils/test-functions.c)
+add_library(common-functions components/utils/common-functions.c)
 
-target_link_libraries(SIMS database-miniature user-management user-menu student-management color-printf user-interface)
+target_link_libraries(SIMS database-miniature user-management user-menu student-management color-printf user-interface test-functions common-functions)

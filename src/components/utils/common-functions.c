@@ -57,7 +57,7 @@ int loop_number_input(char *text, char *invalid_text) {
     return value;
 }
 
-char *input(char *text) {
+char *get_input(char *text) {
     // User input buffer size
     const int BUFFER_SIZE = 100;
 
@@ -111,7 +111,7 @@ char *loop_input(char *text, char *invalid_text) {
 
     // ? Looping till user inputs
     while (strlen(result) == 0) {
-        result = input(text);
+        result = get_input(text);
 
         if (strlen(result) == 0) {  // Check for empty input
             printf("%s\n", invalid_text); // This kicks in if the username still inputs an empty username

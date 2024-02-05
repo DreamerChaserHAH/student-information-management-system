@@ -2,7 +2,6 @@
 #include <database.h>
 #include <login.h>
 #include <user-menu.h>
-#include <color-printf.h>
 #include <user-interface.h>
 #include <test-functions.h>
 

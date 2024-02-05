@@ -7,7 +7,7 @@
 
 /// @brief Get string input from the user.
 /// @param text The text to view when asking for input.
-char *input(char *text);
+char *get_input(char *text);
 
 /// @brief Get int input from the user.
 /// @param text The text to view when asking for a number.

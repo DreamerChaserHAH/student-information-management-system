@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <common-functions.h>
+#include "login.h"
+
 
 void login_menu();
 
 void welcome_menu() {
+    printf("Welcome to the System!\n");
     printf("1. Login\n");
     printf("2. Exit\n");
     int option = option_input("Enter your option:", 2);
@@ -19,9 +22,12 @@ void welcome_menu() {
 }
 
 
-void login_menu(){
+void login_menu() {
     char *username = loop_input("Enter username:", "Please enter a valid username.");
     char *password = loop_input("Enter password:", "Please enter a valid password.");
 
-    printf("%s, %s", username, password); // Debug
+    struct User *user = login(username, password);
+
+    // * The UserInfo will be available here on out and should be used for any other menu here on out
+    printf("%d", user->user_id);
 }

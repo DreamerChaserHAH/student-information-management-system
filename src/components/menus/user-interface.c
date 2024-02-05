@@ -1,18 +1,11 @@
-// * Please add All the student related systems here!
-
 #include <stdio.h>
-#include <login.h>
-#include <string.h>
-#include <stdlib.h>
 #include <common-functions.h>
 
-//function(username, password)
 void login_menu();
 
 void welcome_menu() {
     printf("1. Login\n");
     printf("2. Exit\n");
-
     int option = option_input("Enter your option:", 2);
     switch(option) {
         case 1:

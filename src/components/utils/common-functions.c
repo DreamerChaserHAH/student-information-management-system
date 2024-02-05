@@ -10,7 +10,18 @@ int number_input(char *text) {
     fgets(buffer, sizeof(buffer), stdin);
     buffer[strcspn(buffer, "\n")] = '\0'; // * Handle new line for fgets
 
-    int value = atoi(buffer); // * Convert string to integer
+    char *string;  // Pointer to store the end of the converted part
+    long value = strtol(buffer, &string, 10);  // Convert to long with base 10
+
+    if (string == buffer) {
+        printf("Please enter a numeric value.\n");
+        value = number_input(text);
+    } else if (*string != '\0') {
+        printf("Please enter a numeric value.\n");
+        value = number_input(text);
+    }
+
+    // Now you can safely use the 'value' variable
 
     return value;
 }
@@ -23,7 +34,16 @@ int loop_number_input(char *text, char *invalid_text) {
     fgets(buffer, sizeof(buffer), stdin);
     buffer[strcspn(buffer, "\n")] = '\0'; // * Handle new line for fgets
 
-    int value = atoi(buffer); // * Convert string to integer
+    char *string;  // Pointer to store the end of the converted part
+    long value = strtol(buffer, &string, 10);  // Convert to long with base 10
+
+    if (string == buffer) {
+        printf("Please enter a numeric value.\n");
+        value = loop_number_input(text, invalid_text);
+    } else if (*string != '\0') {
+        printf("Please enter a numeric value.\n");
+        value = loop_number_input(text, invalid_text);
+    }
 
     // ? Looping till user inputs
     while (!value) {

@@ -19,10 +19,10 @@ struct User users[100] = {
 };
 
 // ! Needs to be changed with database code
-int numUsers = 2;
+int numOFUsers = 2;
 
 struct User *login(const char *username, const char *password) {
-    for (int i = 0; i < numUsers; i++) {
+    for (int i = 0; i < numOFUsers; i++) {
         if (strcmp(username, users[i].username) == 0) {
             if(strcmp(password, users[i].password) == 0) {
                 return &users[i];

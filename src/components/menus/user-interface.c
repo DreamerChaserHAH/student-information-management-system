@@ -28,6 +28,6 @@ void login_menu() {
 
     struct User *user = login(username, password);
 
-    // * The UserInfo will be available here on out and should be used for any other menu here on out
+    // * The UserInfo will be available here on out and should be used for any other menu here
     printf("%d", user->user_id);
 }

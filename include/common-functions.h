@@ -25,8 +25,7 @@ int loop_number_input(char *text, char *invalid_text);
 
 /// @brief To get the input for options
 /// @param text The text to view when asking for a option
-/// @param invalid_text The text to view when the user still haven't inputted the option
 /// @param options The total number of options
-int option_input(char *text, char *invalid_text, const int *options);
+int option_input(char *text, int options);
 
 #endif //SIMS_COMMON_FUNCTIONS_H

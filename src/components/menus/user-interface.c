@@ -12,7 +12,8 @@ void login_menu();
 void welcome_menu() {
     printf("1. Login\n");
     printf("2. Exit\n");
-    int option = option_input("Enter your option:", "Please choose an option available.", 2);
+
+    int option = option_input("Enter your option:", 2);
     switch(option) {
         case 1:
             printf("Login Function\n");

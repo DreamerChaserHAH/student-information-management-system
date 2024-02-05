@@ -101,12 +101,12 @@ char *loop_input(char *text, char *invalid_text) {
     return result;
 }
 
-int option_input(char *text, char *invalid_text, const int *options) {
+int option_input(char *text, const int options) {
     int value = number_input(text);
 
     // ? Looping till user inputs
     while (!value || value > options) {
-        printf("%s Available options: %d\n", invalid_text, options);
+        printf("Please choose a valid option! Available options: %d\n", options);
         value = number_input(text);
     }
 

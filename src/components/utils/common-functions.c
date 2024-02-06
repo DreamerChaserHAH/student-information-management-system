@@ -65,12 +65,12 @@ char *loop_input(char *text, char *invalid_text) {
     return result;
 }
 
-int option_input(char *text, const int options) {
+int option_input(char *text, struct Menu *menu) {
     int value;
     do {
         value = number_input(text);
-        if (value < 1 || value > options) {
-            printf("Please choose a valid option! Available options: %d\n", options);
+        if (value < 1 || value > menu->num_options) {
+            printf("Please choose a valid option! Available options: %d\n", menu->num_options);
             value = 0;
         }
     } while (!value);
@@ -92,12 +92,10 @@ void exit_message() {
 /// @brief Add an option to the menu
 /// @param menu The menu to add the option to
 /// @param option The option to add
-void add_option(struct Menu *menu, const char *option) {
-    if (menu->num_options < MAX_MENU_OPTIONS) {
-        strncpy(menu->options[menu->num_options], option, MAX_OPTION_LENGTH);
-        menu->options[menu->num_options][MAX_OPTION_LENGTH - 1] = '\0'; // Ensure null termination
-        menu->num_options++;
-    }
+void add_option(struct Menu *menu, const char *option, MenuOptionFunction function) {
+    strncpy(menu->options[menu->num_options], option, MAX_OPTION_LENGTH);
+    menu->functions[menu->num_options] = function;
+    menu->num_options++;
 }
 
 int get_max_length(struct Menu *menu, char *menu_name) {
@@ -140,4 +138,12 @@ void box_menu(struct Menu *menu, char *menu_name) {
         printf(" |\n");
     }
     print_line(max_length); // Print bottom border for options
+}
+
+void option_handler(struct Menu *menu, int option, struct User *user) {
+    if (option >= 1 && option <= menu->num_options) {
+        menu->functions[option - 1](user);
+    } else {
+        printf("Invalid option. Please try again.\n");
+    }
 }

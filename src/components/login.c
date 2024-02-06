@@ -14,7 +14,7 @@
 // ! Needs to be changed with database code
 struct User users[100] = {
         /// @brief Array to store user data
-        {1, "user", "User", "pass", 0},
+        {74166, "user", "User", "pass", 0},
         {2, "teacher", "Teacher", "pass", 1},
 };
 
@@ -22,6 +22,7 @@ struct User users[100] = {
 int numOFUsers = 2;
 
 struct User *login(const char *username, const char *password) {
+    // ! Needs to be changed according to the database
     for (int i = 0; i < numOFUsers; i++) {
         if (strcmp(username, users[i].username) == 0) {
             if(strcmp(password, users[i].password) == 0) {

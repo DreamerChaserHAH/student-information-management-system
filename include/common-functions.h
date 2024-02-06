@@ -60,6 +60,17 @@ void box_menu(struct Menu *menu, char *menu_name);
 /// @param user The user to be handled
 void option_handler(struct Menu *menu, int option, struct User *user);
 
+/// @brief Create a box
+/// @param title The title of the box
+void create_box(char *title);
+
+/// @brief Add info to the box
+/// @param info The info to be added
+void add_info(char *info);
+
+/// @brief Close the box
+void close_box();
+
 /// @brief Logout the user
 void logout();
 

@@ -39,18 +39,26 @@ void login_menu() {
 }
 
 
-
 void main_menu(struct User *user) {
     struct Menu menu;
     menu.num_options = 0;
 
-    if (user->role == 0) {
-        add_option(&menu, "Student Info", student_info_menu);
-        add_option(&menu, "Logout", logout);
-    } else if (user->role == 1) {
-        add_option(&menu, "Student Info", student_info_menu);
-        add_option(&menu, "Student Management", student_management_menu);
-        add_option(&menu, "Logout", logout);
+    switch(user->role) {
+        case STUDENT:
+            add_option(&menu, "Student Info", student_info_menu);
+            add_option(&menu, "Logout", logout);
+            break;
+        case LECTURER:
+            add_option(&menu, "Student Info", student_info_menu);
+            add_option(&menu, "Student Management", student_management_menu);
+            add_option(&menu, "Logout", logout);
+            break;
+        case PROGRAMME_LEADER:
+            // Add options for PROGRAMME_LEADER
+            break;
+        case SYSTEM_ADMIN:
+            // Add options for SYSTEM_ADMIN
+            break;
     }
 
     box_menu(&menu, "Main Menu");
@@ -58,6 +66,7 @@ void main_menu(struct User *user) {
     int option = option_input("Enter your option:", &menu);
     option_handler(&menu, option, user);
 }
+
 void student_info_menu(struct User *user) {
     struct Menu menu;
     menu.num_options = 0;
@@ -69,6 +78,47 @@ void student_info_menu(struct User *user) {
 
     int option = option_input("Enter your option:", &menu);
     option_handler(&menu, option, user);
+}
+
+void view_student_info(struct User *user) {
+    printf("View Student Info Function\n");
+
+    if(user->role == STUDENT) {
+        struct StudentRecord *student = student_info(user->user_id);
+        if(student) {
+            char info[50];
+            create_box("Student Information");
+            sprintf(info, "Student ID: %d", student->user_id);
+            add_info(info);
+            sprintf(info, "Attendance: %d", student->attendance);
+            add_info(info);
+            sprintf(info, "Course ID: %d", student->course_id);
+            add_info(info);
+            sprintf(info, "Score: %d", student->score);
+            add_info(info);
+            close_box();
+        } else {
+            printf("Student not found.\n");
+        }
+    } else {
+        int student_id = loop_number_input("Enter student ID:", "Please enter a valid student ID.");
+        struct StudentRecord *student = student_info(student_id);
+        if(student) {
+            char info[50];
+            create_box("Student Information");
+            sprintf(info, "Student ID: %d", student->user_id);
+            add_info(info);
+            sprintf(info, "Attendance: %d", student->attendance);
+            add_info(info);
+            sprintf(info, "Course ID: %d", student->course_id);
+            add_info(info);
+            sprintf(info, "Score: %d", student->score);
+            add_info(info);
+            close_box();
+        } else {
+            printf("Student not found.\n");
+        }
+    }
 }
 
 void student_management_menu(struct User *user) {

@@ -15,7 +15,7 @@
 struct User users[100] = {
         /// @brief Array to store user data
         {1, "user", "User", "pass", 0},
-        {2, "mahmood", "Mahmood", "pass", 1},
+        {2, "teacher", "Teacher", "pass", 1},
 };
 
 // ! Needs to be changed with database code

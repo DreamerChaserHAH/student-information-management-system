@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['delete_0',['delete',['../database_8h.html#a333e98b878445328b9902b87d27b9852',1,'database.h']]],
-  ['delete_5fdatabase_1',['delete_database',['../database_8c.html#aefc92bb6a0a1d5c7b33e14b3b6273776',1,'delete_database(char *database_name):&#160;database.c'],['../database_8h.html#aefc92bb6a0a1d5c7b33e14b3b6273776',1,'delete_database(char *database_name):&#160;database.c']]],
-  ['delete_5ftable_2',['delete_table',['../database_8h.html#a4a99e473932c0b5a4c78dd75fd42d703',1,'database.h']]]
+  ['create_5fdatabase_0',['create_database',['../database_8c.html#a137568de5e2be006bae8d5af515565d2',1,'create_database(char *database_name):&#160;database.c'],['../database_8h.html#a137568de5e2be006bae8d5af515565d2',1,'create_database(char *database_name):&#160;database.c']]],
+  ['create_5ffile_1',['create_file',['../database_8c.html#a451f519316d9afa1597be62c19d9fced',1,'database.c']]],
+  ['create_5frecord_2',['create_record',['../database_8c.html#ace463cecc72128a76b3d57c85f59efe5',1,'create_record(char *database_name, char *table_name, void *new_data):&#160;database.c'],['../database_8h.html#ace463cecc72128a76b3d57c85f59efe5',1,'create_record(char *database_name, char *table_name, void *new_data):&#160;database.c']]],
+  ['create_5ftable_3',['create_table',['../database_8c.html#aff63d494d12d5e8edbc927e32ce47b37',1,'create_table(char *database_name, char *table_name, void *base_struct):&#160;database.c'],['../database_8h.html#aff63d494d12d5e8edbc927e32ce47b37',1,'create_table(char *database_name, char *table_name, void *base_struct):&#160;database.c']]]
 ];

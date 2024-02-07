@@ -11,26 +11,42 @@
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_abe2152b8ab716e50e156613db42517e8}{setup\_database\_environment}}();}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_a8e53db667fb6bae6420148eca286b622}{create\_database}}(\textcolor{keywordtype}{char}*\ database\_name);}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00022\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_aefc92bb6a0a1d5c7b33e14b3b6273776}{delete\_database}}(\textcolor{keywordtype}{char}*\ database\_name);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00028\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_a8937dda9d1b86381eb7067404beb595c}{create\_table}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{void}\ *base\_struct);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a4a99e473932c0b5a4c78dd75fd42d703}{delete\_table}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name);}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_acf25a8466dbeaffa63f8e47e0e0e3d9b}{create}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{void}*\ new\_data);}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a6304a5b160db4aec83630a9810b2a236}{read}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id,\ \textcolor{keywordtype}{void}*\ data);}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a92d6ffa6852160041e0c0acfbeb47642}{update}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id,\ \textcolor{keywordtype}{void}*\ new\_data);}
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_metadata}{Metadata}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_metadata_adb5b784fded1edabb1e0144b2bc885c3}{size}};}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_abe2152b8ab716e50e156613db42517e8}{setup\_database\_environment}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_acd9dd06815fd7bd5fe5339f84c95667a}{is\_database\_here}}(\textcolor{keywordtype}{char}*\ database\_name);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a137568de5e2be006bae8d5af515565d2}{create\_database}}(\textcolor{keywordtype}{char}*\ database\_name);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a0806cd71877f45d71e07a21d43f41546}{delete\_database}}(\textcolor{keywordtype}{char}*\ database\_name);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_abc2b32f6da93f9b8b3bbc5025180492b}{is\_table\_here}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_aff63d494d12d5e8edbc927e32ce47b37}{create\_table}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{void}\ *base\_struct);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a4a99e473932c0b5a4c78dd75fd42d703}{delete\_table}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_ace463cecc72128a76b3d57c85f59efe5}{create\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{void}*\ new\_data);}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \textcolor{keyword}{delete}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{database_8h_a5c6eb05c994e4a3a113ed807e89761f9}{is\_record\_here}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id);}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{database_8h_a7f6b816d1c4022b932fd930a638bbe98}{find}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{char}*\ column,\ \textcolor{keywordtype}{char}*\ value);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SIMS\_DATABASE\_H}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//\ !\ This\ needs\ to\ be\ changed\ to\ read\_data\ or\ something\ because\ read\ is\ a\ inbuilt\ function\ i\ think?}}
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ !\ Thanks\ @Mahmood\ for\ reminding\ me!}}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a347f91481722811b3ac4715e374d1672}{read\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a3375f948620d9520cb17aab3c2966059}{read\_all\_records}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a23b9ce05874c8545f34a113392d05290}{update\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id,\ \textcolor{keywordtype}{void}*\ new\_data);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{database_8h_a9eeb508961a97dba3120628a671f4a05}{delete\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{int}\ record\_id);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{database_8h_a21141349f1fba82ac4f99dc26738a98e}{find\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{char}*\ column,\ \textcolor{keywordtype}{char}*\ value);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{database_8h_a3e4e8222b2150fb4c01f810e63443dd3}{get\_value\_from\_record}}(\textcolor{keywordtype}{char}*\ database\_name,\ \textcolor{keywordtype}{char}*\ table\_name,\ \textcolor{keywordtype}{char}*\ column);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SIMS\_DATABASE\_H}}
 
 \end{DoxyCode}

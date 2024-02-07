@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_0',['update',['../database_8h.html#a92d6ffa6852160041e0c0acfbeb47642',1,'database.h']]]
+  ['setup_5fdatabase_5fenvironment_0',['setup_database_environment',['../database_8c.html#abe2152b8ab716e50e156613db42517e8',1,'setup_database_environment():&#160;database.c'],['../database_8h.html#abe2152b8ab716e50e156613db42517e8',1,'setup_database_environment():&#160;database.c']]]
 ];

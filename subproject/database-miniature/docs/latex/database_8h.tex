@@ -3,37 +3,67 @@
 {\ttfamily \#include $<$common.\+h$>$}\newline
 {\ttfamily \#include $<$sys/stat.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_metadata}{Metadata}}
+\begin{DoxyCompactList}\small\item\em The program will create a folder called databases inside the same folder as the executable. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{database_8h_abe2152b8ab716e50e156613db42517e8}{setup\+\_\+database\+\_\+environment}} ()
-\begin{DoxyCompactList}\small\item\em The program will create a folder called databases inside the same folder as the executable. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{database_8h_a8e53db667fb6bae6420148eca286b622}{create\+\_\+database}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name)
+\begin{DoxyCompactList}\small\item\em create a dedicated folder to store all the databases \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{database_8h_acd9dd06815fd7bd5fe5339f84c95667a}{is\+\_\+database\+\_\+here}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name)
+\begin{DoxyCompactList}\small\item\em check if database is there or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{database_8h_a137568de5e2be006bae8d5af515565d2}{create\+\_\+database}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name)
 \begin{DoxyCompactList}\small\item\em create a dedicated folder to act as a database \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{database_8h_aefc92bb6a0a1d5c7b33e14b3b6273776}{delete\+\_\+database}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name)
+void \mbox{\hyperlink{database_8h_a0806cd71877f45d71e07a21d43f41546}{delete\+\_\+database}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name)
 \begin{DoxyCompactList}\small\item\em delete the dedicated folder that is acting as a database \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{database_8h_a8937dda9d1b86381eb7067404beb595c}{create\+\_\+table}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, void \texorpdfstring{$\ast$}{*}base\+\_\+struct)
+bool \mbox{\hyperlink{database_8h_abc2b32f6da93f9b8b3bbc5025180492b}{is\+\_\+table\+\_\+here}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name)
+\begin{DoxyCompactList}\small\item\em check if the table is there or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{database_8h_aff63d494d12d5e8edbc927e32ce47b37}{create\+\_\+table}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, void \texorpdfstring{$\ast$}{*}base\+\_\+struct)
 \begin{DoxyCompactList}\small\item\em create another dedicated folder for a collection of specific data structure \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{database_8h_a4a99e473932c0b5a4c78dd75fd42d703}{delete\+\_\+table}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name)
 \begin{DoxyCompactList}\small\item\em delete the dedicated folder that is acting a place for a specific data structure \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{database_8h_acf25a8466dbeaffa63f8e47e0e0e3d9b}{create}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, void \texorpdfstring{$\ast$}{*}new\+\_\+data)
+void \mbox{\hyperlink{database_8h_ace463cecc72128a76b3d57c85f59efe5}{create\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, void \texorpdfstring{$\ast$}{*}new\+\_\+data)
 \begin{DoxyCompactList}\small\item\em insert a record into the table \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{database_8h_a6304a5b160db4aec83630a9810b2a236}{read}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id, void \texorpdfstring{$\ast$}{*}data)
+bool \mbox{\hyperlink{database_8h_a5c6eb05c994e4a3a113ed807e89761f9}{is\+\_\+record\+\_\+here}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id)
+\begin{DoxyCompactList}\small\item\em check if record with certain id is here or not \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{database_8h_a347f91481722811b3ac4715e374d1672}{read\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id, void \texorpdfstring{$\ast$}{*}data)
 \begin{DoxyCompactList}\small\item\em read a record with specific key from the table (file with a specific name) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{database_8h_a92d6ffa6852160041e0c0acfbeb47642}{update}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id, void \texorpdfstring{$\ast$}{*}new\+\_\+data)
+void \mbox{\hyperlink{database_8h_a3375f948620d9520cb17aab3c2966059}{read\+\_\+all\+\_\+records}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em read all the records from a table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{database_8h_a23b9ce05874c8545f34a113392d05290}{update\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id, void \texorpdfstring{$\ast$}{*}new\+\_\+data)
 \begin{DoxyCompactList}\small\item\em update a record with a specific key from the table (rewrite the file with a specific name) \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{database_8h_a333e98b878445328b9902b87d27b9852}{delete}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id)
+void \mbox{\hyperlink{database_8h_a9eeb508961a97dba3120628a671f4a05}{delete\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, int record\+\_\+id)
 \begin{DoxyCompactList}\small\item\em delete a record with specific key from the table (remove the file with a specific name) \end{DoxyCompactList}\item 
-char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{database_8h_a7f6b816d1c4022b932fd930a638bbe98}{find}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, char \texorpdfstring{$\ast$}{*}column, char \texorpdfstring{$\ast$}{*}value)
-\begin{DoxyCompactList}\small\item\em find a specific record with a specific value at the specific column \end{DoxyCompactList}\end{DoxyCompactItemize}
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{database_8h_a21141349f1fba82ac4f99dc26738a98e}{find\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, char \texorpdfstring{$\ast$}{*}column, char \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em find a specific record with a specific value at the specific column \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{database_8h_a3e4e8222b2150fb4c01f810e63443dd3}{get\+\_\+value\+\_\+from\+\_\+record}} (char \texorpdfstring{$\ast$}{*}database\+\_\+name, char \texorpdfstring{$\ast$}{*}table\+\_\+name, char \texorpdfstring{$\ast$}{*}column)
+\begin{DoxyCompactList}\small\item\em get specific value from a specific record at the specific column \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{database_8h_acf25a8466dbeaffa63f8e47e0e0e3d9b}\label{database_8h_acf25a8466dbeaffa63f8e47e0e0e3d9b} 
-\index{database.h@{database.h}!create@{create}}
-\index{create@{create}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{create()}{create()}}
-{\footnotesize\ttfamily void create (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{new\+\_\+data }\end{DoxyParamCaption})}
+\Hypertarget{database_8h_a137568de5e2be006bae8d5af515565d2}\label{database_8h_a137568de5e2be006bae8d5af515565d2} 
+\index{database.h@{database.h}!create\_database@{create\_database}}
+\index{create\_database@{create\_database}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{create\_database()}{create\_database()}}
+{\footnotesize\ttfamily void create\+\_\+database (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+create a dedicated folder to act as a database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & \+: the name fo database we are going to create \\
+\hline
+\end{DoxyParams}
+\Hypertarget{database_8h_ace463cecc72128a76b3d57c85f59efe5}\label{database_8h_ace463cecc72128a76b3d57c85f59efe5} 
+\index{database.h@{database.h}!create\_record@{create\_record}}
+\index{create\_record@{create\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{create\_record()}{create\_record()}}
+{\footnotesize\ttfamily void create\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{new\+\_\+data }\end{DoxyParamCaption})}
 
 
 
@@ -48,26 +78,11 @@ insert a record into the table
 {\em p} & any struct that we are going to put inside that database \\
 \hline
 \end{DoxyParams}
-\Hypertarget{database_8h_a8e53db667fb6bae6420148eca286b622}\label{database_8h_a8e53db667fb6bae6420148eca286b622} 
-\index{database.h@{database.h}!create\_database@{create\_database}}
-\index{create\_database@{create\_database}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{create\_database()}{create\_database()}}
-{\footnotesize\ttfamily bool create\+\_\+database (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-create a dedicated folder to act as a database 
-
-
-\begin{DoxyParams}{Parameters}
-{\em database\+\_\+name} & \+: the name fo database we are going to create \\
-\hline
-\end{DoxyParams}
-\Hypertarget{database_8h_a8937dda9d1b86381eb7067404beb595c}\label{database_8h_a8937dda9d1b86381eb7067404beb595c} 
+!!! It will first check whether if the data type is what we are expecting !!! If it is correct, we will create a new record !!! If it is not correct, we will show an error.\Hypertarget{database_8h_aff63d494d12d5e8edbc927e32ce47b37}\label{database_8h_aff63d494d12d5e8edbc927e32ce47b37} 
 \index{database.h@{database.h}!create\_table@{create\_table}}
 \index{create\_table@{create\_table}!database.h@{database.h}}
 \doxysubsubsection{\texorpdfstring{create\_table()}{create\_table()}}
-{\footnotesize\ttfamily bool create\+\_\+table (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{base\+\_\+struct }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void create\+\_\+table (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{base\+\_\+struct }\end{DoxyParamCaption})}
 
 
 
@@ -82,11 +97,26 @@ create another dedicated folder for a collection of specific data structure
 {\em base\+\_\+struct} & the struct that defines the structure on how the data will be stored \\
 \hline
 \end{DoxyParams}
-\Hypertarget{database_8h_a333e98b878445328b9902b87d27b9852}\label{database_8h_a333e98b878445328b9902b87d27b9852} 
-\index{database.h@{database.h}!delete@{delete}}
-\index{delete@{delete}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
-{\footnotesize\ttfamily void delete (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id }\end{DoxyParamCaption})}
+!!! Need to add more content here\Hypertarget{database_8h_a0806cd71877f45d71e07a21d43f41546}\label{database_8h_a0806cd71877f45d71e07a21d43f41546} 
+\index{database.h@{database.h}!delete\_database@{delete\_database}}
+\index{delete\_database@{delete\_database}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{delete\_database()}{delete\_database()}}
+{\footnotesize\ttfamily void delete\+\_\+database (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+delete the dedicated folder that is acting as a database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & the name of the database we are going to create \\
+\hline
+\end{DoxyParams}
+\Hypertarget{database_8h_a9eeb508961a97dba3120628a671f4a05}\label{database_8h_a9eeb508961a97dba3120628a671f4a05} 
+\index{database.h@{database.h}!delete\_record@{delete\_record}}
+\index{delete\_record@{delete\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{delete\_record()}{delete\_record()}}
+{\footnotesize\ttfamily void delete\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id }\end{DoxyParamCaption})}
 
 
 
@@ -101,22 +131,7 @@ delete a record with specific key from the table (remove the file with a specifi
 {\em record\+\_\+id} & the id of the specific data we are going to delete \\
 \hline
 \end{DoxyParams}
-\Hypertarget{database_8h_aefc92bb6a0a1d5c7b33e14b3b6273776}\label{database_8h_aefc92bb6a0a1d5c7b33e14b3b6273776} 
-\index{database.h@{database.h}!delete\_database@{delete\_database}}
-\index{delete\_database@{delete\_database}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{delete\_database()}{delete\_database()}}
-{\footnotesize\ttfamily bool delete\+\_\+database (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name }\end{DoxyParamCaption})}
-
-
-
-delete the dedicated folder that is acting as a database 
-
-
-\begin{DoxyParams}{Parameters}
-{\em database\+\_\+name} & the name of the database we are going to create \\
-\hline
-\end{DoxyParams}
-\Hypertarget{database_8h_a4a99e473932c0b5a4c78dd75fd42d703}\label{database_8h_a4a99e473932c0b5a4c78dd75fd42d703} 
+!!! It will first check whether if the record exists or not !!! If it exists, we delete the record !!! If it does not exist, don\textquotesingle{}t\Hypertarget{database_8h_a4a99e473932c0b5a4c78dd75fd42d703}\label{database_8h_a4a99e473932c0b5a4c78dd75fd42d703} 
 \index{database.h@{database.h}!delete\_table@{delete\_table}}
 \index{delete\_table@{delete\_table}!database.h@{database.h}}
 \doxysubsubsection{\texorpdfstring{delete\_table()}{delete\_table()}}
@@ -133,11 +148,11 @@ delete the dedicated folder that is acting a place for a specific data structure
 {\em table\+\_\+name} & the name of the target table \\
 \hline
 \end{DoxyParams}
-\Hypertarget{database_8h_a7f6b816d1c4022b932fd930a638bbe98}\label{database_8h_a7f6b816d1c4022b932fd930a638bbe98} 
-\index{database.h@{database.h}!find@{find}}
-\index{find@{find}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{find()}{find()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} find (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{column,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+\Hypertarget{database_8h_a21141349f1fba82ac4f99dc26738a98e}\label{database_8h_a21141349f1fba82ac4f99dc26738a98e} 
+\index{database.h@{database.h}!find\_record@{find\_record}}
+\index{find\_record@{find\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{find\_record()}{find\_record()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} find\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{column,  }\item[{char \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -157,11 +172,91 @@ find a specific record with a specific value at the specific column
 \begin{DoxyReturn}{Returns}
 the unique identifier of the record 
 \end{DoxyReturn}
-\Hypertarget{database_8h_a6304a5b160db4aec83630a9810b2a236}\label{database_8h_a6304a5b160db4aec83630a9810b2a236} 
-\index{database.h@{database.h}!read@{read}}
-\index{read@{read}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{read()}{read()}}
-{\footnotesize\ttfamily void read (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+\Hypertarget{database_8h_a3e4e8222b2150fb4c01f810e63443dd3}\label{database_8h_a3e4e8222b2150fb4c01f810e63443dd3} 
+\index{database.h@{database.h}!get\_value\_from\_record@{get\_value\_from\_record}}
+\index{get\_value\_from\_record@{get\_value\_from\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{get\_value\_from\_record()}{get\_value\_from\_record()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} get\+\_\+value\+\_\+from\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{column }\end{DoxyParamCaption})}
+
+
+
+get specific value from a specific record at the specific column 
+
+\Hypertarget{database_8h_acd9dd06815fd7bd5fe5339f84c95667a}\label{database_8h_acd9dd06815fd7bd5fe5339f84c95667a} 
+\index{database.h@{database.h}!is\_database\_here@{is\_database\_here}}
+\index{is\_database\_here@{is\_database\_here}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{is\_database\_here()}{is\_database\_here()}}
+{\footnotesize\ttfamily bool is\+\_\+database\+\_\+here (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+check if database is there or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & the name of the database of interest \\
+\hline
+\end{DoxyParams}
+\Hypertarget{database_8h_a5c6eb05c994e4a3a113ed807e89761f9}\label{database_8h_a5c6eb05c994e4a3a113ed807e89761f9} 
+\index{database.h@{database.h}!is\_record\_here@{is\_record\_here}}
+\index{is\_record\_here@{is\_record\_here}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{is\_record\_here()}{is\_record\_here()}}
+{\footnotesize\ttfamily bool is\+\_\+record\+\_\+here (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+check if record with certain id is here or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & the name of the database in which we are checking \\
+\hline
+{\em table\+\_\+name} & the name of the table in which we are looking at \\
+\hline
+{\em record\+\_\+id} & the specific record that we are trying to find \\
+\hline
+\end{DoxyParams}
+!!! It will check whether if a certain record with a certain id exists in the table or not\Hypertarget{database_8h_abc2b32f6da93f9b8b3bbc5025180492b}\label{database_8h_abc2b32f6da93f9b8b3bbc5025180492b} 
+\index{database.h@{database.h}!is\_table\_here@{is\_table\_here}}
+\index{is\_table\_here@{is\_table\_here}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{is\_table\_here()}{is\_table\_here()}}
+{\footnotesize\ttfamily bool is\+\_\+table\+\_\+here (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+check if the table is there or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & the table in which we will try to find the table \\
+\hline
+{\em table\+\_\+name} & the table to check whether if it exists or not \\
+\hline
+\end{DoxyParams}
+\Hypertarget{database_8h_a3375f948620d9520cb17aab3c2966059}\label{database_8h_a3375f948620d9520cb17aab3c2966059} 
+\index{database.h@{database.h}!read\_all\_records@{read\_all\_records}}
+\index{read\_all\_records@{read\_all\_records}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{read\_all\_records()}{read\_all\_records()}}
+{\footnotesize\ttfamily void read\+\_\+all\+\_\+records (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+read all the records from a table 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+\_\+name} & the name of the database in which the table resides \\
+\hline
+{\em table\+\_\+name} & the name of the table from which we will read the record \\
+\hline
+{\em \texorpdfstring{$\ast$}{*}data} & the uncasted data variable in which a list of data is going to be put into \\
+\hline
+\end{DoxyParams}
+!!! It will first check whether if the receiving variable \texorpdfstring{$\ast$}{*}data is what we are expecting !!! If it is correct, we will query through every data, and push the list into the data array variable !!! If it is not correct, we will quit the application\Hypertarget{database_8h_a347f91481722811b3ac4715e374d1672}\label{database_8h_a347f91481722811b3ac4715e374d1672} 
+\index{database.h@{database.h}!read\_record@{read\_record}}
+\index{read\_record@{read\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{read\_record()}{read\_record()}}
+{\footnotesize\ttfamily void read\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id,  }\item[{void \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
 
 
 
@@ -171,14 +266,14 @@ read a record with specific key from the table (file with a specific name)
 \begin{DoxyParams}{Parameters}
 {\em database\+\_\+name} & the name of the database in which the table resides \\
 \hline
-{\em table\+\_\+name} & the name of the table from which we will remove the record \\
+{\em table\+\_\+name} & the name of the table from which we will read the record \\
 \hline
 {\em record\+\_\+id} & the id of the specific data of interest \\
 \hline
 {\em data} & the uncasted data variable in which data is going be put into \\
 \hline
 \end{DoxyParams}
-\Hypertarget{database_8h_abe2152b8ab716e50e156613db42517e8}\label{database_8h_abe2152b8ab716e50e156613db42517e8} 
+!!! It will first check whether if the receiving variable \texorpdfstring{$\ast$}{*}data is what we are expecting !!! If it is correct, we will first check if the variable exists or not, and then we will read from the record and put it into the variable !!! If it is not correct, we will quit the application\Hypertarget{database_8h_abe2152b8ab716e50e156613db42517e8}\label{database_8h_abe2152b8ab716e50e156613db42517e8} 
 \index{database.h@{database.h}!setup\_database\_environment@{setup\_database\_environment}}
 \index{setup\_database\_environment@{setup\_database\_environment}!database.h@{database.h}}
 \doxysubsubsection{\texorpdfstring{setup\_database\_environment()}{setup\_database\_environment()}}
@@ -186,15 +281,13 @@ read a record with specific key from the table (file with a specific name)
 
 
 
-The program will create a folder called databases inside the same folder as the executable. 
+create a dedicated folder to store all the databases 
 
-Author \+: Htet Aung Hlaing
-
-create a dedicated folder to store all the databases \Hypertarget{database_8h_a92d6ffa6852160041e0c0acfbeb47642}\label{database_8h_a92d6ffa6852160041e0c0acfbeb47642} 
-\index{database.h@{database.h}!update@{update}}
-\index{update@{update}!database.h@{database.h}}
-\doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily void update (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id,  }\item[{void \texorpdfstring{$\ast$}{*}}]{new\+\_\+data }\end{DoxyParamCaption})}
+\Hypertarget{database_8h_a23b9ce05874c8545f34a113392d05290}\label{database_8h_a23b9ce05874c8545f34a113392d05290} 
+\index{database.h@{database.h}!update\_record@{update\_record}}
+\index{update\_record@{update\_record}!database.h@{database.h}}
+\doxysubsubsection{\texorpdfstring{update\_record()}{update\_record()}}
+{\footnotesize\ttfamily void update\+\_\+record (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{database\+\_\+name,  }\item[{char \texorpdfstring{$\ast$}{*}}]{table\+\_\+name,  }\item[{int}]{record\+\_\+id,  }\item[{void \texorpdfstring{$\ast$}{*}}]{new\+\_\+data }\end{DoxyParamCaption})}
 
 
 
@@ -211,3 +304,4 @@ update a record with a specific key from the table (rewrite the file with a spec
 {\em data} & the new data we are going to add inside the variable \\
 \hline
 \end{DoxyParams}
+!!! It will first check whether if the receiving variable \texorpdfstring{$\ast$}{*}data is what we are expecting !!! If it is correct, we will try to find the record on the database, if it exists, we will update it, if it does not, we will show error and exit !!! If it is not correct, we will quit the application

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Student Information Management System: src/database.c File Reference</title>
+<title>Miniature Database System: src/database.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,9 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Student Information Management System
+   <div id="projectname">Miniature Database System
    </div>
-   <div id="projectbrief">SIMS to manage hypothetical students for our project</div>
+   <div id="projectbrief">Simple System that provides access to the file system api as if they act as a database</div>
   </td>
  </tr>
  </tbody>
@@ -82,36 +82,130 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="database_8h_source.html">database.h</a>&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a47d9941b127b01a9eb67afd1eb6c18b4" id="r_a47d9941b127b01a9eb67afd1eb6c18b4"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47d9941b127b01a9eb67afd1eb6c18b4">format_path</a> (char path1[], char path2[])</td></tr>
+<tr class="memdesc:a47d9941b127b01a9eb67afd1eb6c18b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Author : Htet Aung Hlaing.  <br /></td></tr>
+<tr class="separator:a47d9941b127b01a9eb67afd1eb6c18b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab79a036c70952335bee515c94fb07c8e" id="r_ab79a036c70952335bee515c94fb07c8e"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab79a036c70952335bee515c94fb07c8e">get_file_name</a> (char *filename)</td></tr>
+<tr class="memdesc:ab79a036c70952335bee515c94fb07c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to easily generate .txt filename  <br /></td></tr>
+<tr class="separator:ab79a036c70952335bee515c94fb07c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a459f12fb32404f61caa39834fd4908" id="r_a6a459f12fb32404f61caa39834fd4908"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a459f12fb32404f61caa39834fd4908">make_directory</a> (char *directory_name, int permission)</td></tr>
+<tr class="memdesc:a6a459f12fb32404f61caa39834fd4908"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function so that making directory becomes platform-agnostic  <br /></td></tr>
+<tr class="separator:a6a459f12fb32404f61caa39834fd4908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d5d78591b7bf06fa64849984d20d98" id="r_a81d5d78591b7bf06fa64849984d20d98"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81d5d78591b7bf06fa64849984d20d98">delete_directory</a> (char *directory_name)</td></tr>
+<tr class="memdesc:a81d5d78591b7bf06fa64849984d20d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function so that deleting directory becomes platform-agnostic  <br /></td></tr>
+<tr class="separator:a81d5d78591b7bf06fa64849984d20d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451f519316d9afa1597be62c19d9fced" id="r_a451f519316d9afa1597be62c19d9fced"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a451f519316d9afa1597be62c19d9fced">create_file</a> (char *folderpath, char *filename)</td></tr>
+<tr class="memdesc:a451f519316d9afa1597be62c19d9fced"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function to create the file (platform-agnostic)  <br /></td></tr>
+<tr class="separator:a451f519316d9afa1597be62c19d9fced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a717505e867b1fa117c9a2cc025cee6" id="r_a7a717505e867b1fa117c9a2cc025cee6"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a717505e867b1fa117c9a2cc025cee6">read_file</a> (char *filepath)</td></tr>
+<tr class="memdesc:a7a717505e867b1fa117c9a2cc025cee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function to read the file (platform-agnostic)  <br /></td></tr>
+<tr class="separator:a7a717505e867b1fa117c9a2cc025cee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace619e7d12725d1a2ef8a86c0f5bf24" id="r_aace619e7d12725d1a2ef8a86c0f5bf24"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace619e7d12725d1a2ef8a86c0f5bf24">write_file</a> (char *filepath, char *content)</td></tr>
+<tr class="memdesc:aace619e7d12725d1a2ef8a86c0f5bf24"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function to write to the file (platform-agnostic)  <br /></td></tr>
+<tr class="separator:aace619e7d12725d1a2ef8a86c0f5bf24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa171a984774cec66a60a501c3a439414" id="r_aa171a984774cec66a60a501c3a439414"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa171a984774cec66a60a501c3a439414">append_file</a> (char *filepath, char *content)</td></tr>
+<tr class="memdesc:aa171a984774cec66a60a501c3a439414"><td class="mdescLeft">&#160;</td><td class="mdescRight">abstraction layer function to append to the file (platform-agnostic)  <br /></td></tr>
+<tr class="separator:aa171a984774cec66a60a501c3a439414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0491aa5615e45eca839493f3e1bc645b" id="r_a0491aa5615e45eca839493f3e1bc645b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0491aa5615e45eca839493f3e1bc645b">is_database_environment_setup</a> ()</td></tr>
-<tr class="memdesc:a0491aa5615e45eca839493f3e1bc645b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Author : Htet Aung Hlaing.  <br /></td></tr>
+<tr class="memdesc:a0491aa5615e45eca839493f3e1bc645b"><td class="mdescLeft">&#160;</td><td class="mdescRight">check whether if the dedicated folder for databases exists  <br /></td></tr>
 <tr class="separator:a0491aa5615e45eca839493f3e1bc645b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2959b847ebeb62f3ee03a98189a452de" id="r_a2959b847ebeb62f3ee03a98189a452de"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2959b847ebeb62f3ee03a98189a452de">manage_status</a> (int status, char *success_message, char *error_message, bool quit_on_failed)</td></tr>
 <tr class="memdesc:a2959b847ebeb62f3ee03a98189a452de"><td class="mdescLeft">&#160;</td><td class="mdescRight">manages the status code return by other functions  <br /></td></tr>
 <tr class="separator:a2959b847ebeb62f3ee03a98189a452de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5e0c0202422793208af2399c1600cfe" id="r_ac5e0c0202422793208af2399c1600cfe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e0c0202422793208af2399c1600cfe">get_database_path</a> ()</td></tr>
-<tr class="separator:ac5e0c0202422793208af2399c1600cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a029dee515f26a808caefd1825fb98ef5" id="r_a029dee515f26a808caefd1825fb98ef5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a029dee515f26a808caefd1825fb98ef5">is_folder_here</a> (char *folder_name)</td></tr>
+<tr class="separator:a029dee515f26a808caefd1825fb98ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe2152b8ab716e50e156613db42517e8" id="r_abe2152b8ab716e50e156613db42517e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe2152b8ab716e50e156613db42517e8">setup_database_environment</a> ()</td></tr>
-<tr class="memdesc:abe2152b8ab716e50e156613db42517e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The program will create a folder called databases inside the same folder as the executable.  <br /></td></tr>
+<tr class="memdesc:abe2152b8ab716e50e156613db42517e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a dedicated folder to store all the databases  <br /></td></tr>
 <tr class="separator:abe2152b8ab716e50e156613db42517e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e53db667fb6bae6420148eca286b622" id="r_a8e53db667fb6bae6420148eca286b622"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e53db667fb6bae6420148eca286b622">create_database</a> (char *database_name)</td></tr>
-<tr class="memdesc:a8e53db667fb6bae6420148eca286b622"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a dedicated folder to act as a database  <br /></td></tr>
-<tr class="separator:a8e53db667fb6bae6420148eca286b622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefc92bb6a0a1d5c7b33e14b3b6273776" id="r_aefc92bb6a0a1d5c7b33e14b3b6273776"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefc92bb6a0a1d5c7b33e14b3b6273776">delete_database</a> (char *database_name)</td></tr>
-<tr class="memdesc:aefc92bb6a0a1d5c7b33e14b3b6273776"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete the dedicated folder that is acting as a database  <br /></td></tr>
-<tr class="separator:aefc92bb6a0a1d5c7b33e14b3b6273776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd9dd06815fd7bd5fe5339f84c95667a" id="r_acd9dd06815fd7bd5fe5339f84c95667a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd9dd06815fd7bd5fe5339f84c95667a">is_database_here</a> (char *database_name)</td></tr>
+<tr class="memdesc:acd9dd06815fd7bd5fe5339f84c95667a"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if database is there or not  <br /></td></tr>
+<tr class="separator:acd9dd06815fd7bd5fe5339f84c95667a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a137568de5e2be006bae8d5af515565d2" id="r_a137568de5e2be006bae8d5af515565d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a137568de5e2be006bae8d5af515565d2">create_database</a> (char *database_name)</td></tr>
+<tr class="memdesc:a137568de5e2be006bae8d5af515565d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a dedicated folder to act as a database  <br /></td></tr>
+<tr class="separator:a137568de5e2be006bae8d5af515565d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0806cd71877f45d71e07a21d43f41546" id="r_a0806cd71877f45d71e07a21d43f41546"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0806cd71877f45d71e07a21d43f41546">delete_database</a> (char *database_name)</td></tr>
+<tr class="memdesc:a0806cd71877f45d71e07a21d43f41546"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete the dedicated folder that is acting as a database  <br /></td></tr>
+<tr class="separator:a0806cd71877f45d71e07a21d43f41546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc2b32f6da93f9b8b3bbc5025180492b" id="r_abc2b32f6da93f9b8b3bbc5025180492b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc2b32f6da93f9b8b3bbc5025180492b">is_table_here</a> (char *database_name, char *table_name)</td></tr>
+<tr class="memdesc:abc2b32f6da93f9b8b3bbc5025180492b"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the table is there or not  <br /></td></tr>
+<tr class="separator:abc2b32f6da93f9b8b3bbc5025180492b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff63d494d12d5e8edbc927e32ce47b37" id="r_aff63d494d12d5e8edbc927e32ce47b37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff63d494d12d5e8edbc927e32ce47b37">create_table</a> (char *database_name, char *table_name, void *base_struct)</td></tr>
+<tr class="memdesc:aff63d494d12d5e8edbc927e32ce47b37"><td class="mdescLeft">&#160;</td><td class="mdescRight">create another dedicated folder for a collection of specific data structure  <br /></td></tr>
+<tr class="separator:aff63d494d12d5e8edbc927e32ce47b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a99e473932c0b5a4c78dd75fd42d703" id="r_a4a99e473932c0b5a4c78dd75fd42d703"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a99e473932c0b5a4c78dd75fd42d703">delete_table</a> (char *database_name, char *table_name)</td></tr>
+<tr class="memdesc:a4a99e473932c0b5a4c78dd75fd42d703"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete the dedicated folder that is acting a place for a specific data structure  <br /></td></tr>
+<tr class="separator:a4a99e473932c0b5a4c78dd75fd42d703"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace463cecc72128a76b3d57c85f59efe5" id="r_ace463cecc72128a76b3d57c85f59efe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace463cecc72128a76b3d57c85f59efe5">create_record</a> (char *database_name, char *table_name, void *new_data)</td></tr>
+<tr class="memdesc:ace463cecc72128a76b3d57c85f59efe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a record into the table  <br /></td></tr>
+<tr class="separator:ace463cecc72128a76b3d57c85f59efe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6eb05c994e4a3a113ed807e89761f9" id="r_a5c6eb05c994e4a3a113ed807e89761f9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c6eb05c994e4a3a113ed807e89761f9">is_record_here</a> (char *database_name, char *table_name, int record_id)</td></tr>
+<tr class="memdesc:a5c6eb05c994e4a3a113ed807e89761f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if record with certain id is here or not  <br /></td></tr>
+<tr class="separator:a5c6eb05c994e4a3a113ed807e89761f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347f91481722811b3ac4715e374d1672" id="r_a347f91481722811b3ac4715e374d1672"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a347f91481722811b3ac4715e374d1672">read_record</a> (char *database_name, char *table_name, int record_id, void *data)</td></tr>
+<tr class="memdesc:a347f91481722811b3ac4715e374d1672"><td class="mdescLeft">&#160;</td><td class="mdescRight">read a record with specific key from the table (file with a specific name)  <br /></td></tr>
+<tr class="separator:a347f91481722811b3ac4715e374d1672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3375f948620d9520cb17aab3c2966059" id="r_a3375f948620d9520cb17aab3c2966059"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3375f948620d9520cb17aab3c2966059">read_all_records</a> (char *database_name, char *table_name, void *data)</td></tr>
+<tr class="memdesc:a3375f948620d9520cb17aab3c2966059"><td class="mdescLeft">&#160;</td><td class="mdescRight">read all the records from a table  <br /></td></tr>
+<tr class="separator:a3375f948620d9520cb17aab3c2966059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23b9ce05874c8545f34a113392d05290" id="r_a23b9ce05874c8545f34a113392d05290"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23b9ce05874c8545f34a113392d05290">update_record</a> (char *database_name, char *table_name, int record_id, void *new_data)</td></tr>
+<tr class="memdesc:a23b9ce05874c8545f34a113392d05290"><td class="mdescLeft">&#160;</td><td class="mdescRight">update a record with a specific key from the table (rewrite the file with a specific name)  <br /></td></tr>
+<tr class="separator:a23b9ce05874c8545f34a113392d05290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eeb508961a97dba3120628a671f4a05" id="r_a9eeb508961a97dba3120628a671f4a05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eeb508961a97dba3120628a671f4a05">delete_record</a> (char *database_name, char *table_name, int record_id)</td></tr>
+<tr class="memdesc:a9eeb508961a97dba3120628a671f4a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a record with specific key from the table (remove the file with a specific name)  <br /></td></tr>
+<tr class="separator:a9eeb508961a97dba3120628a671f4a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8e53db667fb6bae6420148eca286b622" name="a8e53db667fb6bae6420148eca286b622"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e53db667fb6bae6420148eca286b622">&#9670;&#160;</a></span>create_database()</h2>
+<a id="aa171a984774cec66a60a501c3a439414" name="aa171a984774cec66a60a501c3a439414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa171a984774cec66a60a501c3a439414">&#9670;&#160;</a></span>append_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int append_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>abstraction layer function to append to the file (platform-agnostic) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>the path of the file of interest </td></tr>
+    <tr><td class="paramname">content</td><td>the content that we are going to append into the file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status code </dd></dl>
+
+</div>
+</div>
+<a id="a137568de5e2be006bae8d5af515565d2" name="a137568de5e2be006bae8d5af515565d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a137568de5e2be006bae8d5af515565d2">&#9670;&#160;</a></span>create_database()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool create_database </td>
+          <td class="memname">void create_database </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em></span></td><td>)</td>
           <td></td>
@@ -129,14 +223,127 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aefc92bb6a0a1d5c7b33e14b3b6273776" name="aefc92bb6a0a1d5c7b33e14b3b6273776"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefc92bb6a0a1d5c7b33e14b3b6273776">&#9670;&#160;</a></span>delete_database()</h2>
+<a id="a451f519316d9afa1597be62c19d9fced" name="a451f519316d9afa1597be62c19d9fced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451f519316d9afa1597be62c19d9fced">&#9670;&#160;</a></span>create_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int create_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>folderpath</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>abstraction layer function to create the file (platform-agnostic) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">folderpath</td><td>the folder in which the file will reside </td></tr>
+    <tr><td class="paramname">filename</td><td>the file in which any data we want to add will house </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status code </dd></dl>
+
+</div>
+</div>
+<a id="ace463cecc72128a76b3d57c85f59efe5" name="ace463cecc72128a76b3d57c85f59efe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace463cecc72128a76b3d57c85f59efe5">&#9670;&#160;</a></span>create_record()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool delete_database </td>
+          <td class="memname">void create_record </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>new_data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>insert a record into the table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which the table resides </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table in which we will insert </td></tr>
+    <tr><td class="paramname">p</td><td>any struct that we are going to put inside that database </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will first check whether if the data type is what we are expecting !!! If it is correct, we will create a new record !!! If it is not correct, we will show an error.</p>
+
+</div>
+</div>
+<a id="aff63d494d12d5e8edbc927e32ce47b37" name="aff63d494d12d5e8edbc927e32ce47b37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff63d494d12d5e8edbc927e32ce47b37">&#9670;&#160;</a></span>create_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_table </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>base_struct</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create another dedicated folder for a collection of specific data structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which we are going to create the table in </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table in which the data structure is going to be stored </td></tr>
+    <tr><td class="paramname">base_struct</td><td>the struct that defines the structure on how the data will be stored </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! Need to add more content here</p>
+
+</div>
+</div>
+<a id="a0806cd71877f45d71e07a21d43f41546" name="a0806cd71877f45d71e07a21d43f41546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0806cd71877f45d71e07a21d43f41546">&#9670;&#160;</a></span>delete_database()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_database </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em></span></td><td>)</td>
           <td></td>
@@ -154,8 +361,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac5e0c0202422793208af2399c1600cfe" name="ac5e0c0202422793208af2399c1600cfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5e0c0202422793208af2399c1600cfe">&#9670;&#160;</a></span>get_database_path()</h2>
+<a id="a81d5d78591b7bf06fa64849984d20d98" name="a81d5d78591b7bf06fa64849984d20d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d5d78591b7bf06fa64849984d20d98">&#9670;&#160;</a></span>delete_directory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,9 +371,9 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void get_database_path </td>
+          <td class="memname">static int delete_directory </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>directory_name</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -176,6 +383,155 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>abstraction layer function so that deleting directory becomes platform-agnostic </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directory_name</td><td>the name of the directory we are going to delete </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status code </dd></dl>
+
+</div>
+</div>
+<a id="a9eeb508961a97dba3120628a671f4a05" name="a9eeb508961a97dba3120628a671f4a05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eeb508961a97dba3120628a671f4a05">&#9670;&#160;</a></span>delete_record()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_record </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>record_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>delete a record with specific key from the table (remove the file with a specific name) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which the table resides </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table from which we will remove the record </td></tr>
+    <tr><td class="paramname">record_id</td><td>the id of the specific data we are going to delete </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will first check whether if the record exists or not !!! If it exists, we delete the record !!! If it does not exist, don't</p>
+
+</div>
+</div>
+<a id="a4a99e473932c0b5a4c78dd75fd42d703" name="a4a99e473932c0b5a4c78dd75fd42d703"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a99e473932c0b5a4c78dd75fd42d703">&#9670;&#160;</a></span>delete_table()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_table </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>delete the dedicated folder that is acting a place for a specific data structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which we are going to create the table in </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the target table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a47d9941b127b01a9eb67afd1eb6c18b4" name="a47d9941b127b01a9eb67afd1eb6c18b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d9941b127b01a9eb67afd1eb6c18b4">&#9670;&#160;</a></span>format_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * format_path </td>
+          <td>(</td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>path1</em>[], </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>path2</em>[]</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Author : Htet Aung Hlaing. </p>
+<p>function to easily generate formatted path </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first part of the formatted string </td></tr>
+    <tr><td class="paramname">path2</td><td>the second part of the formatted string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the final formatted string </dd></dl>
+
+</div>
+</div>
+<a id="ab79a036c70952335bee515c94fb07c8e" name="ab79a036c70952335bee515c94fb07c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79a036c70952335bee515c94fb07c8e">&#9670;&#160;</a></span>get_file_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * get_file_name </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>function to easily generate .txt filename </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>filename without .txt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>formatted filename </dd></dl>
 
 </div>
 </div>
@@ -202,8 +558,163 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Author : Htet Aung Hlaing. </p>
 <p>check whether if the dedicated folder for databases exists </p>
+
+</div>
+</div>
+<a id="acd9dd06815fd7bd5fe5339f84c95667a" name="acd9dd06815fd7bd5fe5339f84c95667a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd9dd06815fd7bd5fe5339f84c95667a">&#9670;&#160;</a></span>is_database_here()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_database_here </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if database is there or not </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database of interest </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a029dee515f26a808caefd1825fb98ef5" name="a029dee515f26a808caefd1825fb98ef5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a029dee515f26a808caefd1825fb98ef5">&#9670;&#160;</a></span>is_folder_here()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool is_folder_here </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>folder_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c6eb05c994e4a3a113ed807e89761f9" name="a5c6eb05c994e4a3a113ed807e89761f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c6eb05c994e4a3a113ed807e89761f9">&#9670;&#160;</a></span>is_record_here()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_record_here </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>record_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if record with certain id is here or not </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which we are checking </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table in which we are looking at </td></tr>
+    <tr><td class="paramname">record_id</td><td>the specific record that we are trying to find </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will check whether if a certain record with a certain id exists in the table or not</p>
+
+</div>
+</div>
+<a id="abc2b32f6da93f9b8b3bbc5025180492b" name="abc2b32f6da93f9b8b3bbc5025180492b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc2b32f6da93f9b8b3bbc5025180492b">&#9670;&#160;</a></span>is_table_here()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_table_here </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if the table is there or not </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the table in which we will try to find the table </td></tr>
+    <tr><td class="paramname">table_name</td><td>the table to check whether if it exists or not </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6a459f12fb32404f61caa39834fd4908" name="a6a459f12fb32404f61caa39834fd4908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a459f12fb32404f61caa39834fd4908">&#9670;&#160;</a></span>make_directory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int make_directory </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>directory_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>permission</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>abstraction layer function so that making directory becomes platform-agnostic </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directory_name</td><td>the name of the directory we are going to create </td></tr>
+    <tr><td class="paramname">permission</td><td>the permission settings for the directory </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status code </dd></dl>
 
 </div>
 </div>
@@ -260,6 +771,120 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a3375f948620d9520cb17aab3c2966059" name="a3375f948620d9520cb17aab3c2966059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3375f948620d9520cb17aab3c2966059">&#9670;&#160;</a></span>read_all_records()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_all_records </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read all the records from a table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which the table resides </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table from which we will read the record </td></tr>
+    <tr><td class="paramname">*data</td><td>the uncasted data variable in which a list of data is going to be put into </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will first check whether if the receiving variable *data is what we are expecting !!! If it is correct, we will query through every data, and push the list into the data array variable !!! If it is not correct, we will quit the application</p>
+
+</div>
+</div>
+<a id="a7a717505e867b1fa117c9a2cc025cee6" name="a7a717505e867b1fa117c9a2cc025cee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a717505e867b1fa117c9a2cc025cee6">&#9670;&#160;</a></span>read_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * read_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>abstraction layer function to read the file (platform-agnostic) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>the path of the file of interest </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the content inside the file </dd></dl>
+
+</div>
+</div>
+<a id="a347f91481722811b3ac4715e374d1672" name="a347f91481722811b3ac4715e374d1672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347f91481722811b3ac4715e374d1672">&#9670;&#160;</a></span>read_record()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_record </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>record_id</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read a record with specific key from the table (file with a specific name) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which the table resides </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table from which we will read the record </td></tr>
+    <tr><td class="paramname">record_id</td><td>the id of the specific data of interest </td></tr>
+    <tr><td class="paramname">data</td><td>the uncasted data variable in which data is going be put into </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will first check whether if the receiving variable *data is what we are expecting !!! If it is correct, we will first check if the variable exists or not, and then we will read from the record and put it into the variable !!! If it is not correct, we will quit the application</p>
+
+</div>
+</div>
 <a id="abe2152b8ab716e50e156613db42517e8" name="abe2152b8ab716e50e156613db42517e8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe2152b8ab716e50e156613db42517e8">&#9670;&#160;</a></span>setup_database_environment()</h2>
 
@@ -275,9 +900,89 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The program will create a folder called databases inside the same folder as the executable. </p>
-<p>Author : Htet Aung Hlaing</p>
 <p>create a dedicated folder to store all the databases </p>
+
+</div>
+</div>
+<a id="a23b9ce05874c8545f34a113392d05290" name="a23b9ce05874c8545f34a113392d05290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23b9ce05874c8545f34a113392d05290">&#9670;&#160;</a></span>update_record()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_record </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>database_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>table_name</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>record_id</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>new_data</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>update a record with a specific key from the table (rewrite the file with a specific name) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">database_name</td><td>the name of the database in which the table resides </td></tr>
+    <tr><td class="paramname">table_name</td><td>the name of the table in which the record resides </td></tr>
+    <tr><td class="paramname">record_id</td><td>the id of the specific record of interest </td></tr>
+    <tr><td class="paramname">data</td><td>the new data we are going to add inside the variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>!!! It will first check whether if the receiving variable *data is what we are expecting !!! If it is correct, we will try to find the record on the database, if it exists, we will update it, if it does not, we will show error and exit !!! If it is not correct, we will quit the application</p>
+
+</div>
+</div>
+<a id="aace619e7d12725d1a2ef8a86c0f5bf24" name="aace619e7d12725d1a2ef8a86c0f5bf24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace619e7d12725d1a2ef8a86c0f5bf24">&#9670;&#160;</a></span>write_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int write_file </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filepath</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>content</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>abstraction layer function to write to the file (platform-agnostic) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filepath</td><td>the path of the file of interest </td></tr>
+    <tr><td class="paramname">content</td><td>the content that we are trying to write into the file; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status code </dd></dl>
 
 </div>
 </div>

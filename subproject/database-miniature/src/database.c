@@ -725,7 +725,6 @@ char* record_entity_to_string_format(struct RecordEntity* entity){
 
 void raw_to_record_entity_format(int data_type, char* data_array[], int number_of_columns, struct RecordEntity* entity){
     entity->data_type = data_type;
-    printf("Trying to copy");
     entity->data = malloc(number_of_columns * sizeof(char*));
     copy_string_array(data_array, entity->data, number_of_columns);
 }

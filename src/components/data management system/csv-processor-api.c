@@ -19,7 +19,13 @@ void get_all_available_columns(char* record_string, char* data[]){
 
 int create_record(char* file_path, int array_length, char** content_array){
     char* content_array_in_string = array_to_string(content_array, array_length);
-    return append_file(file_path, content_array_in_string);
+    return append_file(file_path, content_array_in_string);;
+}
+
+bool is_record_exist(char* file_path, int criteria_index, char* criteria_value, int number_of_elements){
+    char** content = calloc(number_of_elements, sizeof(char*));
+    read_record(file_path, criteria_index, criteria_value, content);
+    return content[0] != NULL;
 }
 
 void read_record(char* file_path, int criteria_index, char* criteria_value, char** content_array){
@@ -52,7 +58,7 @@ int update_record(char* file_path, int criteria_index, char* criteria_value, cha
 
         if(criteria_index < number_of_columns && criteria_index >= 0){
             if(strcmp(list_of_columns[criteria_index], criteria_value) == 0){
-                printf("Trying to update the value at %d && %s @ line number %d", criteria_index, list_of_columns[criteria_index], i + 1);
+                // printf("Trying to update the value at %d && %s @ line number %d", criteria_index, list_of_columns[criteria_index], i + 1);
                 return edit_line(file_path, i + 1, array_to_string(content_array, number_of_columns));
             }
         }

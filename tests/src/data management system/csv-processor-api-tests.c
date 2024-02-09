@@ -120,6 +120,20 @@ void test_delete_record(){
     delete_file("delete_record.txt");
 }
 
+void test_record_exist(){
+    assert(!is_file_here("record_exist.txt") && "File should not exist");
+    create_file("record_exist.txt");
+
+    assert(!is_record_exist("record_exist.txt", 0, "Hi", 3));
+
+    char* strings[] = {"Hi", "Hello", "Bonjour"};
+    assert(create_record("record_exist.txt", 3, strings) == 0);
+
+    assert(is_record_exist("record_exist.txt", 0, "Hi", 3));
+
+    delete_file("record_exist.txt");
+}
+
 int main(){
 
     test_number_of_records("test_number_of_records.txt", "Hello\nWorld");
@@ -130,6 +144,7 @@ int main(){
     test_read_record();
     test_update_record();
     test_delete_record();
+    test_record_exist();
 
     return 0;
 }

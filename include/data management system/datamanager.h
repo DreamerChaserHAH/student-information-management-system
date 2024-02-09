@@ -6,6 +6,8 @@
 #define SIMS_DATAMANAGER_H
 
 #include "common.h"
+#include "csv-processor-api.h"
+
 /// @brief a list of roles available inside the system
 enum Role{
     STUDENT = 0,
@@ -13,6 +15,12 @@ enum Role{
     PROGRAMME_LEADER = 2,
     SYSTEM_ADMIN = 3
 };
+
+/// @brief create all the necessary file
+void setup_data_environment();
+
+/// @brief delete all created files for the system
+void delete_data_environment();
 
 /// @brief the data structure of the user
 struct User {
@@ -38,8 +46,8 @@ bool is_user_exist(char* username);
 
 /// @brief read a particular user with unique identifier (username)
 /// @param username the unique identifier that user is going to use to login into the application
-/// @return the User variable that contain all the data inside
-struct User read_user_record(char* username);
+/// @param user_information the struct that contains all the attributes related to the user (will return from here)
+struct User* read_user_record(char* username, struct User* user_information);
 
 /// @brief update a particular user (identified using their username)
 /// @param username the unique identifier that user is going to use to login into the application
@@ -59,15 +67,17 @@ bool delete_user_record(char* username);
 int get_number_of_users();
 
 /// @brief get all the users in the file
-/// @return struct User array with dynamic size
-struct User* get_all_users();
+/// @param pointer to the
+void get_all_users(struct User* user[]);
 
+/// @brief data structure for StudentRecord.txt
 struct StudentRecord{
     int user_id; /**< The id of the student related to this record */
     int course_id; /**< The id of the course related to this record */
     int attendance; /**< The attendance of a student in a specific course*/
     int score; /**< The score of a student in a specific course*/
 };
+
 
 bool create_student_record(struct StudentRecord record);
 struct StudentRecord read_student_record(int user_id);

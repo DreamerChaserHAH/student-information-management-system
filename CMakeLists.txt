@@ -10,6 +10,7 @@ add_executable(SIMS src/main.c)
 add_library(datamanager-utilities "src/components/data management system/datamanager-utilities.c")
 add_library(file-interaction-api "src/components/data management system/file-interaction-api.c")
 add_library(csv-processor-api "src/components/data management system/csv-processor-api.c")
+add_library(datamanager "src/components/data management system/datamanager.c")
 
 add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")
 add_executable(tests-file-interaction "tests/src/data management system/file-interaction-api-tests.c")
@@ -31,6 +32,10 @@ target_link_libraries(SIMS user-management datamanager-utilities file-interactio
 target_link_libraries(tests-datamanager-utilities datamanager-utilities)
 target_link_libraries(tests-file-interaction file-interaction-api datamanager-utilities  )
 target_link_libraries(tests-csv-processor-api csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-user-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-student-record-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-programme-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-course-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
 
 enable_testing()
 

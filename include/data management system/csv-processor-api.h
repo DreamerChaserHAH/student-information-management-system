@@ -29,7 +29,16 @@ void get_all_available_columns(char* record_string, char* data[]);
 /// @return whether if adding has succeeded or not
 int create_record(char* file_path, int array_length, char** content_array);
 
+/// @brief check whether if a record with a specific value at a specific index exist or not
+/// @param file_path the path of the file of interest
+/// @param criteria_index the column index that we are going to look at
+/// @param criteria_value the value inside the column that we are going to check whether if it's the same or not
+/// @param number_of_elements the number of elements inside the potential record of index
+/// @return whether if the record exists or not
+bool is_record_exist(char* file_path, int criteria_index, char* criteria_value, int number_of_elements);
+
 /// @brief read a record from the txt file of choice
+/// @param file_path the path of the file of interest
 /// @param criteria_index the column index that we are going to look at
 /// @param criteria_value the value inside the column that we are going to check whether if it's the same or not
 /// @param content_array where we are going to return our data into. It could be null which means didn't find any that meets criteria

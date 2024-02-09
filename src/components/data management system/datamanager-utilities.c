@@ -35,14 +35,11 @@ void get_splitted_values_in_array(char* content, int array_size, char* delimiter
 char* array_to_string(char** content_array, int array_length){
 
     size_t total_length = 0;
-    size_t total_number_of_content = 0;
     for(int i = 0; i < array_length; i++){
         total_length += strlen(content_array[i]);
-        total_number_of_content++;
     }
 
-
-    total_length -= (total_number_of_content > 0)? total_number_of_content - 1: 0;
+    total_length += array_length; //(array_length > 0)? array_length - 1: 0; <- previous code, was not working
     char* formatted_string = calloc(total_length, sizeof(char));
 
     for(int i = 0; i < array_length; i++){
@@ -50,9 +47,11 @@ char* array_to_string(char** content_array, int array_length){
             sprintf(formatted_string, "%s", content_array[0]);
             continue;
         }
-        sprintf(formatted_string, "%s,%s", formatted_string, content_array[i]);
-    }
 
+        if(content_array[i] != NULL) {
+            sprintf(formatted_string, "%s,%s", formatted_string, content_array[i]);
+        }
+    }
     return formatted_string;
 }
 

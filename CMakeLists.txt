@@ -7,11 +7,13 @@ include_directories(include)
 
 add_executable(SIMS src/main.c)
 
+add_library(datamanager-utilities "src/components/data management system/datamanager-utilities.c")
 add_library(file-interaction-api "src/components/data management system/file-interaction-api.c")
 add_library(csv-processor-api "src/components/data management system/csv-processor-api.c")
 
+add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")
 add_executable(tests-file-interaction "tests/src/data management system/file-interaction-api-tests.c")
-add_executable(tests-csv-processor "tests/src/data management system/csv-processor-api-tests.c")
+add_executable(tests-csv-processor-api "tests/src/data management system/csv-processor-api-tests.c")
 add_executable(tests-user-data-api "tests/src/data management system/user-data-api-tests.c")
 add_executable(tests-student-record-data-api "tests/src/data management system/student-record-data-api-tests.c")
 add_executable(tests-programme-data-api "tests/src/data management system/programme-data-api-tests.c")
@@ -24,14 +26,17 @@ add_library(user-menu src/components/user-menu.c)
 add_library(student-management src/components/menus/student-system.c)
 add_library(color-printf src/components/utils/color-printf.c)
 
-target_link_libraries(SIMS user-management file-interaction-api user-menu student-management color-printf)
+target_link_libraries(SIMS user-management datamanager-utilities file-interaction-api csv-processor-api user-menu student-management color-printf)
 
-target_link_libraries(tests-file-interaction file-interaction-api)
+target_link_libraries(tests-datamanager-utilities datamanager-utilities)
+target_link_libraries(tests-file-interaction file-interaction-api datamanager-utilities  )
+target_link_libraries(tests-csv-processor-api csv-processor-api file-interaction-api datamanager-utilities)
 
 enable_testing()
 
+add_test(datamanager-utilities-tests tests-datamanager-utilities)
 add_test(file-interaction-tests tests-file-interaction)
-add_test(csv-processor-tests tests-csv-processor)
+add_test(csv-processor-api-tests tests-csv-processor-api)
 add_test(user-data-api-tests tests-user-data-api)
 add_test(student-record-data-api tests-student-record-data-api)
 add_test(programme-data-api-tests tests-programme-data-api)

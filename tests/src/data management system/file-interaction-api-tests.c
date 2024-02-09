@@ -55,6 +55,7 @@ void test_line_content(char* test_file, char* test_content, char* test_content2)
     content_inside = read_line(test_file, 2);
     printf("%s", content_inside);
     assert(strcmp(content_inside, "") == 0);
+    assert(1 == get_number_of_lines(test_file));
 
     delete_file(test_file);
     assert(!is_file_here(test_file) && "File should be deleted");

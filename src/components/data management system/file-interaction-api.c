@@ -1,4 +1,4 @@
-#include "data management system/file-interaction-api.h"
+#include <data management system/file-interaction-api.h>
 
 typedef enum {
     USER,
@@ -129,7 +129,7 @@ int edit_line(char* file_path, int line_number, char* new_content){
         line_number_index++;
     }
 
-    return has_replaced? 1 : 0;
+    return has_replaced? 0 : 1;
 }
 
 int delete_line(char* file_path, int line_number){
@@ -150,5 +150,10 @@ int delete_line(char* file_path, int line_number){
         line_number_index++;
     }
 
-    return has_deleted? 1 : 0;
+    return has_deleted? 0 : 1;
+}
+
+int get_number_of_lines(char* file_path){
+    char* content = read_file(file_path);
+    return get_number_of_splittable_value(content, "\n");
 }

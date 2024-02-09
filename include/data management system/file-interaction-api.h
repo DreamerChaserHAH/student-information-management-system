@@ -1,6 +1,7 @@
 #ifndef SIMS_FILE_INTERACTION_API_H
 
 #include <common.h>
+#include <data management system/datamanager-utilities.h>
 #include "sys/stat.h"
 
 #define SIMS_FILE_INTERACTION_API_H
@@ -60,4 +61,9 @@ int edit_line(char* file_path, int line_number, char* new_content);
 /// @param line_number the vertical index of the file
 /// @return whether if deleting was successful or not
 int delete_line(char* file_path, int line_number);
+
+/// @brief abstraction layer function to get the number of lines inside a file (platform-agnostic)
+/// @param file_path the path of the file we are going to read from
+/// @return the number of lines in the file
+int get_number_of_lines(char* file_path);
 #endif //SIMS_FILE_INTERACTION_API_H

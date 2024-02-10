@@ -11,7 +11,17 @@ add_library(datamanager-utilities "src/components/data management system/dataman
 add_library(file-interaction-api "src/components/data management system/file-interaction-api.c")
 add_library(csv-processor-api "src/components/data management system/csv-processor-api.c")
 add_library(datamanager "src/components/data management system/datamanager.c")
+add_library(user-interface "src/components/menus/user-interface.c")
 
+add_library(user-management src/components/login.c)
+add_library(student-system src/components/systems/student-system.c)
+add_library(user-system src/components/systems/user-system.c)
+add_library(common-functions src/components/utils/common-functions.c
+        include/systems/user-system.h)
+
+target_link_libraries(SIMS user-interface user-management student-system user-system datamanager csv-processor-api file-interaction-api datamanager-utilities common-functions)
+
+include(CTest)
 add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")
 add_executable(tests-file-interaction "tests/src/data management system/file-interaction-api-tests.c")
 add_executable(tests-csv-processor-api "tests/src/data management system/csv-processor-api-tests.c")
@@ -19,13 +29,7 @@ add_executable(tests-user-data-api "tests/src/data management system/user-data-a
 add_executable(tests-student-record-data-api "tests/src/data management system/student-record-data-api-tests.c")
 add_executable(tests-programme-data-api "tests/src/data management system/programme-data-api-tests.c")
 add_executable(tests-course-data-api "tests/src/data management system/course-data-api-tests.c")
-
-include(CTest)
-
-add_library(user-management src/components/login.c)
-add_library(student-management src/components/systems/student-system.c)
-
-target_link_libraries(SIMS user-management datamanager-utilities file-interaction-api csv-processor-api student-management)
+add_executable(tests-add-user "tests/src/user management system/add-user-tests.c")
 
 target_link_libraries(tests-datamanager-utilities datamanager-utilities)
 target_link_libraries(tests-file-interaction file-interaction-api datamanager-utilities  )
@@ -34,6 +38,7 @@ target_link_libraries(tests-user-data-api datamanager csv-processor-api file-int
 target_link_libraries(tests-student-record-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
 target_link_libraries(tests-programme-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
 target_link_libraries(tests-course-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-add-user user-management datamanager csv-processor-api file-interaction-api datamanager-utilities)
 
 enable_testing()
 
@@ -44,3 +49,4 @@ add_test(user-data-api-tests tests-user-data-api)
 add_test(student-record-data-api tests-student-record-data-api)
 add_test(programme-data-api-tests tests-programme-data-api)
 add_test(course-data-api-tests tests-course-data-api)
+add_test(add-user-tests tests-add-user)

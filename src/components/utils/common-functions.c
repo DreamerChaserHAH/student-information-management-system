@@ -4,6 +4,7 @@
 #include "common-functions.h"
 #include "user-interface.h"
 #define DEFAULT_WIDTH 30
+
 int number_input(char *text) {
     char buffer[10];
     char *string;

@@ -27,4 +27,9 @@ char* array_to_string(char** content_array, int array_length);
 /// @param length the total length of the array
 char* copy_array_string(char** original_array, char** destination_array, int length);
 
+/// @brief turn integer into string
+/// @param number the number that we want to convert
+/// @return the integer we are trying to convert
+char* integer_to_string(int number);
+
 #endif //SIMS_DATAMANAGER_UTILITIES_H

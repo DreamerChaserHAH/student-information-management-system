@@ -46,8 +46,8 @@ bool is_user_exist(char* username);
 
 /// @brief read a particular user with unique identifier (username)
 /// @param username the unique identifier that user is going to use to login into the application
-/// @param user_information the struct that contains all the attributes related to the user (will return from here)
-struct User* read_user_record(char* username, struct User* user_information);
+/// @param user_information the place from which the user information will be returned
+void read_user_record(char* username, struct User* user_information);
 
 /// @brief update a particular user (identified using their username)
 /// @param username the unique identifier that user is going to use to login into the application
@@ -78,12 +78,37 @@ struct StudentRecord{
     int score; /**< The score of a student in a specific course*/
 };
 
+/// @brief create a new record regarding with a student
+/// @param record student record that contains all the data related to a student
+/// @return whether if record has been created successfully or not
+bool create_student_record(struct StudentRecord* record);
 
-bool create_student_record(struct StudentRecord record);
-struct StudentRecord read_student_record(int user_id);
-bool update_student_record(char* username, char* display_name, char* password, enum Role role);
-bool delete_student_record(char* username);
+/// @brief check whether if a particular student record with designated user_id exists or not
+/// @param user_id whose record is it?
+/// @return whether if the particular record exist or not
+bool is_student_record_exist(int user_id);
+
+/// @brief read a student record using the given user_id
+/// @param user_id the id of the user
+/// @param result_record where the result will be pasted upon using pointers
+/// @return the student record
+void read_student_record(int user_id, struct StudentRecord* result_record);
+
+/// #brief update a student record with user_id
+/// @param the entire record that we are going to replace
+/// @return whether if the record has been adjusted successfully or not
+bool update_student_record(struct StudentRecord* record);
+
+/// @brief delete a particular student record
+/// @param username delete the record with this particular user_id
+/// @return whether if the record has been successfully deleted or not
+bool delete_student_record(int user_id);
+
+/// @brief get the number of all available student records
+/// @return the number of all student records;
 int get_number_of_student_records();
+
+/// @brief get all available student records
 struct StudentRecord* get_all_student_records();
 
 struct Course{

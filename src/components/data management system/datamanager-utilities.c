@@ -29,7 +29,7 @@ void get_splitted_values_in_array(char* content, int array_size, char* delimiter
         counter++;
     }
 
-    free(local_content);
+    //free(local_content);
 }
 
 char* array_to_string(char** content_array, int array_length){
@@ -60,4 +60,10 @@ char* copy_array_string(char** original_array, char** destination_array, int len
         destination_array[i] = calloc(strlen(original_array[i]), sizeof(char));
         strcpy(destination_array[i], original_array[i]);
     }
+}
+
+char* integer_to_string(int number){
+    char* integer_string = calloc(3, sizeof(char*));
+    sprintf(integer_string, "%d", number);
+    return integer_string;
 }

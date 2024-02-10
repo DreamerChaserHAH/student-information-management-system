@@ -48,6 +48,13 @@ void array_to_user(char** user_information_array, struct User* user_information)
     user_information->role = integer_to_user_role(atoi(user_information_array[4]));
 }
 
+void array_to_student_record(char** student_record_information_array, struct StudentRecord* student_record_information){
+    student_record_information->user_id = atoi(student_record_information_array[0]);
+    student_record_information->course_id = atoi(student_record_information_array[1]);
+    student_record_information->attendance = atoi(student_record_information_array[2]);
+    student_record_information->score = atoi(student_record_information_array[3]);
+}
+
 /// @brief turn Role enum to integer
 /// @return role as string
 static char* user_role_to_char(enum Role role){
@@ -114,7 +121,7 @@ bool is_user_exist(char* username){
     return is_record_exist(get_user_file_path(), 1, username, 5);
 }
 
-struct User* read_user_record(char* username, struct User* user_information){
+void read_user_record(char* username, struct User* user_information){
     char** user_information_array = calloc(5, sizeof(char*));
 
     read_record(get_user_file_path(), 1, username, user_information_array);
@@ -156,4 +163,75 @@ int get_number_of_users(){
 void get_all_users(struct User* user[]){
     char** user_record_strings = malloc(get_number_of_records(get_user_file_path()) * sizeof(char*));
     get_all_available_records(read_file(get_user_file_path()), user_record_strings);
+}
+
+bool create_student_record(struct StudentRecord* record){
+    /// !!! retrieve whether if the record with the same username exist or not (DONE)
+    /// !!! create an array that contains all the data that we want to add (DONE)
+    /// !!! return whether if the record has been created successfully (DONE)
+
+    if(!is_student_record_exist(record->user_id)){
+        char** content_array = calloc(4, sizeof(char*));
+        content_array[0] = integer_to_string(record->user_id);
+        content_array[1] = integer_to_string(record->course_id);
+        content_array[2] = integer_to_string(record->attendance);
+        content_array[3] = integer_to_string(record->score);
+
+        return create_record(get_student_record_file_path(), 4, content_array) == 0? true : false;
+    }
+    return false;
+}
+
+bool is_student_record_exist(int user_id){
+    char* user_id_string = calloc(3, sizeof(char));
+    sprintf(user_id_string, "%d", user_id);
+    return is_record_exist(get_student_record_file_path(), 0, user_id_string, 4);
+}
+
+void read_student_record(int user_id, struct StudentRecord* result_record){
+
+    if(is_student_record_exist(user_id)) {
+        char **student_record_information_array = calloc(4, sizeof(char *));
+
+        read_record(get_student_record_file_path(), 0, integer_to_string(user_id),
+                    student_record_information_array);
+
+        if (student_record_information_array[0] != NULL) {
+            array_to_student_record(student_record_information_array, result_record);
+        } else {
+            result_record = NULL;
+        }
+    }
+}
+
+/// #brief update a student record with user_id
+/// @param the entire record that we are going to replace
+/// @return whether if the record has been adjusted successfully or not
+bool update_student_record(struct StudentRecord* record){
+    struct StudentRecord* old_student_record_information = malloc(sizeof(struct StudentRecord));
+    read_student_record(record->user_id, old_student_record_information);
+
+    if(old_student_record_information != NULL) {
+        char **new_record_content = calloc(4, sizeof(char *));
+
+        new_record_content[0] = integer_to_string(record->user_id);
+        new_record_content[1] = integer_to_string(record->course_id);
+        new_record_content[2] = integer_to_string(record->attendance);
+        new_record_content[3] = integer_to_string(record->score);
+
+        return update_record(get_student_record_file_path(), 0, new_record_content[0], new_record_content) == 0 ? true : false;
+    }
+    return false;
+}
+
+bool delete_student_record(int user_id){
+    return (delete_record(get_student_record_file_path(), 0, integer_to_string(user_id)) == 0)? true: false;
+}
+
+int get_number_of_student_records(){
+    return get_number_of_records(get_student_record_file_path());
+}
+
+struct StudentRecord* get_all_student_records(){
+
 }

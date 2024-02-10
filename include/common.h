@@ -10,4 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void input();
+
 #endif //SIMS_COMMON_H

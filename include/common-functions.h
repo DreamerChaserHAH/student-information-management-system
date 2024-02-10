@@ -4,7 +4,7 @@
 
 #ifndef SIMS_COMMON_FUNCTIONS_H
 #define SIMS_COMMON_FUNCTIONS_H
-#include "datamanager.h"
+#include <data management system/datamanager.h>
 
 /// @brief The maximum number of options in the menu
 #define MAX_MENU_OPTIONS 10

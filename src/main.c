@@ -1,7 +1,5 @@
 #include <common.h>
 #include <login.h>
-#include <user-menu.h>
-#include <color-printf.h>
 
  /// @brief The entry point to the application that contains surface level logic
  int main() {/*

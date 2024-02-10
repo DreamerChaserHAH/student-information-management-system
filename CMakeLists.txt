@@ -23,11 +23,9 @@ add_executable(tests-course-data-api "tests/src/data management system/course-da
 include(CTest)
 
 add_library(user-management src/components/login.c)
-add_library(user-menu src/components/user-menu.c)
-add_library(student-management src/components/menus/student-system.c)
-add_library(color-printf src/components/utils/color-printf.c)
+add_library(student-management src/components/systems/student-system.c)
 
-target_link_libraries(SIMS user-management datamanager-utilities file-interaction-api csv-processor-api user-menu student-management color-printf)
+target_link_libraries(SIMS user-management datamanager-utilities file-interaction-api csv-processor-api student-management)
 
 target_link_libraries(tests-datamanager-utilities datamanager-utilities)
 target_link_libraries(tests-file-interaction file-interaction-api datamanager-utilities  )

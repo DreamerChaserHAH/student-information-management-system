@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <datamanager.h>
+#include <data management system/datamanager.h>
 #include "common-functions.h"
 
 void view_student_info(struct User *user);

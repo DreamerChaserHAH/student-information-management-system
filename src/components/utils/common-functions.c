@@ -38,6 +38,29 @@ int loop_number_input(char *text, char *invalid_text) {
     return value;
 }
 
+enum Role role_input(char *text) {
+    char buffer[10];
+    char *string;
+    long value;
+    enum Role role;
+
+    do {
+        printf("%s", text);
+        fgets(buffer, sizeof(buffer), stdin);
+        buffer[strcspn(buffer, "\n")] = '\0';
+        value = strtol(buffer, &string, 10);
+
+        if (string == buffer || *string != '\0' || value < STUDENT || value > SYSTEM_ADMIN) {
+            printf("Please enter a valid role (0-3).\n");
+            value = -1;
+        } else {
+            role = (enum Role)value;
+        }
+    } while (value == -1);
+
+    return role;
+}
+
 char *get_input(char *text) {
     const int BUFFER_SIZE = 100;
     char buffer[BUFFER_SIZE];

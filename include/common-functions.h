@@ -32,6 +32,9 @@ char *get_input(char *text);
 /// @param text The text to view when asking for a number.
 int number_input(char *text);
 
+enum Role role_input(char *text);
+
+
 /// @brief Loop the input prompt
 /// @param text The text to view when asking for a input
 /// @param invalid_text The text to view when the user still haven't inputted

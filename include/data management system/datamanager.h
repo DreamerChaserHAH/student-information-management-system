@@ -31,6 +31,8 @@ struct User {
     enum Role role; /**< The specific role of the user */
 };
 
+struct User* create_user_object(int user_id, char* username, char* display_name, char* password, enum Role role);
+
 /// @brief create a new user with certain roles (USED BY : SYSTEM ADMIN)
 /// @param username the unique identifier that user is going to use to login into the application
 /// @param display_name How the user would be greeted in the menu screen
@@ -46,8 +48,8 @@ bool is_user_exist(char* username);
 
 /// @brief read a particular user with unique identifier (username)
 /// @param username the unique identifier that user is going to use to login into the application
-/// @param user_information the place from which the user information will be returned
-void read_user_record(char* username, struct User* user_information);
+/// @return the user information will be returned
+struct User* read_user_record(char* username);
 
 /// @brief update a particular user (identified using their username)
 /// @param username the unique identifier that user is going to use to login into the application
@@ -78,6 +80,8 @@ struct StudentRecord{
     int score; /**< The score of a student in a specific course*/
 };
 
+struct StudentRecord* create_student_record_object(int user_id, int course_id, int attendance, int score);
+
 /// @brief create a new record regarding with a student
 /// @param record student record that contains all the data related to a student
 /// @return whether if record has been created successfully or not
@@ -92,7 +96,7 @@ bool is_student_record_exist(int user_id);
 /// @param user_id the id of the user
 /// @param result_record where the result will be pasted upon using pointers
 /// @return the student record
-void read_student_record(int user_id, struct StudentRecord* result_record);
+struct StudentRecord* read_student_record(int user_id);
 
 /// #brief update a student record with user_id
 /// @param the entire record that we are going to replace
@@ -117,6 +121,8 @@ struct Course{
     char* course_name; /**< The name of this course */
     int lecturer_id; /**< The id of the lecturer related to this record */
 };
+
+struct Course* create_course_object(int course_id, int programme_id, char* course_name, int lecturer_id);
 
 /// @brief check whether if a course exists or not
 /// @param course_id the course of interest
@@ -159,6 +165,8 @@ struct Programme{
     char* programme_name; /**< The name of the programme */
     int leader_id; /**< the id of the programme leader related to this record */
 };
+
+struct Programme* create_programme_object(int programme_id, char* programme_name, int leader_id);
 
 /// @brief checks whether if the programme exists or not
 /// @param programme_id programme of interest

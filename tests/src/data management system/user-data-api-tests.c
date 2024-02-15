@@ -13,8 +13,7 @@ void test_create_user(){
 void test_read_user(){
     setup_data_environment();
     assert(create_user_record("Jack", "Jackson", "12345678", STUDENT));
-    struct User* user = malloc(sizeof(struct User));
-    read_user_record("Jack", user);
+    struct User* user = read_user_record("Jack");
 
     assert(user != NULL);
     assert(strcmp(user->username, "Jack") == 0);
@@ -29,15 +28,13 @@ void test_update_user(){
     setup_data_environment();
 
     assert(create_user_record("Jack", "Jackson", "12345678", STUDENT));
-    struct User* user = malloc(sizeof(struct User));
-    read_user_record("Jack", user);
+    struct User* user = read_user_record("Jack");
 
     assert(user != NULL);
     assert(strcmp(user->username, "Jack") == 0);
     assert(strcmp(user->display_name, "Jackson") == 0);
     assert(strcmp(user->password, "12345678") == 0);
     assert(user->role == STUDENT);
-
 
     assert(update_user_record("Jack", "LucidDream", "2321314", LECTURER));
     /*user = read_user_record("Jack");

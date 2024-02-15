@@ -1,9 +1,14 @@
+# Vs code #
+.vscode/
+
 # CLion #
 .idea/
 
 # CMake build directory #
 cmake-build-debug/
 cmake-build-release/
+build/
+Build/
 
 # Compiled object files #
 *.o

@@ -25,8 +25,7 @@ void test_read_student_record(){
     record->score = 50;
 
     assert(create_student_record(record));
-    struct StudentRecord* read_record = malloc(sizeof(struct StudentRecord));
-    read_student_record(1, read_record);
+    struct StudentRecord* read_record = read_student_record(1);
 
     assert(read_record != NULL);
     assert(read_record->user_id == 1);
@@ -47,8 +46,7 @@ void test_update_student_record(){
     record->score = 50;
 
     assert(create_student_record(record));
-    struct StudentRecord* read_record = malloc(sizeof(struct StudentRecord));
-    read_student_record(1, read_record);
+    struct StudentRecord* read_record = read_student_record(1);
 
     assert(read_record != NULL);
     assert(read_record->user_id == 1);
@@ -61,10 +59,8 @@ void test_update_student_record(){
     record->score = 100;
     free(read_record);
 
-    read_record = malloc(sizeof(struct StudentRecord));
-
     assert(update_student_record(record));
-    read_student_record(record->user_id, read_record);
+    read_record = read_student_record(record->user_id);
 
     assert(read_record != NULL);
     assert(read_record->course_id == 2);

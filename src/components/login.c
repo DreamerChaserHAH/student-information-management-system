@@ -16,8 +16,7 @@ struct User *login(char* username, char* password) {
     if(!is_user_exist(username)) {
         return NULL;
     } else {
-        struct User *user = malloc(sizeof(struct User));
-        read_user_record(username, user);
+        struct User *user = read_user_record(username);
         if (strcmp(user->password, password) == 0) {
             return user;
         } else {

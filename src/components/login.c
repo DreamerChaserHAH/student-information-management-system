@@ -11,30 +11,17 @@
 #include <user-interface.h>
 #include "common-functions.h"
 
-// ! Needs to be changed with database code
-struct User users[100] = {
-        /// @brief Array to store user data
-        {74166, "user", "User", "pass", 0},
-        {2, "teacher", "Teacher", "pass", 1},
-};
 
-// ! Needs to be changed with database code
-int numOFUsers = 2;
-
-struct User *login(const char *username, const char *password) {
-    // ! Needs to be changed according to the database
-    for (int i = 0; i < numOFUsers; i++) {
-        if (strcmp(username, users[i].username) == 0) {
-            if(strcmp(password, users[i].password) == 0) {
-                return &users[i];
-            } else {
-                // * Ask for password one more time.
-                password = get_input("Incorrect password try again:");
-                if(strcmp(password, users[i].password) == 0) {
-                    return &users[i];
-                }
-            }
+struct User *login(char* username, char* password) {
+    if(!is_user_exist(username)) {
+        return NULL;
+    } else {
+        struct User *user = malloc(sizeof(struct User));
+        read_user_record(username, user);
+        if (strcmp(user->password, password) == 0) {
+            return user;
+        } else {
+            return NULL;
         }
     }
-    return NULL;
 }

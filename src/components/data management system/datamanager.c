@@ -68,6 +68,13 @@ static struct Programme* array_to_programme_record(char** programme_record_infor
                                     atoi(programme_record_information_array[2]));
 }
 
+void array_to_student_record(char** student_record_information_array, struct StudentRecord* student_record_information){
+    student_record_information->user_id = atoi(student_record_information_array[0]);
+    student_record_information->course_id = atoi(student_record_information_array[1]);
+    student_record_information->attendance = atoi(student_record_information_array[2]);
+    student_record_information->score = atoi(student_record_information_array[3]);
+}
+
 /// @brief turn Role enum to integer
 /// @return role as string
 static char* user_role_to_char(enum Role role){

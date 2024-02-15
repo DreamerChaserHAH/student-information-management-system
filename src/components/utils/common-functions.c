@@ -4,6 +4,7 @@
 #include "common-functions.h"
 #include "user-interface.h"
 #define DEFAULT_WIDTH 30
+
 int number_input(char *text) {
     char buffer[10];
     char *string;
@@ -35,6 +36,29 @@ int loop_number_input(char *text, char *invalid_text) {
     } while (!value);
 
     return value;
+}
+
+enum Role role_input(char *text) {
+    char buffer[10];
+    char *string;
+    long value;
+    enum Role role;
+
+    do {
+        printf("%s", text);
+        fgets(buffer, sizeof(buffer), stdin);
+        buffer[strcspn(buffer, "\n")] = '\0';
+        value = strtol(buffer, &string, 10);
+
+        if (string == buffer || *string != '\0' || value < STUDENT || value > SYSTEM_ADMIN) {
+            printf("Please enter a valid role (0-3).\n");
+            value = -1;
+        } else {
+            role = (enum Role)value;
+        }
+    } while (value == -1);
+
+    return role;
 }
 
 char *get_input(char *text) {

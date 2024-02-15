@@ -160,11 +160,40 @@ struct Programme{
     int leader_id; /**< the id of the programme leader related to this record */
 };
 
-bool create_programme_record(char* course_name, char* lecturer_id);
-struct Programme read_programme_record(int course_id);
-bool update_programme_record(int programme_id);
+/// @brief checks whether if the programme exists or not
+/// @param programme_id programme of interest
+/// @return whether if the programme is in existence or not
+bool is_programme_exist(int programme_id);
+
+/// @brief create a specific record of a programme
+/// @param programme_name the name of 
+/// @param leader_id the user id of the leader 
+/// @return whether if the programme has been created successfully or not
+bool create_programme_record(char* programme_name, int leader_id);
+
+/// @brief read a specific programme record
+/// @param programme_id a specific programme of interest
+/// @return Programme that contains all the relevant information
+struct Programme* read_programme_record(int programme_id);
+
+/// @brief update the details of a specific programme
+/// @param programme_id a specific programme of interest
+/// @param programme_name the name of the specific programme
+/// @param leader_id the id of programme leader
+/// @return whether if the programme has been updated successfully or not
+bool update_programme_record(int programme_id, char* programme_name, int leader_id);
+
+/// @brief delete a specific programme from the database
+/// @param programme_id a specific programme of interest
+/// @return whether if the programme has been deleted successfully or not
 bool delete_programme_record(int programme_id);
+
+/// @brief get the number of programmme available
+/// @return the total amount of records inside PROGRAMME.txt file
 int get_number_of_programme();
+
+/// @brief get all available programme records
+/// @return array of struct Programme
 struct Programme* get_all_programme_records();
 
 #endif //SIMS_DATAMANAGER_H

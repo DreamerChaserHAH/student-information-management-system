@@ -62,6 +62,12 @@ void array_to_course_record(char** course_record_information_array, struct Cours
     course_record_information->lecturer_id = atoi(course_record_information_array[3]);
 }
 
+void array_to_programme_record(char** programme_record_information_array, struct Programme* programme_record_information){
+    programme_record_information->programme_id = atoi(programme_record_information_array[0]);
+    programme_record_information->programme_name = programme_record_information_array[1];
+    programme_record_information->leader_id = atoi(programme_record_information_array[2]);
+}
+
 /// @brief turn Role enum to integer
 /// @return role as string
 static char* user_role_to_char(enum Role role){
@@ -308,5 +314,74 @@ int get_number_of_courses(){
 }
 
 struct Course* get_all_course_records(){
+
+}
+
+bool is_programme_exist(int programme_id){
+    char* programme_id_string = calloc(3, sizeof(char));
+    sprintf(programme_id_string, "%d", programme_id);
+    return is_record_exist(get_programme_file_path(), 0, programme_id_string, 3);
+}
+
+bool create_programme_record(char* programme_name, int leader_id){
+        /// !!! check what is the id we have to supply to the course (DONE)
+    /// !!! create an array that contains all the data that we want to add (DONE)
+    /// !!! return whether if the record has been created successfully (DONE)
+    
+    char** last_programme_information = calloc(3, sizeof(char*));
+    int last_line_number = get_number_of_records(get_programme_file_path());
+    get_all_available_columns(read_line(get_programme_file_path(), last_line_number), last_programme_information);
+    char* new_programme_id_string = calloc(3, sizeof(char));
+    sprintf(new_programme_id_string, "%d", last_programme_information[0] != NULL? atoi(last_programme_information[0]) + 1 : 1);
+        
+    char** content_array = calloc(4, sizeof(char*));
+    content_array[0] = new_programme_id_string;
+    content_array[1] = programme_name;
+    content_array[2] = integer_to_string(leader_id);
+
+    return create_record(get_programme_file_path(), 3, content_array) == 0? true : false;
+}
+
+struct Programme* read_programme_record(int programme_id){
+    if(is_programme_exist(programme_id)) {
+        char **programme_information_array = calloc(3, sizeof(char *));
+
+        read_record(get_programme_file_path(), 0, integer_to_string(programme_id), programme_information_array);
+
+        if (programme_information_array[0] != NULL) {
+            struct Programme* new_programme = malloc(sizeof(struct Programme));
+            array_to_programme_record(programme_information_array, new_programme);
+            return new_programme;
+        }
+    }
+    return NULL;
+}
+
+bool update_programme_record(int programme_id, char* programme_name, int leader_id){
+    if(is_programme_exist(programme_id)) {
+
+        char **new_record_content = calloc(3, sizeof(char *));
+
+        new_record_content[0] = integer_to_string(programme_id);
+        new_record_content[1] = programme_name;
+        new_record_content[2] = integer_to_string(leader_id);
+
+        return update_record(get_programme_file_path(), 0, new_record_content[0], new_record_content) == 0 ? true : false;
+    }
+    return false;
+}
+
+bool delete_programme_record(int programme_id){
+    if(is_programme_exist(programme_id)){
+        return delete_record(get_programme_file_path(), 0, integer_to_string(programme_id)) == 0? true: false;
+    }
+    return false;
+}
+
+int get_number_of_programme(){
+    return get_number_of_records(get_programme_file_path());
+}
+
+struct Programme* get_all_programme_records(){
 
 }

@@ -115,14 +115,43 @@ struct Course{
     int course_id; /**< The unique id of the course */
     int programme_id; /**< The id of the programme related to this course record */
     char* course_name; /**< The name of this course */
-    char* lecturer_id; /**< The id of the lecturer related to this record */
+    int lecturer_id; /**< The id of the lecturer related to this record */
 };
 
-bool create_course_record(int programme_id, char* course_name, char* lecturer_id);
-struct Course read_course_record(int course_id);
-bool update_course_record(int course_id);
+/// @brief check whether if a course exists or not
+/// @param course_id the course of interest
+/// @return whether if the course exists
+bool is_course_exist(int course_id);
+
+/// @brief create a record for a particular course
+/// @param programme_id 
+/// @param course_name 
+/// @param lecturer_id 
+/// @return whether if the course has been successfully created or not
+bool create_course_record(int programme_id, char* course_name, int lecturer_id);
+
+/// @brief read a particular course record
+/// @param course_id the id of the specific course we are trying to read
+/// @return the particular course of interest
+struct Course* read_course_record(int course_id);
+
+/// @brief update a particular course record
+/// @param course_id the id of the specific course that I am trying to update
+/// @param programme_id the id of the programme this course is related to
+/// @param course_name the name of this particular course
+/// @param lecturer_id the id of the lecturer
+/// @return 
+bool update_course_record(int course_id, int programme_id, char* course_name, int lecturer_id);
+
+/// @brief delete a particular course record using the course iod
+/// @param course_id the id of the specific course that i am trying to delete
+/// @return whether if the course has been deleted successfully or not
 bool delete_course_record(int course_id);
+
+/// @brief get the number of courses
+/// @return the number of courses
 int get_number_of_courses();
+
 struct Course* get_all_course_records();
 
 struct Programme{

@@ -55,6 +55,13 @@ void array_to_student_record(char** student_record_information_array, struct Stu
     student_record_information->score = atoi(student_record_information_array[3]);
 }
 
+void array_to_course_record(char** course_record_information_array, struct Course* course_record_information){
+    course_record_information->course_id = atoi(course_record_information_array[0]);
+    course_record_information->programme_id = atoi(course_record_information_array[1]);
+    course_record_information->course_name = course_record_information_array[2];
+    course_record_information->lecturer_id = atoi(course_record_information_array[3]);
+}
+
 /// @brief turn Role enum to integer
 /// @return role as string
 static char* user_role_to_char(enum Role role){
@@ -204,9 +211,6 @@ void read_student_record(int user_id, struct StudentRecord* result_record){
     }
 }
 
-/// #brief update a student record with user_id
-/// @param the entire record that we are going to replace
-/// @return whether if the record has been adjusted successfully or not
 bool update_student_record(struct StudentRecord* record){
     struct StudentRecord* old_student_record_information = malloc(sizeof(struct StudentRecord));
     read_student_record(record->user_id, old_student_record_information);
@@ -233,5 +237,76 @@ int get_number_of_student_records(){
 }
 
 struct StudentRecord* get_all_student_records(){
+
+}
+
+bool is_course_exist(int course_id){
+    char* course_id_string = calloc(3, sizeof(char));
+    sprintf(course_id_string, "%d", course_id);
+    return is_record_exist(get_course_file_path(), 0, course_id_string, 4);
+}
+
+bool create_course_record(int programme_id, char* course_name, int lecturer_id){
+    /// !!! check what is the id we have to supply to the course (DONE)
+    /// !!! create an array that contains all the data that we want to add (DONE)
+    /// !!! return whether if the record has been created successfully (DONE)
+    
+    char** last_course_information = calloc(4, sizeof(char*));
+    int last_line_number = get_number_of_records(get_course_file_path());
+    get_all_available_columns(read_line(get_course_file_path(), last_line_number), last_course_information);
+    char* new_course_id = calloc(3, sizeof(char));
+    sprintf(new_course_id, "%d", last_course_information[0] != NULL? atoi(last_course_information[0]) + 1 : 1);
+        
+    char** content_array = calloc(4, sizeof(char*));
+    content_array[0] = new_course_id;
+    content_array[1] = integer_to_string(programme_id);
+    content_array[2] = course_name;
+    content_array[3] = integer_to_string(lecturer_id);
+
+    return create_record(get_course_file_path(), 4, content_array) == 0? true : false;
+}
+
+struct Course* read_course_record(int course_id){
+    if(is_course_exist(course_id)) {
+        char **course_information_array = calloc(4, sizeof(char *));
+
+        read_record(get_course_file_path(), 0, integer_to_string(course_id), course_information_array);
+
+        if (course_information_array[0] != NULL) {
+            struct Course* new_course = malloc(sizeof(struct Course));
+            array_to_course_record(course_information_array, new_course);
+            return new_course;
+        }
+    }
+    return NULL;
+}
+
+bool update_course_record(int course_id, int programme_id, char* course_name, int lecturer_id){
+    if(is_course_exist(course_id)) {
+
+        char **new_record_content = calloc(4, sizeof(char *));
+
+        new_record_content[0] = integer_to_string(course_id);
+        new_record_content[1] = integer_to_string(programme_id);
+        new_record_content[2] = course_name;
+        new_record_content[3] = integer_to_string(lecturer_id);
+
+        return update_record(get_course_file_path(), 0, new_record_content[0], new_record_content) == 0 ? true : false;
+    }
+    return false;
+}
+
+bool delete_course_record(int course_id){
+    if(is_course_exist(course_id)){
+        return delete_record(get_course_file_path(), 0, integer_to_string(course_id)) == 0? true: false;
+    }
+    return false;
+}
+
+int get_number_of_courses(){
+    return get_number_of_records(get_course_file_path());
+}
+
+struct Course* get_all_course_records(){
 
 }

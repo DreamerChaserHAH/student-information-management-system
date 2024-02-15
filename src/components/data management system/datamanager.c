@@ -110,6 +110,7 @@ struct User* create_user_object(int user_id, char* username, char* display_name,
     user_object->display_name = display_name;
     user_object->password = password;
     user_object->role = role;
+    return user_object;
 }
 
 bool create_user_record(char* username, char* display_name, char* password, enum Role role){

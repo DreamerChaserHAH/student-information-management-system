@@ -2,6 +2,7 @@
 #include <common-functions.h>
 #include "login.h"
 #include "systems/student-system.h"
+#include <student management system/student-management.h>
 #include "systems/user-system.h"
 #include <stdbool.h>
 
@@ -141,8 +142,8 @@ void remove_user_options(struct User *user) {
 }
 
 void view_student_info(struct User *user) {
-    printf("Student Info\n");
-    // Add the student info here
+    struct StudentRecord *student_info = get_student_record(user->user_id);
+    printf("%d", student_info->attendance);
 }
 
 void student_management_menu(struct User *user) {

@@ -5,7 +5,7 @@
 #include "user-interface.h"
 #define DEFAULT_WIDTH 30
 
-int number_input(char *text) {
+int number_input(char *text, char *invalid_text) {
     char buffer[10];
     char *string;
     long value;
@@ -17,7 +17,7 @@ int number_input(char *text) {
         value = strtol(buffer, &string, 10);
 
         if (string == buffer || *string != '\0') {
-            printf("Please enter a numeric value.\n");
+            printf("%s\n", invalid_text);
             value = 0;
         }
     } while (!value);
@@ -29,7 +29,7 @@ int loop_number_input(char *text, char *invalid_text) {
     int value = 0;
 
     do {
-        value = number_input(text);
+        value = number_input(text, invalid_text);
         if (!value) {
             printf("%s\n", invalid_text);
         }
@@ -93,9 +93,9 @@ char *loop_input(char *text, char *invalid_text) {
 int option_input(char *text, struct Menu *menu) {
     int value;
     do {
-        value = number_input(text);
+        value = number_input(text, "Please enter a valid option.");
         if (value < 1 || value > menu->num_options) {
-            printf("Please choose a valid option! Available options: %d\n", menu->num_options);
+            printf("Total available options: %d\n", menu->num_options);
             value = 0;
         }
     } while (!value);
@@ -155,11 +155,10 @@ void box_menu(struct Menu *menu, char *menu_name) {
         for (int j = 0; j < spaces; j++) {
             printf(" ");
         }
-        printf(" |\n");
+        printf("|\n");
     }
     print_line(max_length); // Print bottom border for options
 }
-
 void create_box(char *title) {
     int max_length = DEFAULT_WIDTH;
     print_line(max_length); // Print top divider for title
@@ -173,6 +172,7 @@ void create_box(char *title) {
 
     print_line(max_length - 3); // Print top border for info
 }
+
 void add_info(char *info) {
     printf("| %s", info); // Print info
     int spaces = DEFAULT_WIDTH - strlen(info) - 3; // Subtract 3 for the '|', and ' ' characters
@@ -185,6 +185,19 @@ void close_box() {
     int max_length = DEFAULT_WIDTH;
     print_line(max_length - 3); // Print bottom border for info
 }
+
+void box_info(char *info) {
+    int max_length = strlen(info) + 4;
+    print_line(max_length); 
+    printf("| %s", info);
+    int spaces = max_length - strlen(info) - 1;
+    for (int i = 0; i < spaces; i++) {
+        printf(" ");
+    }
+    printf("|\n");
+    print_line(max_length);
+}
+
 void option_handler(struct Menu *menu, int option, struct User *user) {
     if (option >= 1 && option <= menu->num_options) {
         menu->functions[option - 1](user);

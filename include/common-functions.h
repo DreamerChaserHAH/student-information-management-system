@@ -30,7 +30,7 @@ char *get_input(char *text);
 
 /// @brief Get int input from the user.
 /// @param text The text to view when asking for a number.
-int number_input(char *text);
+int number_input(char *text, char *invalid_text);
 
 enum Role role_input(char *text);
 
@@ -77,6 +77,8 @@ void add_info(char *info);
 
 /// @brief Close the box
 void close_box();
+
+void box_info(char *info);
 
 /// @brief Logout the user
 void logout();

@@ -40,19 +40,32 @@ static char* get_programme_file_path(){
     #endif
 }
 
-void array_to_user(char** user_information_array, struct User* user_information){
-    user_information->user_id = atoi(user_information_array[0]);
-    user_information->username = user_information_array[1];
-    user_information->display_name = user_information_array[2];
-    user_information->password = user_information_array[3];
-    user_information->role = integer_to_user_role(atoi(user_information_array[4]));
+static struct User* array_to_user(char** user_information_array){
+    return create_user_object(atoi(user_information_array[0]),
+                                user_information_array[1],
+                                user_information_array[2],
+                                user_information_array[3],
+                                atoi(user_information_array[4]));
 }
 
-void array_to_student_record(char** student_record_information_array, struct StudentRecord* student_record_information){
-    student_record_information->user_id = atoi(student_record_information_array[0]);
-    student_record_information->course_id = atoi(student_record_information_array[1]);
-    student_record_information->attendance = atoi(student_record_information_array[2]);
-    student_record_information->score = atoi(student_record_information_array[3]);
+static struct StudentRecord* array_to_student_record(char** student_record_information_array){
+    return create_student_record_object(atoi(student_record_information_array[0]),
+                                            atoi(student_record_information_array[1]),
+                                            atoi(student_record_information_array[2]),
+                                            atoi(student_record_information_array[3]));
+}
+
+static struct Course* array_to_course_record(char** course_record_information_array){
+    return create_course_object(atoi(course_record_information_array[0]), 
+                                atoi(course_record_information_array[1]),
+                                course_record_information_array[2],
+                                atoi(course_record_information_array[3]));
+}
+
+static struct Programme* array_to_programme_record(char** programme_record_information_array){
+    return create_programme_object(atoi(programme_record_information_array[0]),
+                                    programme_record_information_array[1],
+                                    atoi(programme_record_information_array[2]));
 }
 
 /// @brief turn Role enum to integer
@@ -90,6 +103,16 @@ void delete_data_environment(){
     if(is_file_here(get_programme_file_path())) { delete_file(get_programme_file_path()); }
 }
 
+struct User* create_user_object(int user_id, char* username, char* display_name, char* password, enum Role role){
+    struct User* user_object = malloc(sizeof(struct User));
+    user_object->user_id = user_id;
+    user_object->username = username;
+    user_object->display_name = display_name;
+    user_object->password = password;
+    user_object->role = role;
+    return user_object;
+}
+
 bool create_user_record(char* username, char* display_name, char* password, enum Role role){
     /// !!! retrieve whether if the user with the same username exist or not (DONE)
     /// !!! retrieve the latest id of the last user (so the users can be unique of each other) (DONE)
@@ -121,21 +144,21 @@ bool is_user_exist(char* username){
     return is_record_exist(get_user_file_path(), 1, username, 5);
 }
 
-void read_user_record(char* username, struct User* user_information){
-    char** user_information_array = calloc(5, sizeof(char*));
+struct User* read_user_record(char* username){
+    if(is_user_exist(username)){
+        char** user_information_array = calloc(5, sizeof(char*));
 
-    read_record(get_user_file_path(), 1, username, user_information_array);
+        read_record(get_user_file_path(), 1, username, user_information_array);
 
-    if(user_information_array[0] != NULL) {
-        array_to_user(user_information_array, user_information);
-    }else{
-        user_information = NULL;
+        if(user_information_array[0] != NULL) {
+            return array_to_user(user_information_array);
+        }
     }
+    return NULL;
 }
 
 bool update_user_record(char* username, char* display_name, char* password, enum Role role){
-    struct User* old_user_information = malloc(sizeof(struct User));
-    read_user_record(username, old_user_information);
+    struct User* old_user_information = read_user_record(username);
 
     if(old_user_information != NULL) {
         char **new_user_content = calloc(5, sizeof(char *));
@@ -165,6 +188,15 @@ void get_all_users(struct User* user[]){
     get_all_available_records(read_file(get_user_file_path()), user_record_strings);
 }
 
+struct StudentRecord* create_student_record_object(int user_id, int course_id, int attendance, int score){
+    struct StudentRecord* record = malloc(sizeof(struct StudentRecord));
+    record->user_id = user_id;
+    record->course_id = course_id;
+    record->attendance = attendance;
+    record->score = score;
+    return record;
+}
+
 bool create_student_record(struct StudentRecord* record){
     /// !!! retrieve whether if the record with the same username exist or not (DONE)
     /// !!! create an array that contains all the data that we want to add (DONE)
@@ -188,7 +220,7 @@ bool is_student_record_exist(int user_id){
     return is_record_exist(get_student_record_file_path(), 0, user_id_string, 4);
 }
 
-void read_student_record(int user_id, struct StudentRecord* result_record){
+struct StudentRecord* read_student_record(int user_id){
 
     if(is_student_record_exist(user_id)) {
         char **student_record_information_array = calloc(4, sizeof(char *));
@@ -197,19 +229,14 @@ void read_student_record(int user_id, struct StudentRecord* result_record){
                     student_record_information_array);
 
         if (student_record_information_array[0] != NULL) {
-            array_to_student_record(student_record_information_array, result_record);
-        } else {
-            result_record = NULL;
-        }
+            return array_to_student_record(student_record_information_array);
+        } 
     }
+    return NULL;
 }
 
-/// #brief update a student record with user_id
-/// @param the entire record that we are going to replace
-/// @return whether if the record has been adjusted successfully or not
 bool update_student_record(struct StudentRecord* record){
-    struct StudentRecord* old_student_record_information = malloc(sizeof(struct StudentRecord));
-    read_student_record(record->user_id, old_student_record_information);
+    struct StudentRecord* old_student_record_information = read_student_record(record->user_id);
 
     if(old_student_record_information != NULL) {
         char **new_record_content = calloc(4, sizeof(char *));
@@ -233,5 +260,158 @@ int get_number_of_student_records(){
 }
 
 struct StudentRecord* get_all_student_records(){
+
+}
+
+struct Course* create_course_object(int course_id, int programme_id, char* course_name, int lecturer_id){
+    struct Course* record = malloc(sizeof(struct Course));
+    record->course_id = course_id;
+    record->programme_id = programme_id;
+    record->course_name = course_name;
+    record->lecturer_id = lecturer_id;
+    return record;
+}
+
+bool is_course_exist(int course_id){
+    char* course_id_string = calloc(3, sizeof(char));
+    sprintf(course_id_string, "%d", course_id);
+    return is_record_exist(get_course_file_path(), 0, course_id_string, 4);
+}
+
+bool create_course_record(int programme_id, char* course_name, int lecturer_id){
+    /// !!! check what is the id we have to supply to the course (DONE)
+    /// !!! create an array that contains all the data that we want to add (DONE)
+    /// !!! return whether if the record has been created successfully (DONE)
+    
+    char** last_course_information = calloc(4, sizeof(char*));
+    int last_line_number = get_number_of_records(get_course_file_path());
+    get_all_available_columns(read_line(get_course_file_path(), last_line_number), last_course_information);
+    char* new_course_id = calloc(3, sizeof(char));
+    sprintf(new_course_id, "%d", last_course_information[0] != NULL? atoi(last_course_information[0]) + 1 : 1);
+        
+    char** content_array = calloc(4, sizeof(char*));
+    content_array[0] = new_course_id;
+    content_array[1] = integer_to_string(programme_id);
+    content_array[2] = course_name;
+    content_array[3] = integer_to_string(lecturer_id);
+
+    return create_record(get_course_file_path(), 4, content_array) == 0? true : false;
+}
+
+struct Course* read_course_record(int course_id){
+    if(is_course_exist(course_id)) {
+        char **course_information_array = calloc(4, sizeof(char *));
+
+        read_record(get_course_file_path(), 0, integer_to_string(course_id), course_information_array);
+
+        if (course_information_array[0] != NULL) {
+            return array_to_course_record(course_information_array);
+        }
+    }
+    return NULL;
+}
+
+bool update_course_record(int course_id, int programme_id, char* course_name, int lecturer_id){
+    if(is_course_exist(course_id)) {
+
+        char **new_record_content = calloc(4, sizeof(char *));
+
+        new_record_content[0] = integer_to_string(course_id);
+        new_record_content[1] = integer_to_string(programme_id);
+        new_record_content[2] = course_name;
+        new_record_content[3] = integer_to_string(lecturer_id);
+
+        return update_record(get_course_file_path(), 0, new_record_content[0], new_record_content) == 0 ? true : false;
+    }
+    return false;
+}
+
+bool delete_course_record(int course_id){
+    if(is_course_exist(course_id)){
+        return delete_record(get_course_file_path(), 0, integer_to_string(course_id)) == 0? true: false;
+    }
+    return false;
+}
+
+int get_number_of_courses(){
+    return get_number_of_records(get_course_file_path());
+}
+
+struct Course* get_all_course_records(){
+
+}
+
+struct Programme* create_programme_object(int programme_id, char* programme_name, int leader_id){
+    struct Programme* record = malloc(sizeof(struct Programme));
+    record->programme_id = programme_id;
+    record->programme_name = programme_name;
+    record->leader_id = leader_id;
+    return record;
+}
+
+bool is_programme_exist(int programme_id){
+    char* programme_id_string = calloc(3, sizeof(char));
+    sprintf(programme_id_string, "%d", programme_id);
+    return is_record_exist(get_programme_file_path(), 0, programme_id_string, 3);
+}
+
+bool create_programme_record(char* programme_name, int leader_id){
+        /// !!! check what is the id we have to supply to the course (DONE)
+    /// !!! create an array that contains all the data that we want to add (DONE)
+    /// !!! return whether if the record has been created successfully (DONE)
+    
+    char** last_programme_information = calloc(3, sizeof(char*));
+    int last_line_number = get_number_of_records(get_programme_file_path());
+    get_all_available_columns(read_line(get_programme_file_path(), last_line_number), last_programme_information);
+    char* new_programme_id_string = calloc(3, sizeof(char));
+    sprintf(new_programme_id_string, "%d", last_programme_information[0] != NULL? atoi(last_programme_information[0]) + 1 : 1);
+        
+    char** content_array = calloc(4, sizeof(char*));
+    content_array[0] = new_programme_id_string;
+    content_array[1] = programme_name;
+    content_array[2] = integer_to_string(leader_id);
+
+    return create_record(get_programme_file_path(), 3, content_array) == 0? true : false;
+}
+
+struct Programme* read_programme_record(int programme_id){
+    if(is_programme_exist(programme_id)) {
+        char **programme_information_array = calloc(3, sizeof(char *));
+
+        read_record(get_programme_file_path(), 0, integer_to_string(programme_id), programme_information_array);
+
+        if (programme_information_array[0] != NULL) {
+            return array_to_programme_record(programme_information_array);
+        }
+    }
+    return NULL;
+}
+
+bool update_programme_record(int programme_id, char* programme_name, int leader_id){
+    if(is_programme_exist(programme_id)) {
+
+        char **new_record_content = calloc(3, sizeof(char *));
+
+        new_record_content[0] = integer_to_string(programme_id);
+        new_record_content[1] = programme_name;
+        new_record_content[2] = integer_to_string(leader_id);
+
+        return update_record(get_programme_file_path(), 0, new_record_content[0], new_record_content) == 0 ? true : false;
+    }
+    return false;
+}
+
+bool delete_programme_record(int programme_id){
+    if(is_programme_exist(programme_id)){
+        return delete_record(get_programme_file_path(), 0, integer_to_string(programme_id)) == 0? true: false;
+    }
+    return false;
+}
+
+int get_number_of_programme(){
+    return get_number_of_records(get_programme_file_path());
+}
+
+struct Programme* get_all_programme_records(){
 
 }

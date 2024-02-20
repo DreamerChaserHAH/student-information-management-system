@@ -8,16 +8,20 @@
 
 /// @brief The maximum number of options in the menu
 #define MAX_MENU_OPTIONS 10
-#define MAX_OPTION_LENGTH 20
-
+#define MAX_ROLE_LENGTH 10
+#define MAX_OPTION_LENGTH 50
+#define MAX_OPTIONS 10
 /// @brief Function pointer for menu options
-typedef void (*MenuOptionFunction)(struct User *);
+typedef void (*MenuOptionFunction)();
 
 /// @brief Menu structure
 struct Menu {
-    char options[MAX_MENU_OPTIONS][MAX_OPTION_LENGTH];
-    MenuOptionFunction functions[MAX_MENU_OPTIONS];
+    char options[MAX_OPTIONS][MAX_OPTION_LENGTH];
+    char roles[MAX_OPTIONS][MAX_ROLE_LENGTH];
+    MenuOptionFunction functions[MAX_OPTIONS];
+    MenuOptionFunction shown_functions[MAX_OPTIONS];
     int num_options;
+    int num_shown_options;
 };
 
 /// @brief Get string input from the user.
@@ -26,7 +30,10 @@ char *get_input(char *text);
 
 /// @brief Get int input from the user.
 /// @param text The text to view when asking for a number.
-int number_input(char *text);
+int number_input(char *text, char *invalid_text);
+
+enum Role role_input(char *text);
+
 
 /// @brief Loop the input prompt
 /// @param text The text to view when asking for a input
@@ -70,6 +77,8 @@ void add_info(char *info);
 
 /// @brief Close the box
 void close_box();
+
+void box_info(char *info);
 
 /// @brief Logout the user
 void logout();

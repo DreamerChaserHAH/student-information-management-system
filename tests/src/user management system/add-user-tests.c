@@ -23,5 +23,6 @@ int main() {
     char *password = "pass";
     struct User *user = login(username, password);
     assert(add_user(username, "Teacher", password, STUDENT) == 1); // add user successfully
+    delete_data_environment();
     return 0;
 }

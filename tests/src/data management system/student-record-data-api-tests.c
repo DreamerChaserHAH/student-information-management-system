@@ -5,11 +5,7 @@
 
 void test_create_student_record(){
     setup_data_environment();
-    struct StudentRecord* record = malloc(sizeof(struct StudentRecord));
-    record->user_id = 1;
-    record->course_id = 1;
-    record->attendance = 5;
-    record->score = 50;
+    struct StudentRecord* record = create_student_record_object(1, 1, 10, 100);
     assert(create_student_record(record));
     assert(!create_student_record(record));
     delete_data_environment();
@@ -18,11 +14,7 @@ void test_create_student_record(){
 void test_read_student_record(){
     setup_data_environment();
 
-    struct StudentRecord* record = malloc(sizeof(struct StudentRecord));
-    record->user_id = 1;
-    record->course_id = 1;
-    record->attendance = 5;
-    record->score = 50;
+    struct StudentRecord* record = create_student_record_object(1,1,5,50);
 
     assert(create_student_record(record));
     struct StudentRecord* read_record = read_student_record(1);
@@ -39,7 +31,7 @@ void test_read_student_record(){
 void test_update_student_record(){
     setup_data_environment();
 
-    struct StudentRecord* record = malloc(sizeof(struct StudentRecord));
+    struct StudentRecord* record = create_student_record_object(1,1,5,50);
     record->user_id = 1;
     record->course_id = 1;
     record->attendance = 5;
@@ -73,7 +65,7 @@ void test_update_student_record(){
 void test_delete_student_record(){
     setup_data_environment();
 
-    struct StudentRecord* record = malloc(sizeof(struct StudentRecord));
+    struct StudentRecord* record = create_student_record_object(1,1,5,50);
     record->user_id = 1;
     record->course_id = 1;
     record->attendance = 5;

@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include "menus/menu-utils.h"
 #include "user-interface.h"
 #define DEFAULT_WIDTH 30
@@ -64,12 +64,11 @@ enum Role role_input(char *text) {
 }
 
 char *get_input(char *text) {
-    const int BUFFER_SIZE = 100;
-    char buffer[BUFFER_SIZE];
+    char buffer[100];
 
     printf("%s", text);
 
-    if (fgets(buffer, BUFFER_SIZE, stdin) == NULL) {
+    if (fgets(buffer, 100, stdin) == NULL) {
         return NULL;
     }
 
@@ -205,7 +204,7 @@ void box_info_back(char *info, char *type, char *backto) {
     while(dot < 4) {
         printf(".");
         fflush(stdout);
-        usleep(500000); // Sleep for 0.5 seconds
+        //usleep(500000); // Sleep for 0.5 seconds
         dot++;
     }
     printf("\n");

@@ -305,6 +305,7 @@ struct Course* read_course_record(int course_id){
         read_record(get_course_file_path(), 0, integer_to_string(course_id), course_information_array);
 
         if (course_information_array[0] != NULL) {
+            //return NULL;
             return array_to_course_record(course_information_array);
         }
     }

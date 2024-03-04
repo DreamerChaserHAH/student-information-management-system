@@ -154,6 +154,10 @@ int delete_line(char* file_path, int line_number){
 }
 
 int get_number_of_lines(char* file_path){
-    char* content = read_file(file_path);
-    return get_number_of_splittable_value(content, "\n");
+    if(is_file_here(file_path)){
+        char* content = read_file(file_path);
+        return get_number_of_splittable_value(content, "\n");
+    }else{
+        return 0;
+    }
 }

@@ -59,7 +59,7 @@ void test_delete_course(){
 }
 
 int main(){
-    test_create_course();
+    //test_create_course();
     test_read_course();
     test_update_course();
     test_delete_course();

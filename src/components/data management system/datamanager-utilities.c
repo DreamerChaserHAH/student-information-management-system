@@ -4,7 +4,6 @@ int get_number_of_splittable_value(char* content, char* delimiter){
 
     char* local_content = calloc(strlen(content), sizeof(char));
     strcpy(local_content, content);
-
     int splittable_value_count = 0;
 
     char* token = strtok(local_content, delimiter);

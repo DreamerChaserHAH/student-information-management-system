@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <data management system/datamanager.h>
 #include <assert.h>
-#include <login.h>
+#include <user management system/login.h>
 
 
 bool add_user(char *username, char *display_name, char *password, enum Role role) {
@@ -22,6 +22,6 @@ int main() {
     char *username = "teacher";
     char *password = "pass";
     struct User *user = login(username, password);
-    assert(add_user("jack", "Jack", "pass", STUDENT) == 1); // add user successfully
+    assert(add_user(username, "Teacher", password, STUDENT) == 1); // add user successfully
     return 0;
 }

@@ -1,9 +1,10 @@
 //
-// Created by imLifeline on 10/02/2024.
+// Created by imlif on 2/29/2024.
 //
 
-#ifndef SIMS_USER_SYSTEM_H
-#define SIMS_USER_SYSTEM_H
+#ifndef SIMS_USER_MANAGEMENT_H
+#define SIMS_USER_MANAGEMENT_H
+
 #include <data management system/datamanager.h>
 #include <stdbool.h>
 
@@ -20,4 +21,5 @@ bool add_user(char* username, char* display_name, char* password, enum Role role
 /// @return true if the user is removed successfully, false otherwise
 bool remove_user(char* username);
 
-#endif //SIMS_USER_SYSTEM_H
+
+#endif //SIMS_USER_MANAGEMENT_H

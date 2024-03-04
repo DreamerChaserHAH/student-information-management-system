@@ -7,9 +7,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <data management system/datamanager.h>
-#include <user-interface.h>
-#include "common-functions.h"
+#include "data management system/datamanager.h"
+#include "menus/menu-utils.h"
 
 
 struct User *login(char* username, char* password) {
@@ -17,10 +16,11 @@ struct User *login(char* username, char* password) {
         return NULL;
     } else {
         struct User *user = read_user_record(username);
-        if (strcmp(user->password, password) == 0) {
-            return user;
-        } else {
-            return NULL;
-        }
+
+//        if (strcmp(user->password, password) == 0) {
+//            return user;
+//        } else {
+//            return NULL;
+//        }
     }
 }

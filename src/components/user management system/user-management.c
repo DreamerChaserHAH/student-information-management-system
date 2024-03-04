@@ -6,6 +6,7 @@ bool add_user(char *username, char *display_name, char *password, enum Role role
     if(is_user_exist(username)){
         return false;
     }
+    /// !!! WARNING: This function needs to add a new student record to the system if the user is a student. The user_id should be the same as the username.
     return create_user_record(username, display_name, password, role);
 }
 

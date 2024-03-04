@@ -11,18 +11,18 @@ add_executable(SIMS src/main.c)
 
 add_library(datamanager-utilities "src/components/data management system/datamanager-utilities.c")
 add_library(file-interaction-api "src/components/data management system/file-interaction-api.c")
-add_library(csv-processor-api "src/components/data management system/csv-processor-api.c")
+add_library(csv-processor-api "src/components/data management system/csv-processor-api.c"
+        "include/user management system/user-management.h")
 add_library(datamanager "src/components/data management system/datamanager.c")
-add_library(user-interface "src/components/menus/user-interface.c")
+add_library(main-interface "src/components/menus/main-interface.c")
 
-add_library(user-management src/components/login.c)
+add_library(student-options "src/components/menus/student-options.c")
+add_library(user-management "src/components/user management system/user-management.c")
 add_library(student-management "src/components/student management system/student-management.c")
-add_library(student-system src/components/systems/student-system.c)
-add_library(user-system src/components/systems/user-system.c)
-add_library(common-functions src/components/utils/common-functions.c
-        include/systems/user-system.h)
+add_library(login "src/components/user management system/login.c")
+add_library(menu-utils src/components/menus/menu-utils.c)
 
-target_link_libraries(SIMS user-interface user-management student-management student-system user-system datamanager csv-processor-api file-interaction-api datamanager-utilities common-functions)
+target_link_libraries(SIMS main-interface student-options user-management student-management datamanager csv-processor-api file-interaction-api datamanager-utilities login menu-utils)
 
 include(CTest)
 add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")
@@ -33,6 +33,8 @@ add_executable(tests-student-record-data-api "tests/src/data management system/s
 add_executable(tests-programme-data-api "tests/src/data management system/programme-data-api-tests.c")
 add_executable(tests-course-data-api "tests/src/data management system/course-data-api-tests.c")
 add_executable(tests-add-user "tests/src/user management system/add-user-tests.c")
+#add_executable(tests-login "tests/src/user management system/login-tests.c")
+
 
 target_link_libraries(tests-datamanager-utilities datamanager-utilities)
 target_link_libraries(tests-file-interaction file-interaction-api datamanager-utilities  )
@@ -41,7 +43,8 @@ target_link_libraries(tests-user-data-api datamanager csv-processor-api file-int
 target_link_libraries(tests-student-record-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
 target_link_libraries(tests-programme-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
 target_link_libraries(tests-course-data-api datamanager csv-processor-api file-interaction-api datamanager-utilities)
-target_link_libraries(tests-add-user user-management datamanager csv-processor-api file-interaction-api datamanager-utilities)
+target_link_libraries(tests-add-user user-management login datamanager csv-processor-api file-interaction-api datamanager-utilities)
+#target_link_libraries(tests-login user-management login datamanager csv-processor-api file-interaction-api datamanager-utilities)
 
 enable_testing()
 
@@ -53,3 +56,4 @@ add_test(student-record-data-api tests-student-record-data-api)
 add_test(programme-data-api-tests tests-programme-data-api)
 add_test(course-data-api-tests tests-course-data-api)
 add_test(add-user-tests tests-add-user)
+#add_test(login-tests tests-login)

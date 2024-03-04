@@ -4,6 +4,7 @@
 
 #ifndef SIMS_COMMON_FUNCTIONS_H
 #define SIMS_COMMON_FUNCTIONS_H
+#include <stdbool.h>
 #include <data management system/datamanager.h>
 
 /// @brief The maximum number of options in the menu
@@ -16,12 +17,12 @@ typedef void (*MenuOptionFunction)();
 
 /// @brief Menu structure
 struct Menu {
-    char options[MAX_OPTIONS][MAX_OPTION_LENGTH];
-    char roles[MAX_OPTIONS][MAX_ROLE_LENGTH];
+    int num_options;
     MenuOptionFunction functions[MAX_OPTIONS];
     MenuOptionFunction shown_functions[MAX_OPTIONS];
-    int num_options;
     int num_shown_options;
+    char options[MAX_OPTIONS][MAX_OPTION_LENGTH];
+    char roles[MAX_OPTIONS][MAX_ROLE_LENGTH];
 };
 
 /// @brief Get string input from the user.
@@ -67,18 +68,10 @@ void box_menu(struct Menu *menu, char *menu_name);
 /// @param user The user to be handled
 void option_handler(struct Menu *menu, int option, struct User *user);
 
-/// @brief Create a box
-/// @param title The title of the box
-void create_box(char *title);
+void box_info(char *info, char *type);
+void box_info_back(char *info, char *type, char *back_to);
 
-/// @brief Add info to the box
-/// @param info The info to be added
-void add_info(char *info);
-
-/// @brief Close the box
-void close_box();
-
-void box_info(char *info);
+bool are_you_sure(char *text);
 
 /// @brief Logout the user
 void logout();

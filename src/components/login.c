@@ -8,8 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <data management system/datamanager.h>
-#include <user-interface.h>
-#include "utils/common-functions.h"
+#include <user interface/ui-main.h>
 
 
 struct User *login(char* username, char* password) {

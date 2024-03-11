@@ -3,10 +3,10 @@
 #include <user interface/ui-utils.h>
 #include <user interface/ui-inputs.h>
 // Include Files End
-#include <login.h> 
-#include <systems/student-system.h>
 #include <systems/user-system.h>
+#include <data management system/datamanager.h>
 #include <student management system/student-management.h>
+#include <login.h> 
 #include <stdbool.h>
 
 void login_menu();
@@ -59,8 +59,6 @@ void login_menu() {
     }
 }
 
-
-
 void main_menu(struct User *user) {
     struct Menu menu;
     menu.num_options = 0;
@@ -104,7 +102,6 @@ void student_info_menu(struct User *user, int student_id) {
     option_handler(&menu, option, user);
 }
 
-
 void user_management_menu(struct User *user) {
     struct Menu menu;
     menu.num_options = 0;
@@ -120,6 +117,7 @@ void user_management_menu(struct User *user) {
     option_handler(&menu, option, user);
 }
 
+
 // ! Leave this be i will handle these kind of functions - Mahmood
 
 void add_user_option(struct User *user) {
@@ -127,6 +125,7 @@ void add_user_option(struct User *user) {
     char *display_name = loop_input("Enter display name:", "Please enter a valid display name.");
     char *password = loop_input("Enter password:", "Please enter a valid password.");
     enum Role role = role_input("Enter role (0,1,2,3):");
+    
     bool user_added = add_user(username, display_name, password, role);
 
     if(user == NULL) {
@@ -150,7 +149,7 @@ void view_all_user_option(struct User *user) {
 
 void remove_user_options(struct User *user) {
     char *username = loop_input("Enter username:", "Please enter a valid username.");
-    if(user->username == username) {
+    if(strcmp(user->username, username) == 0) {
         printf("You cannot remove yourself!\n");
         user_management_menu(user);
     }

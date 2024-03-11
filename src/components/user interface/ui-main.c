@@ -1,9 +1,12 @@
 #include <stdio.h>
-#include "common-functions.h"
-#include "login.h"
-#include "systems/student-system.h"
+// Interface Files
+#include <user interface/ui-utils.h>
+#include <user interface/ui-inputs.h>
+// Include Files End
+#include <login.h> 
+#include <systems/student-system.h>
+#include <systems/user-system.h>
 #include <student management system/student-management.h>
-#include "systems/user-system.h"
 #include <stdbool.h>
 
 void login_menu();
@@ -41,7 +44,6 @@ void welcome_menu() {
     option_handler(&menu, option, NULL);
 }
 
-
 void login_menu() {
     char *username = loop_input("Enter username:", "Please enter a valid username.");
     char *password = loop_input("Enter password:", "Please enter a valid password.");
@@ -56,6 +58,7 @@ void login_menu() {
         main_menu(user);
     }
 }
+
 
 
 void main_menu(struct User *user) {

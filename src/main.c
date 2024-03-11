@@ -1,7 +1,5 @@
-#include <common.h>
-#include <login.h>
 #include <data management system/datamanager.h>
-#include <user-interface.h>
+#include <user interface/ui-main.h>
 
  /// @brief The entry point to the application that contains surface level logic
  int main() {

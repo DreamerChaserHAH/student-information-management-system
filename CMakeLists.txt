@@ -13,7 +13,7 @@ add_library(datamanager-utilities "src/components/data management system/dataman
 add_library(file-interaction-api "src/components/data management system/file-interaction-api.c")
 add_library(csv-processor-api "src/components/data management system/csv-processor-api.c")
 add_library(datamanager "src/components/data management system/datamanager.c")
-add_library(user-interface "src/components/menus/user-interface.c")
+add_library(user-interface "src/components/user interface/user-interface.c")
 
 add_library(user-management src/components/login.c)
 add_library(student-management "src/components/student management system/student-management.c")
@@ -21,8 +21,11 @@ add_library(student-system src/components/systems/student-system.c)
 add_library(user-system src/components/systems/user-system.c)
 add_library(common-functions src/components/utils/common-functions.c
         include/systems/user-system.h)
+add_library(ui-main "src/components/user interface/ui-main.c")
+add_library(ui-utils "src/components/user interface/ui-utils.c")
+add_library(ui-inputs "src/components/user interface/ui-inputs.c")
 
-target_link_libraries(SIMS user-interface user-management student-management student-system user-system datamanager csv-processor-api file-interaction-api datamanager-utilities common-functions)
+target_link_libraries(SIMS user-interface user-management student-management student-system user-system datamanager csv-processor-api file-interaction-api datamanager-utilities common-functions ui-main ui-utils ui-inputs)
 
 include(CTest)
 add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")

@@ -9,7 +9,7 @@
 #include <string.h>
 #include <data management system/datamanager.h>
 #include <user-interface.h>
-#include "common-functions.h"
+#include "utils/common-functions.h"
 
 
 struct User *login(char* username, char* password) {

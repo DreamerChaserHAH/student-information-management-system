@@ -37,12 +37,20 @@ int create_record(char* file_path, int array_length, char** content_array);
 /// @return whether if the record exists or not
 bool is_record_exist(char* file_path, int criteria_index, char* criteria_value, int number_of_elements);
 
+/// @brief  get the total number of records that meets the criteria
+/// @param file_path 
+/// @param criteria_index 
+/// @param criteria_value 
+/// @return the number of record with that value and their indexes
+int* get_all_records_with_criteria(char* file_path, int criteria_index, char* criteria_value);
+
 /// @brief read a record from the txt file of choice
 /// @param file_path the path of the file of interest
 /// @param criteria_index the column index that we are going to look at
 /// @param criteria_value the value inside the column that we are going to check whether if it's the same or not
 /// @param content_array where we are going to return our data into. It could be null which means didn't find any that meets criteria
-void read_record(char* file_path, int criteria_index, char* criteria_value, char** content_array);
+/// @param index the index of the record that we are going to start looking at
+void read_record(char* file_path, int criteria_index, char* criteria_value, char** content_array, int* index);
 
 /// @brief read a record from the txt file of choice
 /// @param criteria_index the column index that we are going to look at

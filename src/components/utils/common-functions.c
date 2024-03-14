@@ -63,7 +63,7 @@ enum Role role_input(char *text) {
 
 char *get_input(char *text) {
     const int BUFFER_SIZE = 100;
-    char buffer[BUFFER_SIZE];
+    char buffer[100];
 
     printf("%s", text);
 

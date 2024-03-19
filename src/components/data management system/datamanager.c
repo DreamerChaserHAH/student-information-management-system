@@ -245,6 +245,18 @@ struct StudentRecord** read_student_record(int user_id){
     return NULL;
 }
 
+struct StudentRecord* read_student_record_with_specific_course(int user_id, int course_id){
+    struct StudentRecord** all_records_of_a_particular_student = read_student_record(user_id);
+    int current_index = 0;
+    while(all_records_of_a_particular_student[current_index] != NULL){
+        if(all_records_of_a_particular_student[current_index]->course_id == course_id){
+            return all_records_of_a_particular_student[current_index];
+        }
+        current_index++;
+    }
+    return NULL;
+}
+
 struct Course** get_all_student_courses(int user_id){
     struct StudentRecord** student_records = read_student_record(user_id);
 
@@ -257,6 +269,30 @@ struct Course** get_all_student_courses(int user_id){
     int current_index = 0;
     while(student_records[current_index] != NULL){
         result[current_index] = read_course_record(student_records[current_index]->course_id);
+        current_index++;
+    }
+    result[current_index] = NULL;
+    return result;
+}
+
+struct StudentRecord **get_all_student_records_with_specific_course(int course_id)
+{
+    int *student_record_indexes = get_all_records_with_criteria(get_student_record_file_path(), 1, integer_to_string(course_id));
+
+    int total_count = 0;
+    while (student_record_indexes[total_count] != -1)
+    {
+        total_count++;
+    }
+
+    struct StudentRecord **result = malloc(sizeof(struct StudentRecord) * (total_count + 1));
+    int current_index = 0;
+    while (student_record_indexes[current_index] != -1)
+    {
+        char *student_record_information = read_line(get_student_record_file_path(), student_record_indexes[current_index] + 1);
+        char **student_record_information_array = calloc(4, sizeof(char *));
+        get_all_available_columns(student_record_information, student_record_information_array);
+        result[current_index] = array_to_student_record(student_record_information_array);
         current_index++;
     }
     result[current_index] = NULL;

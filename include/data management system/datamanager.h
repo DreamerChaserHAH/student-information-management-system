@@ -98,10 +98,21 @@ bool is_student_record_exist(int user_id);
 /// @return the student record
 struct StudentRecord** read_student_record(int user_id);
 
+/// @brief read a student record with a specific course
+/// @param user_id the id of the user
+/// @param course_id the id of the course
+/// @return the student record with a specific course
+struct StudentRecord* read_student_record_with_specific_course(int user_id, int course_id);
+
 /// @brief get all the courses of a particular student
 /// @param user_id the id of the user
 /// @return the courses that the student is taking
 struct Course** get_all_student_courses(int user_id);
+
+/// @brief get all the student records with a specific course
+/// @param course_id the id of the course
+/// @return the student records with a specific course
+struct StudentRecord** get_all_student_records_with_specific_course(int course_id);
 
 /// #brief update a student record with user_id
 /// @param the entire record that we are going to replace

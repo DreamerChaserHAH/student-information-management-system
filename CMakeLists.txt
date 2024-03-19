@@ -18,13 +18,11 @@ add_library(user-management src/components/login.c)
 add_library(student-management "src/components/student management system/student-management.c")
 add_library(student-system src/components/systems/student-system.c)
 add_library(user-system src/components/systems/user-system.c)
-add_library(common-functions src/components/utils/common-functions.c
-        include/systems/user-system.h)
 add_library(ui-main "src/components/user interface/ui-main.c")
 add_library(ui-utils "src/components/user interface/ui-utils.c")
 add_library(ui-inputs "src/components/user interface/ui-inputs.c")
 
-target_link_libraries(SIMS ui-main ui-utils ui-inputs user-management student-management datamanager csv-processor-api file-interaction-api datamanager-utilities common-functions student-system user-system )
+target_link_libraries(SIMS ui-main ui-utils ui-inputs user-management student-management datamanager csv-processor-api file-interaction-api datamanager-utilities student-system user-system )
 
 include(CTest)
 add_executable(tests-datamanager-utilities "tests/src/data management system/datamanager-utilities-test.c")

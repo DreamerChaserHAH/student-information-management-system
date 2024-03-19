@@ -55,9 +55,6 @@ void close_box();
 
 void box_info(char *info);
 
-/// @brief Logout the user
-void logout();
-
 /// @brief To display the exit message
 void exit_message();
 

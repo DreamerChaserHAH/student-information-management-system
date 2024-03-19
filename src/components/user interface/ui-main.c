@@ -8,20 +8,8 @@
 #include <student management system/student-management.h>
 #include <login.h> 
 #include <stdbool.h>
-
-void login_menu();
-void main_menu(struct User *user);
-void student_info_menu(struct User *user, int student_id);
-void student_management_menu(struct User *user, int student_id);
-void user_management_menu(struct User *user);
-
-// Options
-void view_student_info(struct User *user);
-void view_student_enrolled_courses(struct User *user, int student_id);
-
-void add_user_option(struct User *user);
-void remove_user_options(struct User *user);
-void view_all_user_option(struct User *user);
+#include <user interface/ui-main.h>
+#include <user interface/ui-strings.h>
 
 void welcome_menu() {
 
@@ -80,7 +68,7 @@ void main_menu(struct User *user) {
         add_option(&menu, "User Management", user_management_menu);
     }
 
-    add_option(&menu, "Logout", logout);
+    add_option(&menu, "Logout", logout_menu);
     box_menu(&menu, "Main Menu");
 
     int option = option_input("Enter your option:", &menu);
@@ -117,6 +105,11 @@ void user_management_menu(struct User *user) {
     option_handler(&menu, option, user);
 }
 
+void logout_menu(struct User *user) {
+    printf("Logout successful!\n");
+    user = NULL;
+    welcome_menu();
+}
 
 // ! Leave this be i will handle these kind of functions - Mahmood
 

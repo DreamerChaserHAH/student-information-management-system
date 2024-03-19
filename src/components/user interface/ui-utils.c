@@ -9,10 +9,6 @@
 #define DEFAULT_WIDTH 30
 
 
-void logout() {
-    welcome_menu();
-}
-
 void exit_message() {
     printf("Exiting the system. Goodbye!\n");
     exit(0);

@@ -30,7 +30,7 @@ bool is_record_exist(char* file_path, int criteria_index, char* criteria_value, 
 
 int* get_all_records_with_criteria(char* file_path, int criteria_index, char* criteria_value){
     
-    int* result = malloc(sizeof(int*));
+    int* result = malloc(0);
     int current_size = 0;
 
     int current_search_index = -1;
@@ -45,12 +45,12 @@ int* get_all_records_with_criteria(char* file_path, int criteria_index, char* cr
         next_occurence = current_search_index - 1;
             if(next_occurence != -1){
                 current_size += 1;
-                result = realloc(result, current_size * sizeof(int*));
+                result = realloc(result, current_size * sizeof(int));
                 result[current_size - 1] = next_occurence;
             }
         }
     }while(next_occurence != -1);
-    result = realloc(result, (current_size + 1) * sizeof(int*));
+    result = realloc(result, (current_size + 1) * sizeof(int));
     result[current_size] = -1;
     return result;
 }

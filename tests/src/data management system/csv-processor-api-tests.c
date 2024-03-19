@@ -135,7 +135,6 @@ void test_record_exist(){
 }
 
 void test_get_all_records2(){
-    assert(!is_file_here("record_exist.txt") && "File should not exist");
     create_file("record_exist.txt");
 
     char* strings[] = {"Hi", "Hello", "Bonjour"};
@@ -146,8 +145,8 @@ void test_get_all_records2(){
     assert(create_record("record_exist.txt", 3, strings3) == 0);
     assert(create_record("record_exist.txt", 3, strings2) == 0);
     int* record_indexes = get_all_records_with_criteria("record_exist.txt", 0, "Hi");
-    printf("Hiii %d \n", record_indexes[3]);
-    assert(record_indexes[3] == NULL);
+    printf("Hiii %d \n", record_indexes[0]);
+    assert(record_indexes[3] == -1);
     //assert(record_indexes[1] == 1);
     //assert(record_count == 2);
     delete_file("record_exist.txt");

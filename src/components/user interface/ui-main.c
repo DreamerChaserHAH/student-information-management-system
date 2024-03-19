@@ -9,7 +9,7 @@
 #include <login.h> 
 #include <stdbool.h>
 #include <user interface/ui-main.h>
-#include <user interface/ui-strings.h>
+#include <ui-strings.h>
 
 void welcome_menu() {
 
@@ -111,6 +111,67 @@ void logout_menu(struct User *user) {
     welcome_menu();
 }
 
+void student_menu (struct User *user) {
+    struct Menu menu;
+    menu.num_options = 0;
+
+    add_option(&menu, "Student details", logout_menu);
+    add_option(&menu, "Enrolled courses", logout_menu);
+    add_option(&menu, "View Grades", logout_menu);
+    add_option(&menu, "View CGPA", logout_menu);
+    add_option(&menu, "Attendance records", logout_menu);
+
+    box_menu(&menu, "Menu Name");
+
+    int option = option_input("Enter your option:", &menu);
+    option_handler(&menu, option, user);
+}
+
+void lecturer_menu(struct User *user) {
+    struct Menu menu;
+    menu.num_options = 0;
+
+    add_option(&menu, "Student Attendance", logout_menu);
+    add_option(&menu, "Course Grades", logout_menu);
+    add_option(&menu, "Student profiles", logout_menu);
+
+    box_menu(&menu, "Menu Name");
+
+    int option = option_input("Enter your option:", &menu);
+    option_handler(&menu, option, user);
+}
+
+void programme_admin_menu(struct User *user) {
+    struct Menu menu;
+    menu.num_options = 0;
+
+    add_option(&menu, "Student profiles", logout_menu);
+    add_option(&menu, "Student details", logout_menu);
+    add_option(&menu, "Course information", logout_menu);
+    add_option(&menu, "Student enrollment", logout_menu);
+    add_option(&menu, "Lecturer assignment", logout_menu);
+    add_option(&menu, "Student performance reports", logout_menu);
+
+    box_menu(&menu, "Menu Name");
+
+    int option = option_input("Enter your option:", &menu);
+    option_handler(&menu, option, user);
+}
+
+void system_admin_menu(struct User *user) {
+    struct Menu menu;
+    menu.num_options = 0;
+
+    add_option(&menu, "User management", logout_menu);
+    add_option(&menu, "Grading system parameters", logout_menu);
+    add_option(&menu, "Student performance report generation", logout_menu);
+    add_option(&menu, "System settings", logout_menu);
+
+    box_menu(&menu, "Menu Name");
+
+    int option = option_input("Enter your option:", &menu);
+    option_handler(&menu, option, user);
+}
 // ! Leave this be i will handle these kind of functions - Mahmood
 
 void add_user_option(struct User *user) {

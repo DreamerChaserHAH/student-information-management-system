@@ -20,4 +20,5 @@ void add_user_option(struct User *user);
 void remove_user_options(struct User *user);
 void view_all_user_option(struct User *user);
 
+
 #endif // UI_MAIN_H

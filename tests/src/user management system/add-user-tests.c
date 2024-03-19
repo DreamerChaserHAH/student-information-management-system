@@ -22,6 +22,6 @@ int main() {
     char *username = "teacher";
     char *password = "pass";
     struct User *user = login(username, password);
-    assert(add_user("jack", "Jack", "pass", STUDENT) == 1); // add user successfully
+    assert(add_user("teacher", "Teacher", "pass", STUDENT) == 1); // add user successfully
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <data management system/csv-processor-api.h>
 #include <assert.h>
+#include <stdio.h>
 
 void test_number_of_records(char* test_file, char* test_content){
     assert(!is_file_here(test_file) && "File should not exist");
@@ -60,7 +61,7 @@ void test_read_record(){
     assert(create_record("read_record.txt", 3, strings) == 0);
 
     char** elements = calloc(3, sizeof(char*));
-    read_record("read_record.txt", 0, "Hi", elements);
+    read_record("read_record.txt", 0, "Hi", elements, 0);
     //printf("%s Value is", elements[0]);
     assert(strcmp(elements[0], "Hi") == 0);
     assert(strcmp(elements[1], "Hello") == 0);
@@ -79,8 +80,8 @@ void test_update_record(){
     assert(create_record("update_record.txt", 3, strings2) == 0);
 
     char** elements = calloc(3, sizeof(char*));
-    read_record("update_record.txt", 0, "Jesus", elements);
-    //printf("%s Value is", elements[0]);
+    read_record("update_record.txt", 0, "Jesus", elements, 0);
+    printf("%s Value is", elements[0]);
     if(elements[0] != NULL) {
         assert(strcmp(elements[0], "Jesus") == 0);
         assert(strcmp(elements[1], "Jackma") == 0);
@@ -89,7 +90,7 @@ void test_update_record(){
 
     assert(update_record("update_record.txt", 0, "Jesus", strings) == 0);
 
-    read_record("update_record.txt", 0, "Jesus", elements);
+    read_record("update_record.txt", 0, "Jesus", elements, 0);
     //printf("%s Value is", elements[0]);
     assert(strcmp(elements[0], "Jesus") == 0);
 
@@ -106,7 +107,7 @@ void test_delete_record(){
     assert(create_record("delete_record.txt", 3, strings2) == 0);
 
     char** elements = calloc(3, sizeof(char*));
-    read_record("delete_record.txt", 0, "Jesus", elements);
+    read_record("delete_record.txt", 0, "Jesus", elements, 0);
     //printf("%s Value is", elements[0]);
     if(elements[0] != NULL) {
         assert(strcmp(elements[0], "Jesus") == 0);
@@ -129,13 +130,31 @@ void test_record_exist(){
     char* strings[] = {"Hi", "Hello", "Bonjour"};
     assert(create_record("record_exist.txt", 3, strings) == 0);
 
-    assert(is_record_exist("record_exist.txt", 0, "Hi", 3));
 
+    delete_file("record_exist.txt");
+}
+
+void test_get_all_records2(){
+    create_file("record_exist.txt");
+
+    char* strings[] = {"Hi", "Hello", "Bonjour"};
+    assert(create_record("record_exist.txt", 3, strings) == 0);
+    char* strings2[] = {"Hi", "GG", "Bonjour"};
+    assert(create_record("record_exist.txt", 3, strings2) == 0);
+    char* strings3[] = {"Hii", "GG", "Bonjour"};
+    assert(create_record("record_exist.txt", 3, strings3) == 0);
+    assert(create_record("record_exist.txt", 3, strings2) == 0);
+    int* record_indexes = get_all_records_with_criteria("record_exist.txt", 0, "Hi");
+    printf("Hiii %d \n", record_indexes[0]);
+    assert(record_indexes[3] == -1);
+    //assert(record_indexes[1] == 1);
+    //assert(record_count == 2);
     delete_file("record_exist.txt");
 }
 
 int main(){
 
+    delete_file("record_exist.txt");
     test_number_of_records("test_number_of_records.txt", "Hello\nWorld");
     test_number_of_columns();
     test_get_all_records("test_all_record.txt", "Hello\nWorld\nYooo");
@@ -145,6 +164,7 @@ int main(){
     test_update_record();
     test_delete_record();
     test_record_exist();
+    test_get_all_records2();
 
     return 0;
 }

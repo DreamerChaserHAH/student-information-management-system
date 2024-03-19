@@ -72,7 +72,7 @@ int get_number_of_users();
 /// @param pointer to the
 void get_all_users(struct User* user[]);
 
-/// @brief data structure for StudentRecord.txt
+/// @brief data structure for StudentRecord.txt, this is a many-to-many relationship between student and course
 struct StudentRecord{
     int user_id; /**< The id of the student related to this record */
     int course_id; /**< The id of the course related to this record */
@@ -96,7 +96,12 @@ bool is_student_record_exist(int user_id);
 /// @param user_id the id of the user
 /// @param result_record where the result will be pasted upon using pointers
 /// @return the student record
-struct StudentRecord* read_student_record(int user_id);
+struct StudentRecord** read_student_record(int user_id);
+
+/// @brief get all the courses of a particular student
+/// @param user_id the id of the user
+/// @return the courses that the student is taking
+struct Course** get_all_student_courses(int user_id);
 
 /// #brief update a student record with user_id
 /// @param the entire record that we are going to replace

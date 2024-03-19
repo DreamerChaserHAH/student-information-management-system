@@ -148,7 +148,7 @@ struct User* read_user_record(char* username){
     if(is_user_exist(username)){
         char** user_information_array = calloc(5, sizeof(char*));
 
-        read_record(get_user_file_path(), 1, username, user_information_array);
+        read_record(get_user_file_path(), 1, username, user_information_array, 0);
 
         if(user_information_array[0] != NULL) {
             return array_to_user(user_information_array);
@@ -220,19 +220,47 @@ bool is_student_record_exist(int user_id){
     return is_record_exist(get_student_record_file_path(), 0, user_id_string, 4);
 }
 
-struct StudentRecord* read_student_record(int user_id){
+struct StudentRecord** read_student_record(int user_id){
 
     if(is_student_record_exist(user_id)) {
-        char **student_record_information_array = calloc(4, sizeof(char *));
+        int* student_record_indexes = get_all_records_with_criteria(get_student_record_file_path(), 0, integer_to_string(user_id));
 
-        read_record(get_student_record_file_path(), 0, integer_to_string(user_id),
-                    student_record_information_array);
+        int total_count = 0;
+        while(student_record_indexes[total_count] != -1){
+            total_count++;
+        }
 
-        if (student_record_information_array[0] != NULL) {
-            return array_to_student_record(student_record_information_array);
-        } 
+        struct StudentRecord** result = malloc(sizeof(struct StudentRecord) * (total_count + 1));
+        int current_index = 0;
+        while(student_record_indexes[current_index] != -1){
+            char *student_record_information = read_line(get_student_record_file_path(), student_record_indexes[current_index] + 1);
+            char** student_record_information_array = calloc(4, sizeof(char*));
+            get_all_available_columns(student_record_information, student_record_information_array);
+            result[current_index] = array_to_student_record(student_record_information_array);
+            current_index++;
+        }  
+        result[current_index] = NULL;
+        return result;
     }
     return NULL;
+}
+
+struct Course** get_all_student_courses(int user_id){
+    struct StudentRecord** student_records = read_student_record(user_id);
+
+    int total_count = 0;
+    while(student_records[total_count] != NULL){
+        total_count++;
+    }
+
+    struct Course** result = malloc(sizeof(struct Course) * (total_count + 1));
+    int current_index = 0;
+    while(student_records[current_index] != NULL){
+        result[current_index] = read_course_record(student_records[current_index]->course_id);
+        current_index++;
+    }
+    result[current_index] = NULL;
+    return result;
 }
 
 bool update_student_record(struct StudentRecord* record){
@@ -302,7 +330,7 @@ struct Course* read_course_record(int course_id){
     if(is_course_exist(course_id)) {
         char **course_information_array = calloc(4, sizeof(char *));
 
-        read_record(get_course_file_path(), 0, integer_to_string(course_id), course_information_array);
+        read_record(get_course_file_path(), 0, integer_to_string(course_id), course_information_array, 0);
 
         if (course_information_array[0] != NULL) {
             return array_to_course_record(course_information_array);
@@ -378,7 +406,7 @@ struct Programme* read_programme_record(int programme_id){
     if(is_programme_exist(programme_id)) {
         char **programme_information_array = calloc(3, sizeof(char *));
 
-        read_record(get_programme_file_path(), 0, integer_to_string(programme_id), programme_information_array);
+        read_record(get_programme_file_path(), 0, integer_to_string(programme_id), programme_information_array, 0);
 
         if (programme_information_array[0] != NULL) {
             return array_to_programme_record(programme_information_array);
